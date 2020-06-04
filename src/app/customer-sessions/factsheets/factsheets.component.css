@@ -1,0 +1,25 @@
+.fact-class{
+    margin: 2rem 0rem;
+}
+.fact-heading{
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    margin-bottom:0.8rem;
+}
+.fact-content{
+    border: 1px solid #D9D9D9;
+    opacity: 1;
+    /* height: 6rem; */
+}
+
+.city-names a{
+    margin: 0.2rem 0.5rem 0rem 0.6rem;
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.65rem;
+    border-bottom: 1px solid #00C9FF;
+    cursor: pointer;
+    flex-direction: column;
+}
+.perfect-scroll-ref{
+    overflow: hidden;
+    overflow-y: auto;
+}

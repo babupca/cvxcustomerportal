@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+    font-family: 'dxc-Regular';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Regular.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/GT-Walsheim-Pro-Regular.ttf') format('truetype');
+
+}
+
+@font-face {
+    font-family: 'dxc-Bold';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Bold.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/GT-Walsheim-Pro-Bold.ttf') format('truetype');
+
+}
+
+@font-face {
+    font-family: 'dxc-Light';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Light.eot?#iefix') format('embedded-opentype'),
+          url('./assets/fonts/GT-Walsheim-Pro-Light.ttf') format('truetype');
+
+}
+
+
+// styles.scss
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+html, body {
+    height: 100%;
+    font-family: "dxc-Regular";
+}
+
+body {
+    font-family: "dxc-Regular";
+    font-size: 100%;
+    position: relative;
+}
+
+.hamburger-icon {
+    display: none;
+}
+
+.bs-rating-star.ng-star-inserted{
+    font-size: 1.23rem;
+}
+
+.bs-rating-star.ng-star-inserted.active{
+    font-size: 1.23rem;
+    color: #00C9FF !important;
+}
+::placeholder, input::placeholder {
+    opacity: 0.5;
+}
+.textarea-ref :focus{
+    border-color:none;
+}

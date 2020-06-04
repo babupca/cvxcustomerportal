@@ -1,0 +1,28 @@
+.footer {
+	background:#000000;
+	color: #FFFFFF;
+	font-size: 12px;
+	min-height: 30px;
+    padding: 10px 5px 10px 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 7777;
+}
+.footer footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    padding: 0 15px;
+}
+.footerlink {
+	float: right;
+}
+.footerlink a {
+	color: #FFFFFF;
+	line-height: 20px;
+}
+.footerlink a:hover {
+	text-decoration: none;
+}
+
