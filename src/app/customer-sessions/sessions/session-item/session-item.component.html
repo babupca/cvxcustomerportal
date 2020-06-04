@@ -1,0 +1,128 @@
+
+<section class="session-item-container">
+  <!-- Session header -->
+  <div class="session-item-header">
+    <h6 class="time-duration">9:00 AM to 10:00 AM</h6>
+    <h6 class="session-status upcoming"> IN PROGRESS</h6>
+  </div>
+  <!-- Session Title -->
+
+  <div class="session-item-details">
+    <h6 class="topic">1 - 1 - DXC Analytics Capabilities</h6>
+    
+    <h6 class="presenters" title="Shrihari, Ravikiran (P); Shran, Nidhi…">
+      Shrihari, Ravikiran (P); Shran, Nidhi…
+
+    </h6>
+  </div>
+  <!-- Description -->
+  <div class="session-item-description" >
+    <div>
+      Design Thinking is a design methodology that provides a solution-based approach 
+      to solving problems. … The five stages of Design Thinking, according to d.school, are as follows: Empathise, Define (the problem), Ideate, Prototype, and Test. Let’s take a closer look at the five different stages of Design Thinking.  
+    </div>
+  </div>
+  <!-- Attachments -->
+  <div class="session-item-rating-attachments">
+    <div class="file-attachments">
+      <div class="file-details">
+        <div class="attachments-container display-flex">
+          <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
+            [autoClose]="'outside'" #p1="ngbPopover" placement="bottom-left" popoverClass="customWidth"
+            (click)="showAttachments(p1)"> Attachments </a>
+        </div>
+      </div>
+    </div>
+    <div class="rating">
+
+       <div>
+      <button class="actionitems-icon" (click)="ShowActionItems()"> </button>    
+            <div *ngIf="ShowActionItem" class="custom-popover action-container-popup"
+            >
+              <div class="row">
+                <div class="col-12 pr-1">
+                  <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg" (click)="close()">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 pr-3">
+                  <div >
+                     <angular-editor  [config]="editorConfig" maxLength="500"></angular-editor> 
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 pr-3">
+                  <div class="senddiv">
+                    <button >SEND</button></div>
+                </div>
+              </div>
+            </div>
+
+
+    </div>
+
+      <button class="feedback-icon"  (click)="ShowFeedbackPopOver()"> </button>Ratings
+      <div>
+      <rating  [max]="max"></rating>
+    </div>
+   
+      <!-- Feedback Popup  -->
+      <div *ngIf="ShowFeedback" class="container-popup "
+     >
+        <div class="row">
+          <div class="col-12 pr-1">
+            <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg" (click)="close()">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 pr-3">
+            <div class="messagediv">
+              <angular-editor   [config]="editorConfig" maxLength="500"></angular-editor>
+              
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 pr-3">
+            <div class="senddiv">
+              <button>SEND</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+</section>
+
+
+<ng-template #popContent let-attachmenstdetails>
+  <div class="popoverdetails">
+    <!-- <perfect-scrollbar style="max-height: 100px;" [config]="attachmentScrollConfig"> -->
+      <ul>
+        <li>
+          <a class="popoverattachemnets" [href]="attachment1">attachment1</a>
+        </li>
+      </ul>
+    <!-- </perfect-scrollbar> -->
+
+  </div>
+</ng-template>
+
+
+<ng-template #actionPointmodal let-modal>
+  <div class="modal-header header-ref">
+    <button type="button"  class="close" aria-label="Close" (click)="modal.close('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body model-body-ref">
+    <form>
+      Action Points Noted!
+    </form>
+  </div>
+</ng-template>

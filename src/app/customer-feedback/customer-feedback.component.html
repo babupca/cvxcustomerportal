@@ -1,0 +1,120 @@
+<div class="customer-feedback">
+  <!-- INSERT BANNER HERE :: Start -->
+  <app-customer-banner></app-customer-banner>
+  <!-- INSERT BANNER HERE :: Ends -->
+  <div class="main-container">
+    <div class="feedback-container">
+      <div class="wlecome">Dear Customer,</div>
+      <div class="welcome-msg">It has been our pleasure to host you.
+        We thank you for visiting us and making considerable investment from your side in all aspects.
+        To ensure that we continuously enhance your experience with DXC and exceed your expectations from the visit,
+        we request you to provide your valuable feedback to us.
+      </div>
+
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="query-one">1.
+          <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
+
+        </div>
+        <textarea rows="6" maxlength="500" class="textarea-ref"></textarea>
+      </div>
+    </div>
+
+    <div class="main-query ">
+      <div class="">
+        <div class="query-one">2.
+          <label> What are the major capabilities/areas where you believe DXC adds value to your business?</label>
+
+        </div>
+        <textarea rows="6" maxlength="500" class="textarea-ref"></textarea>
+      </div>
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="query-one">3.
+          <label>Please rate your experience at DXC during this visit on the following:</label>
+
+        </div>
+        <div class="agenda-conatainer">
+          <div class="agenda">Visit agenda/Plan<span>(Please rate us)</span></div>
+          <div class="ratings">
+            <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+              <img [src] ="item.image">
+            </div>
+          </div>
+          <div class="agenda">Any specific suggestions / comments:</div>
+          <div class="">
+            <textarea rows="6" maxlength="500" class="textarea-agenda"></textarea>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="agenda-conatainer">
+          <div class="agenda">Visit arrangements and management<span>(Please rate us)</span></div>
+          <div class="ratings">
+            <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+              <img [src] ="item.image">
+            </div>
+          </div>
+          <div class="agenda">Any specific suggestions / comments:</div>
+          <div class="">
+            <textarea rows="6" maxlength="500" class="textarea-agenda"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="agenda-conatainer">
+          <div class="agenda">Quality of interactions (Please rate us)<span>(Please rate us)</span></div>
+          <div class="ratings" >
+            <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+            <img [src] ="item.image">
+          </div>
+          </div>
+          <div class="agenda">Any specific suggestions / comments:</div>
+          <div class="">
+            <textarea rows="6" maxlength="500" class="textarea-agenda"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="agenda-conatainer">
+          <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.</div>
+          <div class="">
+            <textarea rows="6" maxlength="500" class="textarea-agenda"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-query">
+      <div class="">
+        <div class="query-one">4.
+          <label>Any area(s) where DXC should immediately connect with you/ your team to address your current needs?</label>
+        </div>
+        <textarea rows="6" maxlength="500" class="textarea-ref"></textarea>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="button-group">
+    <div class="img-icon">
+      <div>
+        Thank you for your feedback.
+      </div>
+    </div>
+    <div class="btn-right">
+      <div class="btn-agenda">BACK TO AGENDA</div>
+      <button class="btn-submit">SUBMIT</button>
+    </div>
+   </div>
+
+</div>

@@ -1,0 +1,22 @@
+/* .daycount-class{
+    margin:0.5rem 1.2rem 2rem 1.2rem
+} */
+
+.daycount-content{
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    align-items: center;
+    height: 8rem;
+}
+.days-text{
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #00C9FF;
+    border-top: 1px solid #00C9FF;
+    font-size: 1rem;
+}
+.days{
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    color: #00C9FF;
+    font-size: 4rem;
+}

@@ -1,0 +1,60 @@
+.main-container{
+    margin: 1.2rem 0 2rem ;
+}
+.poc-container {
+    border: 1px solid #D9D9D9;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 0rem 0.5rem 0.75rem;
+    height: 4rem;
+}
+.poc-list{
+    background:transparent url('/assets/images/Usericon.svg') no-repeat left center;
+    display: block;
+    background-size: 10px;
+    padding: 0 0 6px 20px;
+}
+
+h6 {
+    font-family: 'dxc-Bold',Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+ul{
+    list-style: none;
+    margin-left: 0px !important;
+    padding: 0px
+}
+.visit-pocs{
+    color:#00C9FF ;
+    border-bottom: 1px solid #00C9FF;
+    cursor: pointer;
+    font-size: 14px
+}
+.perfect-scroll-ref{
+    overflow: hidden;
+    overflow-y: auto;
+}
+.popoverusername{
+    color: #00C9FF !important;
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+
+}
+.popoveremail{
+    max-width: 45px;
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+    display:inline-flex;
+}
+.popovermobileno{
+    font-size: 0.75rem;
+    margin-left: 0.5rem
+}
+.popImg{
+    width:16px;
+}
+@media (max-width: 768px){
+    
+}
+
+
+
