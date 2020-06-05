@@ -5,7 +5,7 @@
 export const environment = {
   environemt  : 'DEV',
   production  : false,
- BASE_URL    : 'http://localhost:4200',
+ //BASE_URL    : 'http://localhost:4200',
   // BASE_URL    : 'https://cvizopsportaldev.azurewebsites.net',
   //BASE_URL    : 'https://cvxmob.azurewebsites.net',
   API_URL     : 'https://cvizdevapim.azure-api.net/customerapi',
