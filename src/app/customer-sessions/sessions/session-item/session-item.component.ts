@@ -52,6 +52,7 @@ export class SessionItemComponent implements OnInit {
   }
   ShowActionItems(){
     this.ShowActionItem = true;
+    this.ShowFeedback = false;
   }
   ShowFeedbackPopOver(){
     this.ShowFeedback = true;
