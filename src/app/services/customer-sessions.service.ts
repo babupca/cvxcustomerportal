@@ -18,4 +18,7 @@ export class CustomerSessionsService {
     })
   }
   
+  addActionPoints(actionPointData){
+    return this.http.post(this.customerApi+'/AddorUpdateActionPointToSession',actionPointData,this.httpOptions)
+  }
 }
