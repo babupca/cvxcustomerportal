@@ -63,6 +63,15 @@
 .rating-star {
   padding: 0 0 0 5px;
 }
+/* .ratingscolor ~ .active{
+  color: #00C9FF;
+
+} */
+.rating:focus{
+  outline: aliceblue;
+  /* outline-width: 0 */
+}
+
 .session-item-rating-attachments {
     display: flex;
     flex-direction: row;
@@ -156,7 +165,7 @@
     top: 25px;
     right: 125px;
   }
-  
+
   .action-container-popup {
     height: auto;
     width: 20rem;
@@ -222,7 +231,7 @@ ul{
 }
 
 .showHide{
-  overflow: hidden; 
+  overflow: hidden;
   height: 20px;
   text-overflow: ellipsis;
    white-space: nowrap;

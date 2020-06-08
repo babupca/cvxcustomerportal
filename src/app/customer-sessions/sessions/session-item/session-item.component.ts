@@ -17,6 +17,7 @@ export class SessionItemComponent implements OnInit {
   customerDetails: any;
   FeedbackMessage:any;
 
+  starsCount = 0;
   max = 5;
   ShowActionItem:boolean = false;
   ShowFeedback:boolean = false;
@@ -37,7 +38,7 @@ export class SessionItemComponent implements OnInit {
       defaultFontSize:'14',
       enableToolbar: true,
       showToolbar: true,
-      
+
       defaultParagraphSeparator: '',
 };
 
@@ -63,13 +64,13 @@ export class SessionItemComponent implements OnInit {
   }
 
   showAttachments(){
-    
+
   }
-  
+
   reset(){
     this.ShowActionItem = false;
     this.ShowFeedback = false;
-    
+
   }
 
   sendActionPoints(){
@@ -99,6 +100,17 @@ export class SessionItemComponent implements OnInit {
     })
 
   }
- 
+
+  sessionCardRating(){
+    var ratings ={
+      "sessionId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "ratings": this.starsCount,
+      "loggedInUser": this.customerDetails.nameid
+    }
+    this.sessionService.sessionRatings(ratings).subscribe((data)=>{
+      console.log(data);
+    })
+  }
+
 
 }
