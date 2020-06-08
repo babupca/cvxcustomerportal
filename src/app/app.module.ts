@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+
 import {
   PerfectScrollbarModule,
   PERFECT_SCROLLBAR_CONFIG,
@@ -59,6 +61,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PerfectScrollbarModule,
     RatingModule.forRoot(),
     PopoverModule.forRoot(),
+    FormsModule, 
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [HttpClientModule],
