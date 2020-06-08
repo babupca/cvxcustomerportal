@@ -101,5 +101,16 @@ export class SessionItemComponent implements OnInit {
 
   }
 
+  sessionCardRating(){
+    var ratings ={
+      "sessionId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "ratings": this.starsCount,
+      "loggedInUser": this.customerDetails.nameid
+    }
+    this.sessionService.sessionRatings(ratings).subscribe((data)=>{
+      console.log(data);
+    })
+  }
+
 
 }

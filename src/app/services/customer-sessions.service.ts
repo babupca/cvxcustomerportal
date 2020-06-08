@@ -17,12 +17,16 @@ export class CustomerSessionsService {
       'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
     })
   }
-  
+
   addActionPoints(actionPointData){
     return this.http.post(this.customerApi+'/AddorUpdateActionPointToSession',actionPointData,this.httpOptions)
   }
 
   sendFeedBack(feedBackData){
     return this.http.post(this.customerApi+'/AddorUpdateFeedBackToSession',feedBackData,this.httpOptions)
+  }
+
+  sessionRatings(ratings){
+    return this.http.post(this.customerApi+'/AddorUpdateRatingToSession',ratings,this.httpOptions)
   }
 }
