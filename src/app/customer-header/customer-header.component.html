@@ -26,10 +26,11 @@
                   <!-- <span class="shortname">{{this.initials}}</span>
                   <span class="fullname">{{userDetails.lastName}}, {{userDetails.firstname}}</span> -->
                   <span class="shortname">VL</span>
-                  <span class="fullname">Vishnubhotla, Lakshmi Tejaswini</span>
+                  <!-- <span class="fullname">Vishnubhotla, Lakshmi Tejaswini</span> -->
+                  <span class="fullname">{{customerName.email}}</span>
                 </a>
                 <div ngbDropdownMenu aria-labelledby="dropdownMenuLink" class="logout-container">
-                  <a class="dropdown-item" (click)="open(logoutMdl)">Logout</a>
+                  <a class="dropdown-item" (click)="logout(logoutMdl)">Logout</a>
                 </div>
               </div>
             </li>

@@ -13,7 +13,7 @@ export class BannercustomerService {
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      "Ocp-Apim-Subscription-Key": environment.API_URL_KEY
+      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
     })
   }
 
