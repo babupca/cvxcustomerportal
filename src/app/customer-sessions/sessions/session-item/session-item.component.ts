@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class SessionItemComponent implements OnInit {
   loggedInUser = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
   actionPoints = "";
   customerDetails: any;
+  FeedbackMessage:any;
 
   max = 5;
   ShowActionItem:boolean = false;
@@ -44,7 +46,8 @@ export class SessionItemComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.customerDetails = localStorage.getItem('customerDetails');
+    this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+    console.log(this.customerDetails);
   }
   ShowActionItems(){
     this.ShowActionItem = true;
@@ -82,6 +85,19 @@ export class SessionItemComponent implements OnInit {
       this.reset();
 
     })
+  }
+
+  sendFeedback(){
+    var feedBackData ={
+      "sessionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "feedback": this.FeedbackMessage,
+      "loggedInUser": this.customerDetails.nameid
+    }
+    this.sessionService.sendFeedBack(feedBackData).subscribe((data) =>{
+      this.reset();
+
+    })
+
   }
  
 
