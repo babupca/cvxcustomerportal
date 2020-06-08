@@ -17,7 +17,7 @@ export class CustomerBannerComponent implements OnInit {
 
   banercontent(){
    this.bannerCustomer.getBannerData().subscribe(data=>{
-     debugger;
+    //  debugger;
      this.bannerContent = data[0].bannerContent;
      console.log(data);
    })

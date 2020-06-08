@@ -17,6 +17,7 @@ export class SessionItemComponent implements OnInit {
   customerDetails: any;
   FeedbackMessage:any;
 
+  starsCount = 0;
   max = 5;
   ShowActionItem:boolean = false;
   ShowFeedback:boolean = false;
@@ -37,7 +38,7 @@ export class SessionItemComponent implements OnInit {
       defaultFontSize:'14',
       enableToolbar: true,
       showToolbar: true,
-      
+
       defaultParagraphSeparator: '',
 };
 
@@ -63,13 +64,13 @@ export class SessionItemComponent implements OnInit {
   }
 
   showAttachments(){
-    
+
   }
-  
+
   reset(){
     this.ShowActionItem = false;
     this.ShowFeedback = false;
-    
+
   }
 
   sendActionPoints(){
@@ -99,6 +100,6 @@ export class SessionItemComponent implements OnInit {
     })
 
   }
- 
+
 
 }
