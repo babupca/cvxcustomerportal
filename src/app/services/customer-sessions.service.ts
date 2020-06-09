@@ -15,11 +15,9 @@ export class CustomerSessionsService {
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Accept:'application/json',
-      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY,
-     
-    }),
-
+       Accept:'application/json',
+      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY     
+    })
   }
 
   addActionPoints(actionPointData){
