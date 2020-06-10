@@ -6,11 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./customer-sessions.component.css']
 })
 export class CustomerSessionsComponent implements OnInit {
-  @Input() visitId:any;
-
+  customerDetails:any;
+  visitId:string;
   constructor() { }
-
   ngOnInit() {
+    this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+      this.visitId = this.customerDetails.OngoingVisitId
   }
 
 }

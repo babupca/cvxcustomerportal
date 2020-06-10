@@ -17,6 +17,7 @@
     font-size: 0.65rem;
     border-bottom: 1px solid #00C9FF;
     cursor: pointer;
+    color: black;
     flex-direction: column;
 }
 .perfect-scroll-ref{
