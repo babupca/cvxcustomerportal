@@ -1,14 +1,18 @@
 
-<section class="session-item-container">
+<section class="session-item-container"  [attr.data-sessionid]="session.id">
   <!-- Session header -->
   <div class="session-item-header">
-    <h6 class="time-duration">9:00 AM to 10:00 AM</h6>
-    <h6 class="session-status upcoming"> IN PROGRESS</h6>
+    <h6 class="time-duration">{{session?.startDateTime |  date:'shortTime' }} to
+      {{session?.endDateTime|  date:'shortTime'}}</h6>
+    <h6 class="session-status upcoming"
+      [ngClass]="{'cancelled': session?.sessionState === 'Cancelled', 'completed': session?.sessionState === 'Completed','inprogress': session?.sessionState === 'In Progress'}">
+
+        {{session?.sessionState | uppercase}}</h6>
   </div>
   <!-- Session Title -->
 
   <div class="session-item-details">
-    <h6 class="topic">1 - 1 - DXC Analytics Capabilities</h6>
+    <h6 class="topic">{{SessionNos}} - {{session?.title}}</h6>
 
     <h6 class="presenters" title="Shrihari, Ravikiran (P); Shran, Nidhi…">
       Shrihari, Ravikiran (P); Shran, Nidhi…
@@ -17,9 +21,10 @@
   </div>
   <!-- Description -->
   <div class="session-item-description" >
-    <div>
-      Design Thinking is a design methodology that provides a solution-based approach
-      to solving problems. … The five stages of Design Thinking, according to d.school, are as follows: Empathise, Define (the problem), Ideate, Prototype, and Test. Let’s take a closer look at the five different stages of Design Thinking.
+    <div> <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary" ></p>
+      <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
+      <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
+     
     </div>
   </div>
   <!-- Attachments -->
