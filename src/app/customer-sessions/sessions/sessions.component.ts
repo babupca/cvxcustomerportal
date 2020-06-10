@@ -10,6 +10,8 @@ export class SessionsComponent implements OnInit {
   // @Input() visitDetails: any;
   // @Output() updateSessionId=new EventEmitter<any>();
   // @Output() modeChange = new EventEmitter<any>();
+  customerDetails:any;
+  visitId:any;
   visitInfo: any;
   visitDates:any;
   visitCity:any;
@@ -28,6 +30,8 @@ export class SessionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+    this.visitId=this.customerDetails.OngoingVisitId;
     // this.getVisitCitiesAndDates();
     // this.getSessionState();
     // this.todaydate = this.getTodayDate();
