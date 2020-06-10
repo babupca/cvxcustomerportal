@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
@@ -11,12 +11,14 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./session-item.component.css']
 })
 export class SessionItemComponent implements OnInit {
-  sessionID = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-  loggedInUser = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+  @ViewChild('actionPointmodal', {static: false}) actionPointModal;
+  
+  
   actionPoints = "";
   customerDetails: any;
   FeedbackMessage:any;
 
+  starsCount = 0;
   max = 5;
   ShowActionItem:boolean = false;
   ShowFeedback:boolean = false;
@@ -37,7 +39,7 @@ export class SessionItemComponent implements OnInit {
       defaultFontSize:'14',
       enableToolbar: true,
       showToolbar: true,
-      
+
       defaultParagraphSeparator: '',
 };
 
@@ -47,7 +49,6 @@ export class SessionItemComponent implements OnInit {
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
-    console.log(this.customerDetails);
   }
   ShowActionItems(){
     this.ShowActionItem = true;
@@ -63,27 +64,35 @@ export class SessionItemComponent implements OnInit {
   }
 
   showAttachments(){
-    
+
   }
-  
+
   reset(){
     this.ShowActionItem = false;
     this.ShowFeedback = false;
-    
+
   }
 
   sendActionPoints(){
+    // this.modalService.open(this.actionPointModal)
 
     var actionPointData = {
-      "sessionId": this.sessionID,
+      "sessionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "actionPoint": this.actionPoints,
-      "loggedInUser": this.loggedInUser
+      "loggedInUser": this.customerDetails.nameid
     }
-
+    // console.log("Point: "+JSON.stringify(actionPointData))
     this.actionPoints = "";
     this.sessionService.addActionPoints(actionPointData).subscribe(data => {
+      
       this.reset();
 
+      this.modalService.open(this.actionPointModal)
+      console.log("Point: "+JSON.stringify(actionPointData))
+
+    }, error => {
+      console.log(error)
+      // this.modalService.open(this.actionPointModal)
     })
   }
 
@@ -99,6 +108,17 @@ export class SessionItemComponent implements OnInit {
     })
 
   }
- 
+
+  sessionCardRating(){
+    var ratings ={
+      "sessionId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "ratings": this.starsCount,
+      "loggedInUser": this.customerDetails.nameid
+    }
+    this.sessionService.sessionRatings(ratings).subscribe((data)=>{
+      console.log(data);
+    })
+  }
+
 
 }

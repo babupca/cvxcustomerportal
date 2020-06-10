@@ -9,7 +9,7 @@
 
   <div class="session-item-details">
     <h6 class="topic">1 - 1 - DXC Analytics Capabilities</h6>
-    
+
     <h6 class="presenters" title="Shrihari, Ravikiran (P); Shran, Nidhi…">
       Shrihari, Ravikiran (P); Shran, Nidhi…
 
@@ -18,8 +18,8 @@
   <!-- Description -->
   <div class="session-item-description" >
     <div>
-      Design Thinking is a design methodology that provides a solution-based approach 
-      to solving problems. … The five stages of Design Thinking, according to d.school, are as follows: Empathise, Define (the problem), Ideate, Prototype, and Test. Let’s take a closer look at the five different stages of Design Thinking.  
+      Design Thinking is a design methodology that provides a solution-based approach
+      to solving problems. … The five stages of Design Thinking, according to d.school, are as follows: Empathise, Define (the problem), Ideate, Prototype, and Test. Let’s take a closer look at the five different stages of Design Thinking.
     </div>
   </div>
   <!-- Attachments -->
@@ -29,14 +29,14 @@
         <div class="attachments-container display-flex">
           <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
             [autoClose]="'outside'" #p1="ngbPopover" placement="bottom-left" popoverClass="customWidth"
-            (click)="showAttachments(p1)"> Attachments </a>
+            (click)="showAttachments(p1)"> (5 Attachments) </a>
         </div>
       </div>
     </div>
     <div class="rating">
 
        <div>
-      <button class="actionitems-icon" (click)="ShowActionItems()"> </button>    
+      <button class="actionitems-icon" (click)="ShowActionItems()"> </button>
             <div *ngIf="ShowActionItem" class="custom-popover action-container-popup"
             >
               <div class="row">
@@ -48,14 +48,14 @@
               <div class="row">
                 <div class="col-12 pr-3">
                   <div >
-                     <angular-editor  [config]="editorConfig" maxLength="500"></angular-editor> 
+                     <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor> 
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 pr-3">
                   <div class="senddiv">
-                    <button >SEND</button></div>
+                    <button (click)="sendActionPoints()">SEND</button></div>
                 </div>
               </div>
             </div>
@@ -63,14 +63,14 @@
 
     </div>
 
-      <button class="feedback-icon"  (click)="ShowFeedbackPopOver()"> </button>Ratings
+      <button class="feedback-icon"
+       (click)="ShowFeedbackPopOver()"> </button>Ratings
       <div>
-      <rating  [max]="max"></rating>
+      <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
     </div>
-   
+
       <!-- Feedback Popup  -->
-      <div *ngIf="ShowFeedback" class="container-popup "
-     >
+      <div *ngIf="ShowFeedback" class="container-popup ">
         <div class="row">
           <div class="col-12 pr-1">
             <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg" (click)="close()">
@@ -81,7 +81,7 @@
           <div class="col-12 pr-3">
             <div class="messagediv">
               <angular-editor [(ngModel)]="FeedbackMessage"  [config]="editorConfig" maxLength="500"></angular-editor>
-              
+
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
 
     </div>
   </div>
- 
+
 </section>
 
 

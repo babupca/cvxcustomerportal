@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
 import { CustomerLoginComponent } from '../app/customer-login/customer-login.component';
 import { MasterLayoutComponent } from '../app/shared/master-layout/master-layout.component';
 import { ForgotPasswordComponent } from '../app/forgot-password/forgot-password.component';
@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path: '',
     component: MasterLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'customerSession', component: CustomerSessionsComponent

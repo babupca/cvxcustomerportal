@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {  HttpClient, HttpHeaders,  HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,21 @@ export class CustomerSessionsService {
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+       Accept:'application/json',
+      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY     
     })
   }
-  
+
   addActionPoints(actionPointData){
     return this.http.post(this.customerApi+'/AddorUpdateActionPointToSession',actionPointData,this.httpOptions)
   }
 
   sendFeedBack(feedBackData){
+    
     return this.http.post(this.customerApi+'/AddorUpdateFeedBackToSession',feedBackData,this.httpOptions)
+  }
+
+  sessionRatings(ratings){
+    return this.http.post(this.customerApi+'/AddorUpdateRatingToSession',ratings,this.httpOptions)
   }
 }
