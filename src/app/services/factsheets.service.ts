@@ -15,13 +15,6 @@ export class FactsheetsService {
 
   }
   getFactsheets(visitId){
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
-    // })
-    // let options = new HttpResponse({
-    //   headers, responseType: ResponseContentType.Blob,
-    // });
-    // return this.httpClient.get(this.customerApi+'/api/Operations/GetFactSheet?VisitId='+visitId,hoptions);
+    return this.httpClient.get(this.customerApi+'/api/Operations/GetFactSheet?VisitId='+visitId,this.httpOptions);
   }
 }
