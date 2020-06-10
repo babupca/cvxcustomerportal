@@ -7,15 +7,17 @@ import { FactsheetsService} from 'src/app/services/factsheets.service'
   templateUrl: './factsheets.component.html',
   styleUrls: ['./factsheets.component.css']
 })
+
 export class FactsheetsComponent implements OnInit {
-//  @Input visitId();
   constructor(private factSheetsIns: FactsheetsService) { }
+  @Input() visitId:any;
     cities:any;
+
   ngOnInit() {
   }
-factsheets(){
-  this.factSheetsIns.getFactsheets().subscribe((data)=>{
-    this.cities
-  })
-}
+// factsheets(){
+//   this.factSheetsIns.getFactsheets(this.visitId).subscribe((data)=>{
+//     this.cities
+//   })
+// }
 }

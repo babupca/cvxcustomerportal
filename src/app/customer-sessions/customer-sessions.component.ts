@@ -9,7 +9,7 @@ export class CustomerSessionsComponent implements OnInit {
   @Input() visitId:any;
 
   constructor() { }
-
+@Input() visitId:any;
   ngOnInit() {
   }
 
