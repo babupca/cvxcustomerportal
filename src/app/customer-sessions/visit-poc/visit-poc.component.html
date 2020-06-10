@@ -4,20 +4,20 @@
     <perfect-scrollbar>
     <div class="poc-details display-flex">
       <ul>
-        <li class="poc-list" *ngFor="let item of managers; let i=index">
+        <li class="poc-list">
           <span class="visit-pocs" triggers="manual" container="body" [ngbPopover]="popContent"
           [autoClose]="'outside'" #p1="ngbPopover" placement="auto" popoverClass="customWidth"
-          (click)="showUserDetails(p1, item)"> {{item.displayName | titlecase}}
+          (click)="showUserDetails(p1, item)"> vishnubhotla Lakshmi Tejaswini
           </span>
         </li>
-        <!-- <li class="poc-list">
+        <li class="poc-list">
           <span class="visit-pocs"> Babu Arumugam
           </span>
         </li>
         <li class="poc-list">
           <span class="visit-pocs"> Ankam Ankam Lakshmipathi Nirmala
           </span>
-        </li> -->
+        </li>
       </ul>
     </div>
     </perfect-scrollbar>
@@ -29,17 +29,17 @@
 
     <div>
       <img class="popImg" src="/assets/images/Usericonpopover.svg" />
-      <a class="popoverusername">{{managerDetails?.name  | titlecase}}</a>
+      <a class="popoverusername">Lakshmi Tejaswini vishnubhotla</a>
     </div>
 
     <div>
       <img class="popImg" src="/assets/images/phoneicon.svg" />
-      <a class="popovermobileno">{{managerDetails?.phone}}</a>
+      <a class="popovermobileno">+91 8907646372</a>
     </div>
 
     <div>
       <img class="popImg" src="/assets/images/Emailicon.svg" />
-      <a class="popoveremail">{{managerDetails?.emailId}}</a>
+      <a class="popoveremail">lakshmi-tejaswini.vishnubhotla@dxc.com</a>
     </div>
   </div>
 </ng-template>
