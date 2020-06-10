@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef ,Input} from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
@@ -13,11 +13,18 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class SessionItemComponent implements OnInit {
   @ViewChild('actionPointmodal', {static: false}) actionPointModal;
   
-  
+  @Input() session: any;
+  @Input() SessionNos: number;
+  @Input() sessionData: any;
+  @Input() sessionID: any;
+  @Input() sessionState : any;
+  @Input() visitId :any;
   actionPoints = "";
   customerDetails: any;
   FeedbackMessage:any;
-  vistId:any;
+  showMore=true;
+
+  
 
   starsCount = 0;
   max = 5;
@@ -50,7 +57,7 @@ export class SessionItemComponent implements OnInit {
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
-    this.vistId = this.customerDetails.OngoingVisitId
+   
   }
   ShowActionItems(){
     this.ShowActionItem = true;
@@ -120,6 +127,12 @@ export class SessionItemComponent implements OnInit {
     this.sessionService.sessionRatings(ratings).subscribe((data)=>{
       console.log(data);
     })
+  }
+
+  contentCollapse = (event) => {
+    event.preventDefault();
+    console.log(event);
+    this.showMore=!this.showMore
   }
 
 

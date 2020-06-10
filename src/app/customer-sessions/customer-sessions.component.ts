@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-customer-sessions',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-sessions.component.css']
 })
 export class CustomerSessionsComponent implements OnInit {
+  @Input() visitId:any;
 
   constructor() { }
 
