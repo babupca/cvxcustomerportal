@@ -17,6 +17,7 @@ export class SessionItemComponent implements OnInit {
   actionPoints = "";
   customerDetails: any;
   FeedbackMessage:any;
+  vistId:any;
 
   starsCount = 0;
   max = 5;
@@ -49,6 +50,7 @@ export class SessionItemComponent implements OnInit {
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+    this.vistId = this.customerDetails.OngoingVisitId
   }
   ShowActionItems(){
     this.ShowActionItem = true;
