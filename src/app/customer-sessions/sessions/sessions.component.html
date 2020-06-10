@@ -2,23 +2,25 @@
   <!-- <div class="col-lg-9 col-md-9 col-sm-6 bdr-right"> -->
 
   <section class="session-filters">
-    <h2 class="upcoming-session">9 UPCOMING SESSIONS</h2>
+    <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
     <div class="session-filter-container">
-      <select>
-        <option>Hyderabad</option>
+      <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
+        <option *ngFor="let session of visitInfo">{{session.location}}</option>
       </select>
-      <select>
-        <option>28-May-2020</option>
+      <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
+        <option *ngFor="let dates of visitDates">{{dates.dateValue}}</option>
       </select>
     </div>
   </section>
   <!-- Section container -->
-  <div class="sessioncardscontainer">
+  <div class="sessioncardscontainer" *ngIf="sessiondata && sessiondata.length > 0">
     <perfect-scrollbar style="max-height: 30rem; margin-top: 2px;">
       <section class="section-list-container perfect-scroll-ref">
 
-        <div>
-          <app-session-item>
+        <div *ngFor="let session of sessiondata; let i=index;">
+          <app-session-item [visitDetails]="visitDetails" (editSessionID)="updateSession($event)" (reloadSessionListData)="reloadForm()"
+          [session]="session" [visitId]="visitId" [sessionID]="session.id" [SessionNos]="i+1"
+          [sessionState]="sessionState">
           </app-session-item>
         </div>
 
