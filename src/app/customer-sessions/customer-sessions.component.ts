@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { VisitInfoService } from '../services/visit-info.service';
 
 @Component({
   selector: 'app-customer-sessions',
@@ -8,10 +9,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CustomerSessionsComponent implements OnInit {
   customerDetails:any;
   visitId:string;
-  constructor() { }
+  visitInfo: any;
+  constructor(private visitInfoService: VisitInfoService) { }
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
       this.visitId = this.customerDetails.OngoingVisitId
+    
+    var ongoingVisitId = this.customerDetails.OngoingVisitId;
+    // console.log("On-Going Visit ID: "+JSON.stringify(ongoingVisitId))
+    this.visitInfoService.getVisitInfo(ongoingVisitId).subscribe(data =>{
+      this.visitInfo = data
+    })
   }
 
 }

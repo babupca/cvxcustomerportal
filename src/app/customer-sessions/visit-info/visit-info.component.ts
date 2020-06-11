@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-visit-info',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisitInfoComponent implements OnInit {
 
+  @Input() visitInfo: any 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
+    console.log("Visit Info: "+JSON.stringify(this.visitInfo))
   }
 
 }
