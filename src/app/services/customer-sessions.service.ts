@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient, HttpHeaders,  HttpParams } from '@angular/common/http';
+import {  HttpClient, HttpHeaders,  HttpParams, HttpResponse,HttpRequest, } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { retry, catchError, map, tap, finalize } from 'rxjs/operators';
+import {  RequestOptions, ResponseContentType, Headers } from '@angular/http';
 import * as moment from 'moment';
 
 
@@ -18,16 +20,25 @@ export class CustomerSessionsService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
        Accept:'application/json',
-      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY     
+      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
     })
+
   }
+
+
+  // public headers = new Headers({
+  //   'Content-Type': 'application/json',
+  //   'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+  // });
+
+  // public options = new RequestOptions({ headers: this.headers });
 
   addActionPoints(actionPointData){
     return this.http.post(this.customerApi+'/AddorUpdateActionPointToSession',actionPointData,this.httpOptions)
   }
 
   sendFeedBack(feedBackData){
-    
+
     return this.http.post(this.customerApi+'/AddorUpdateFeedBackToSession',feedBackData,this.httpOptions)
   }
 
@@ -75,5 +86,31 @@ export class CustomerSessionsService {
     return this.http.get(this.customerApi+'/FetchDateHavingUpomingSessions?visitID='+vid+'&currentDate='+date,this.httpOptions);
   }
 
-  
+  /**
+   * download Agenda
+   * @param visitId
+   */
+
+  getAgenda(visitId){
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+    })
+    //  let options = new RequestOptions({
+    //   headers, responseType: ResponseContentType.Blob,
+    // });
+    const options = {
+      headers :new HttpHeaders({
+        'Content-Type': 'application/json',
+         Accept:'application/json',
+        'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+      }),
+      responseType:'blob' as 'json'
+    }
+    // return this.http.get(this.customerApi + '/DownloadAgenda?visitID='+ visitId,options).pipe(map(result=>result),finalize(()=>{
+    // }));
+      return this.http.get(this.customerApi+'/DownloadAgenda?VisitID='+visitId, options).pipe(map(result=>result),finalize(()=>{
+      }));
+  }
+
 }
