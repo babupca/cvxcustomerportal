@@ -80,6 +80,7 @@
     font-size: 0.7rem;
     font-weight: bold;
     margin: 0.675rem 0;
+    cursor: pointer;
 }
 .session-footer-cta:hover {
    text-decoration: none;

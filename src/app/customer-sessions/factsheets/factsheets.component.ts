@@ -17,7 +17,7 @@ export class FactsheetsComponent implements OnInit {
     this.factsheets();
   }
 factsheets(){
-  this.factSheetsIns.getFactsheets("0528F473-6C3F-4CEA-9277-8067E178F6F1").subscribe((data)=>{
+  this.factSheetsIns.getFactsheets(this.visitId).subscribe((data)=>{
     this.factsheetsArray = data;
   })
 }
