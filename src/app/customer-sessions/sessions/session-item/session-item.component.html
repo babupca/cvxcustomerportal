@@ -14,8 +14,8 @@
   <div class="session-item-details">
     <h6 class="topic">{{SessionNos}} - {{session?.title}}</h6>
 
-    <h6 class="presenters" title="Shrihari, Ravikiran (P); Shran, Nidhi…">
-      Shrihari, Ravikiran (P); Shran, Nidhi…
+    <h6 class="presenters" title="{{session.representativeString}}">
+      {{session.representativeString|truncatePipe:[50, '...']}}
 
     </h6>
   </div>
@@ -31,10 +31,11 @@
   <div class="session-item-rating-attachments">
     <div class="file-attachments">
       <div class="file-details">
+
         <div class="attachments-container display-flex">
           <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
             [autoClose]="'outside'" #p1="ngbPopover" placement="bottom-left" popoverClass="customWidth"
-            (click)="showAttachments(p1)"> (5 Attachments) </a>
+            (click)="showAttachments(p1)"> ({{session.attachments.length}} Attachments ) </a>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export class SessionItemComponent implements OnInit {
   
   @Input() session: any;
   @Input() SessionNos: number;
-  @Input() sessionData: any;
+ 
   @Input() sessionID: any;
   @Input() sessionState : any;
   @Input() visitId :any;
@@ -57,7 +57,21 @@ export class SessionItemComponent implements OnInit {
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
-   
+    this.getString();
+  }
+  getString() {
+    var repString = "";
+    this.session.representatives.forEach((rep) => {
+      if (rep.isPresenter === true) {
+
+        repString = repString + rep.collaborator + ";";
+      }
+
+    });
+    var newrepString = repString.substring(0, repString.length - 1);
+    console.log(newrepString);
+    this.session['representativeString'] = newrepString;
+    
   }
   ShowActionItems(){
     this.ShowActionItem = true;
