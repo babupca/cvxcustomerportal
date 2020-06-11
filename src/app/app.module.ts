@@ -31,6 +31,7 @@ import { VisitPocComponent } from './customer-sessions/visit-poc/visit-poc.compo
 import { SessionItemComponent } from './customer-sessions/sessions/session-item/session-item.component';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     VisitPocComponent,
     SessionItemComponent,
     CustomerFeedbackComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TruncatePipePipe
   ],
   imports: [
     BrowserModule,

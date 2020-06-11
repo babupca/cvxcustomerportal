@@ -138,6 +138,7 @@ console.log(this.visitDate);
     }
     this.sessionService.getSessions(this.visitId,sessionData).subscribe(data => {
       this.sessions = data;
+      console.log(this.sessions);
       this.sessiondata = this.sessions['sessions'];
       console.log(this.sessiondata);
 
