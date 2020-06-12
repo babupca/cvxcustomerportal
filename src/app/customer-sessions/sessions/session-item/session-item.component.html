@@ -24,7 +24,7 @@
     <div> <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary" ></p>
       <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
       <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
-     
+
     </div>
   </div>
   <!-- Attachments -->
@@ -35,7 +35,7 @@
         <div class="attachments-container display-flex">
           <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
             [autoClose]="'outside'" #p1="ngbPopover" placement="bottom-left" popoverClass="customWidth"
-            (click)="showAttachments(p1)"> ({{session.attachments.length}} Attachments ) </a>
+            (click)="attachments(p1,session?.attachments)"> ({{session.attachments.length}} Attachments ) </a>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
               <div class="row">
                 <div class="col-12 pr-3">
                   <div >
-                     <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor> 
+                     <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor>
                   </div>
                 </div>
               </div>
@@ -108,13 +108,13 @@
 
 <ng-template #popContent let-attachmenstdetails>
   <div class="popoverdetails">
-    <!-- <perfect-scrollbar style="max-height: 100px;" [config]="attachmentScrollConfig"> -->
+    <perfect-scrollbar style="max-height: 100px;" [config]="attachmentScrollConfig">
       <ul>
-        <li>
-          <a class="popoverattachemnets" [href]="attachment1">attachment1</a>
+        <li *ngFor="let item of currentAttachments">
+          <a class="popoverattachemnets" [href]="item.attachmentUrl">{{item.attachmentName}}</a>
         </li>
       </ul>
-    <!-- </perfect-scrollbar> -->
+    </perfect-scrollbar>
 
   </div>
 </ng-template>
