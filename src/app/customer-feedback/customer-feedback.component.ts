@@ -27,11 +27,6 @@ export class CustomerFeedbackComponent implements OnInit {
     {
       "id":4,
       "image":"/assets/images/iconfinder_emoji_emoticon-05_3638454.svg"
-    },
-
-    {
-      "id":5,
-      "image":"/assets/images/iconfinder_emoji_emoticon-03_3638455.svg"
     }
   ]
 

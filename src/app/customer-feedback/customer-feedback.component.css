@@ -107,7 +107,8 @@
 .btn-agenda {
     border-bottom: 1px solid #00C9FF;
     font-size: 0.865rem;
-    padding-top: 13px;
+    max-height: 20px;
+    margin-top: 9px;
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
 }
 

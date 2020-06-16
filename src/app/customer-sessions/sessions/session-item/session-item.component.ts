@@ -12,10 +12,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class SessionItemComponent implements OnInit {
   @ViewChild('actionPointmodal', {static: false}) actionPointModal;
-  
+
   @Input() session: any;
   @Input() SessionNos: number;
- 
+
   @Input() sessionID: any;
   @Input() sessionState : any;
   @Input() visitId :any;
@@ -23,9 +23,9 @@ export class SessionItemComponent implements OnInit {
   customerDetails: any;
   FeedbackMessage:any;
   showMore=true;
-
-  
-
+  isAttachments: boolean = false;
+  currentAttachments:any;
+  attachmentScrollConfig: object = {};
   starsCount = 0;
   max = 5;
   ShowActionItem:boolean = false;
@@ -56,8 +56,12 @@ export class SessionItemComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.attachmentScrollConfig = {
+      suppressScrollX: true
+    }
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.getString();
+
   }
   getString() {
     var repString = "";
@@ -71,7 +75,7 @@ export class SessionItemComponent implements OnInit {
     var newrepString = repString.substring(0, repString.length - 1);
     console.log(newrepString);
     this.session['representativeString'] = newrepString;
-    
+
   }
   ShowActionItems(){
     this.ShowActionItem = true;
@@ -86,7 +90,19 @@ export class SessionItemComponent implements OnInit {
     this.ShowFeedback = false;
   }
 
-  showAttachments(){
+  attachments(popover,attachments){
+    this.currentAttachments = [];
+    this.currentAttachments = [...attachments];
+    if (this.currentAttachments.length > 0) {
+      if (popover.isOpen()) {
+        popover.close();
+      } else {
+        popover.open();
+      }
+    }
+    else {
+      alert('norecords');
+    }
 
   }
 
@@ -107,7 +123,7 @@ export class SessionItemComponent implements OnInit {
     // console.log("Point: "+JSON.stringify(actionPointData))
     this.actionPoints = "";
     this.sessionService.addActionPoints(actionPointData).subscribe(data => {
-      
+
       this.reset();
 
       this.modalService.open(this.actionPointModal)
