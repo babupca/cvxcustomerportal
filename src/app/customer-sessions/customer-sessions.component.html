@@ -9,7 +9,7 @@
 
       <div class="right-margin">
         <app-days-count></app-days-count>
-        <app-factsheets></app-factsheets>
+        <app-factsheets [visitId]= "visitId"></app-factsheets>
         <app-my-visits></app-my-visits>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <app-visit-poc></app-visit-poc>
 
         <app-visit-info [visitInfo]="visitInfo"></app-visit-info>
-        <app-key-leaders></app-key-leaders>
+        <app-key-leaders [visitId]="visitId"></app-key-leaders>
         <div class="tablet-right">
           <app-factsheets [visitId]= "visitId"></app-factsheets>
           <app-my-visits></app-my-visits>

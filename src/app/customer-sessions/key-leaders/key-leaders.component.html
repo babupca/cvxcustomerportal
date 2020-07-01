@@ -2,33 +2,16 @@
   <h6>DXC Key Leaders</h6>
   <div class="main-container perfect-scroll-ref">
     <perfect-scrollbar style="padding: 0 13px 0 0;">
-      <div class="info-details">
-     <div class="info-left">
-       <div class="name">Abhijit,shroff</div>
-       <div class="role">Manager</div>
-     </div>
-     <div class="info-right">
-       <a class="bio-file" href="#">abhijit.bio</a>
-     </div>
-    </div>
-      <div class="info-details">
-     <div class="info-left">
-       <div class="name">Lakshmi Tejaswini Vishnubhotla</div>
-       <div class="role">Associate Professional</div>
-     </div>
-     <div class="info-right">
-       <a class="bio-file" href='javascript:;'>abhijit.bio</a>
-     </div>
-    </div>
-      <div class="info-details">
-     <div class="info-left">
-       <div class="name">Shilpa Venkatesh</div>
-       <div class="role">Associate Professional</div>
-     </div>
-     <div class="info-right">
-       <a class="bio-file" href="#">abhijit.bio</a>
-     </div>
-    </div>
+      <div class="info-details" *ngFor="let item of keyLeadersArray; let i = index">
+        <div class="info-left">
+          <div class="name">{{item?.name}}</div>
+          <div class="role">{{item?.role}}</div>
+        </div>
+        <div class="info-right">
+          <a class="bio-file"
+            [href]="item.bioFileUrl !== null ? item.bioFileUrl : 'javascript;'">{{item?.bioFileName}}</a>
+        </div>
+      </div>
     </perfect-scrollbar>
   </div>
 
