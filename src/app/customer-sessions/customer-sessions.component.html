@@ -6,11 +6,11 @@
   <!-- Session Body Container Starts Here -->
   <div class="row session-body-container">
     <div class="bdr-right col-lg-2 col-sm-2 col-md-12 pr-0 pl-0 ">
-
+     
       <div class="right-margin">
         <app-days-count></app-days-count>
         <app-factsheets [visitId]= "visitId"></app-factsheets>
-        <app-my-visits></app-my-visits>
+        <app-my-visits  (parentcustomer)="reloadVisitDetails($event)"></app-my-visits>
       </div>
     </div>
     <div class="col-lg-7 col-sm-12 col-md-8">
@@ -18,8 +18,9 @@
         <div class="mobile-dayscount">
           <app-days-count></app-days-count>
         </div>
-        <app-sessions ></app-sessions>
-
+        <div class="session-comp">
+        <app-sessions #sessionCmpt [visitId]= "visitId"  ></app-sessions>
+      </div>
       </div>
     </div>
 
@@ -30,11 +31,11 @@
         </div>
         <app-visit-poc></app-visit-poc>
 
-        <app-visit-info [visitInfo]="visitInfo"></app-visit-info>
+        <app-visit-info [visitId]="visitId"></app-visit-info>
         <app-key-leaders [visitId]="visitId"></app-key-leaders>
         <div class="tablet-right">
           <app-factsheets [visitId]= "visitId"></app-factsheets>
-          <app-my-visits></app-my-visits>
+          <app-my-visits (parentcustomer)="reloadVisitDetails($event)"></app-my-visits>
         </div>
       </div>
     </div>

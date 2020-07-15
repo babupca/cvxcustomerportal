@@ -31,19 +31,26 @@ export class SessionsComponent implements OnInit {
   subscription: Subscription;
   saved = false;
   customerDetails: any;
-  visitId: any;
+  @Input() visitId:any;
 
   constructor(private sessionService: CustomerSessionsService,
     public changeDetecref: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
-    this.visitId = this.customerDetails.OngoingVisitId
-    this.getVisitCitiesAndDates();
-    // this.getSessionState();
+    // this.getVisitCitiesAndDates();
+    console.log(this.visitId);
+   // this.getSessionState();
     this.todaydate = this.getTodayDate();
   }
-  getTodayDate() {
+  reloadsession(){
+    // console.log(this.visitId);
+    this.getVisitCitiesAndDates();
+  }
+  ngOnChanges(){
+    this.reloadsession();
+  }
+  getTodayDate(){
     var today = moment();
     return this.todaydate = moment(today).format('YYYY-MM-DD')
 

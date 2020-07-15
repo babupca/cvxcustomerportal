@@ -14,6 +14,9 @@ export class FactsheetsComponent implements OnInit {
   factsheetsArray: any;
 
   ngOnInit() {
+    // this.factsheets();
+  }
+  ngOnChanges(){
     this.factsheets();
   }
   factsheets() {

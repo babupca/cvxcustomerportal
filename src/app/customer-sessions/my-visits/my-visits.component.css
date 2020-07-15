@@ -9,13 +9,22 @@
     height: 6.5rem;
 }
 
-.visit-dates a {
+.visit-dates button {
     margin: 0.2rem 0.5rem 0rem 0.6rem;
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
     font-size: 0.65rem;
     border-bottom: 1px solid #00C9FF;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    /* background-color: none; */
+    /* box-shadow: white; */
     cursor: pointer;
     flex-direction: column;
+
+    background: none;
+	
+	 box-shadow: 1 0 0 42.2rem rgb(255, 255, 255);
 }
 
 .visit-dates div {

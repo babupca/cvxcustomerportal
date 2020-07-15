@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
-
+import { VisitInfoService } from 'src/app/services/visit-info.service';
 @Component({
   selector: 'app-visit-info',
   templateUrl: './visit-info.component.html',
@@ -8,14 +8,23 @@ import * as moment from 'moment';
 })
 export class VisitInfoComponent implements OnInit {
 
-  @Input() visitInfo: any 
-  constructor() { }
+  @Input() visitId: any 
+  visitInfo:any;
+  constructor(private visitInfoService: VisitInfoService) { }
 
   ngOnInit() {
+    this.getVisitInfo();
   }
+ 
 
   ngOnChanges(){
-    console.log("Visit Info: "+JSON.stringify(this.visitInfo))
+    this.getVisitInfo();
+    console.log("Visit Info: "+JSON.stringify(this.visitInfo));
+  }
+  getVisitInfo(){
+    this.visitInfoService.getVisitInfo(this.visitId).subscribe(data =>{
+      this.visitInfo = data;
+    });
   }
 
 }
