@@ -1,6 +1,6 @@
 <div class="daycount-class">
-  <div class="daycount-content">
-    <div class="days">07</div>
+  <div class="daycount-content" [hidden]="daysToGO <= 0 ">
+    <div class="days">{{ daysToGO }}</div>
     <div class="days-text">DAYS TO GO</div>
   </div>
 </div>

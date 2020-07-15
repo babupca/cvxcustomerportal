@@ -8,7 +8,7 @@
     <div class="bdr-right col-lg-2 col-sm-2 col-md-12 pr-0 pl-0 ">
      
       <div class="right-margin">
-        <app-days-count></app-days-count>
+        <app-days-count [visitId]= "visitId"></app-days-count>
         <app-factsheets [visitId]= "visitId"></app-factsheets>
         <app-my-visits  (parentcustomer)="reloadVisitDetails($event)"></app-my-visits>
       </div>
@@ -16,7 +16,7 @@
     <div class="col-lg-7 col-sm-12 col-md-8">
       <div>
         <div class="mobile-dayscount">
-          <app-days-count></app-days-count>
+          <app-days-count [visitId]= "visitId"></app-days-count>
         </div>
         <div class="session-comp">
         <app-sessions #sessionCmpt [visitId]= "visitId"  ></app-sessions>
@@ -27,7 +27,7 @@
     <div class="bdr-left col-lg-3 col-sm-3 col-md-4">
       <div>
         <div class="tablet-rightdays">
-          <app-days-count></app-days-count>
+          <app-days-count [visitId]= "visitId"></app-days-count>
         </div>
         <app-visit-poc></app-visit-poc>
 
