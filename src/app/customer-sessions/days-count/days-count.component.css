@@ -8,6 +8,7 @@
     opacity: 1;
     align-items: center;
     height: 8rem;
+    margin-bottom: 1rem;
 }
 .days-text{
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
