@@ -13,6 +13,7 @@ export class VisitInfoComponent implements OnInit {
 
   ngOnInit() {
   }
+ 
 
   ngOnChanges(){
     console.log("Visit Info: "+JSON.stringify(this.visitInfo))
