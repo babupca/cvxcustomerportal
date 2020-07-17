@@ -32,7 +32,7 @@ import { SessionItemComponent } from './customer-sessions/sessions/session-item/
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
-import { FeedbackComponent } from './services/feedback/feedback.component';
+// import { FeedbackComponent } from './services/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +54,8 @@ import { FeedbackComponent } from './services/feedback/feedback.component';
     SessionItemComponent,
     CustomerFeedbackComponent,
     PageNotFoundComponent,
-    TruncatePipePipe,
-    FeedbackComponent
+    TruncatePipePipe
+    // FeedbackComponent
   ],
   imports: [
     BrowserModule,
