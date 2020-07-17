@@ -32,6 +32,7 @@ import { SessionItemComponent } from './customer-sessions/sessions/session-item/
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
+// import { FeedbackComponent } from './services/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
     CustomerFeedbackComponent,
     PageNotFoundComponent,
     TruncatePipePipe
+    // FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
     PerfectScrollbarModule,
     RatingModule.forRoot(),
     PopoverModule.forRoot(),
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     NgbModule
   ],
