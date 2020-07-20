@@ -21,22 +21,22 @@ export class CustomerFeedbackComponent implements OnInit {
     [
       {
         "id": 1,
-        "image": "/assets/images/iconfinder_emoji_emoticon-04_3638423.svg"
+        "image": "/assets/images/1-Blue.svg"
       },
 
       {
         "id": 2,
-        "image": "/assets/images/iconfinder_emoji_emoticon-04_3638423.svg"
+        "image": "/assets/images/2-Grey.svg"
       },
 
       {
         "id": 3,
-        "image": "/assets/images/iconfinder_emoji_emoticon-08_3638452.svg"
+        "image": "/assets/images/3-Grey.svg"
       },
 
       {
         "id": 4,
-        "image": "/assets/images/iconfinder_emoji_emoticon-05_3638454.svg"
+        "image": "/assets/images/4-Grey.svg"
       }
     ];
   feedbackModel: feedbackForm;

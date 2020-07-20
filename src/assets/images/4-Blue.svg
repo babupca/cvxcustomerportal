@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="38" viewBox="0 0 37 38">
+  <g id="Group_7" data-name="Group 7" transform="translate(-1073 -341)">
+    <g id="Ellipse_120" data-name="Ellipse 120" transform="translate(1073 341)" fill="none" stroke="#00c9ff" stroke-width="1">
+      <ellipse cx="18.5" cy="19" rx="18.5" ry="19" stroke="none"/>
+      <ellipse cx="18.5" cy="19" rx="18" ry="18.5" fill="none"/>
+    </g>
+    <path id="Path_446" data-name="Path 446" d="M21.325,26.65A2.825,2.825,0,1,0,18.5,23.825,2.825,2.825,0,0,0,21.325,26.65Zm0-4.238a1.413,1.413,0,1,1-1.413,1.413,1.413,1.413,0,0,1,1.413-1.413Z" transform="translate(1064.742 333.007)" fill="#00c9ff"/>
+    <path id="Path_447" data-name="Path 447" d="M40.325,26.65A2.825,2.825,0,1,0,37.5,23.825a2.825,2.825,0,0,0,2.825,2.825Zm0-4.238a1.413,1.413,0,1,1-1.413,1.413,1.413,1.413,0,0,1,1.413-1.413Z" transform="translate(1059.161 333.007)" fill="#00c9ff"/>
+    <path id="Path_449" data-name="Path 449" d="M21,42.531h1.413c0-1.442,3.794-2.117,6.357-2.119s6.357.677,6.357,2.119H36.54C36.539,39.1,29.565,39,28.769,39S21,39.1,21,42.531Z" transform="translate(1064.008 327.72)" fill="#00c9ff"/>
+  </g>
+</svg>
