@@ -32,6 +32,7 @@ import { SessionItemComponent } from './customer-sessions/sessions/session-item/
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
 // import { FeedbackComponent } from './services/feedback/feedback.component';
 
 @NgModule({
@@ -65,6 +66,7 @@ import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
     PerfectScrollbarModule,
     RatingModule.forRoot(),
     PopoverModule.forRoot(),
+    ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     NgbModule
