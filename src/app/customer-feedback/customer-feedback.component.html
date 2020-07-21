@@ -5,24 +5,25 @@
   <div class="main-container">
     <!-- <pre>{{ f.name | json}}</pre> -->
     <form #f="ngForm" (ngSubmit)="onSubmit(f,feedbackSubmitmodal) && f.form.valid" novalidate>
-    <div class="feedback-container">
-      <div class="wlecome">Dear Customer,</div>
-      <div class="welcome-msg">It has been our pleasure to host you.
-        We thank you for visiting us and making considerable investment from your side in all aspects.
-        To ensure that we continuously enhance your experience with DXC and exceed your expectations from the visit,
-        we request you to provide your valuable feedback to us.
+      <div class="feedback-container">
+        <div class="wlecome">Dear Customer,</div>
+        <div class="welcome-msg">It has been our pleasure to host you.
+          We thank you for visiting us and making considerable investment from your side in all aspects.
+          To ensure that we continuously enhance your experience with DXC and exceed your expectations from the visit,
+          we request you to provide your valuable feedback to us.
+        </div>
       </div>
-    </div>
-    <pre>{{capability | json}}</pre>
-    <div class="main-query" ngModelGroup="capability">
+      <pre>{{capability | json}}</pre>
+      <div class="main-query" ngModelGroup="capability">
         <div class="query-one">1.
           <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
         </div>
         <input type="hidden" name="questionNumber" [ngModel]="capability.questionNumber" value="1" />
-        <input type="hidden" name="rating"  [ngModel]="capability.rating" value="null" />
-        <textarea rows="6" name="comments" [ngModel]="capability.comments" maxlength="500" class="textarea-ref" required></textarea>
-    </div>
-    <!-- <div class="main-query ">
+        <input type="hidden" name="rating" [ngModel]="capability.rating" value="null" />
+        <textarea rows="6" name="comments" [ngModel]="capability.comments" maxlength="500" class="textarea-ref"
+          required></textarea>
+      </div>
+      <!-- <div class="main-query ">
       <div class="">
         <div class="query-one">2.
           <label> What are the major capabilities/areas where you believe DXC adds value to your business?</label>
@@ -31,9 +32,9 @@
         <textarea rows="6" maxlength="500" class="textarea-ref"></textarea>
       </div>
     </div> -->
-    <pre>{{experience | json}}</pre>
-    <div ngModelGroup="experience">
-      <div class="main-query" >
+      <pre>{{experience | json}}</pre>
+      <div ngModelGroup="experience">
+        <div class="main-query">
           <div class="query-one">2.
             <label>Please rate your experience at DXC during this visit on the following:</label>
           </div>
@@ -41,82 +42,96 @@
             <div class="agenda">Visit agenda/Plan<span>(Please rate us)</span></div>
             <div class="ratings">
               <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-                <img [src] ="item.image">
+                <img [src]="item.image">
               </div>
               <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a" />
-              <input type="hidden" name="rating"  [ngModel]="experience.agenda.rating" />
+              <input type="hidden" name="rating" [ngModel]="experience.agenda.rating" />
             </div>
             <div class="agenda">Any specific suggestions / comments:</div>
             <div class="">
-              <textarea rows="6" name="comments" [ngModel]="experience.agenda.comments" maxlength="500" class="textarea-agenda" required></textarea>
+              <textarea rows="6" name="comments" [ngModel]="experience.agenda.comments" maxlength="500"
+                class="textarea-agenda" required></textarea>
             </div>
           </div>
-      </div>
-      <div class="main-query" ngModelGroup="arrangements">
+        </div>
+        <div class="main-query" ngModelGroup="arrangements">
           <div class="agenda-conatainer">
             <div class="agenda">Visit arrangements and management<span>(Please rate us)</span></div>
             <div class="ratings">
               <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-                <img [src] ="item.image">
+                <img [src]="item.image">
               </div>
-              <input type="hidden" name="questionNumber" [ngModel]="experience.arrangements.questionNumber" value="2b" />
-              <input type="hidden" name="rating"  [ngModel]="experience.arrangements.rating" />
+              <input type="hidden" name="questionNumber" [ngModel]="experience.arrangements.questionNumber"
+                value="2b" />
+              <input type="hidden" name="rating" [ngModel]="experience.arrangements.rating" />
             </div>
             <div class="agenda">Any specific suggestions / comments:</div>
             <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.arrangements.comments"  class="textarea-agenda" required></textarea>
+              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.arrangements.comments"
+                class="textarea-agenda" required></textarea>
             </div>
           </div>
-      </div>
-      <div class="main-query" ngModelGroup="quality">
+        </div>
+        <div class="main-query" ngModelGroup="quality">
           <div class="agenda-conatainer">
             <div class="agenda">Quality of interactions <span>(Please rate us)</span></div>
-            <div class="ratings" >
+            <div class="ratings">
               <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-              <img [src] ="item.image">
-            </div>
+                <img [src]="item.image">
+              </div>
 
             </div>
             <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber" value="2c" />
-            <input type="hidden" name="rating"  [ngModel]="experience.quality.rating" />
+            <input type="hidden" name="rating" [ngModel]="experience.quality.rating" />
             <div class="agenda">Any specific suggestions / comments:</div>
             <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.quality.comments" class="textarea-agenda" required></textarea>
+              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.quality.comments"
+                class="textarea-agenda" required></textarea>
             </div>
           </div>
-      </div>
-      <div class="main-query" ngModelGroup="expectation">
+        </div>
+        <div class="main-query" ngModelGroup="expectation">
           <div class="agenda-conatainer">
-            <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.</div>
+            <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.
+            </div>
             <input type="hidden" name="questionNumber" [ngModel]="experience.expectation.questionNumber" value="2d" />
-            <input type="hidden" name="rating"  [ngModel]="experience.expectation.rating" />
+            <input type="hidden" name="rating" [ngModel]="experience.expectation.rating" />
             <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.expectation.comments" class="textarea-agenda" required></textarea>
+              <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.expectation.comments"
+                class="textarea-agenda" required></textarea>
             </div>
           </div>
+        </div>
       </div>
-    </div>
-    <pre>{{currentneeds | json}}</pre>
-    <div class="main-query" ngModelGroup="currentneeds">
+      <pre>{{currentneeds | json}}</pre>
+      <div class="main-query" ngModelGroup="currentneeds">
         <div class="query-one">3.
-          <label>Any area(s) where DXC should immediately connect with you/ your team to address your current needs?</label>
+          <label>Any area(s) where DXC should immediately connect with you/ your team to address your current
+            needs?</label>
         </div>
         <input type="hidden" name="currentneeds.questionNumber" [ngModel]="currentneeds.questionNumber" value="2d" />
-        <input type="hidden" name="currentneeds.rating"  [ngModel]="currentneeds.rating" value="null" />
-        <textarea rows="6" maxlength="500" name="comments" [ngModel]="currentneeds.comments"  class="textarea-ref" required></textarea>
-    </div>
-    <div class="button-group">
-      <div class="img-icon">
-        <div>
-          Thank you for your feedback.
+        <input type="hidden" name="currentneeds.rating" [ngModel]="currentneeds.rating" value="null" />
+        <textarea rows="6" maxlength="500" name="comments" [ngModel]="currentneeds.comments" class="textarea-ref"
+          required></textarea>
+      </div>
+
+
+        <div class="button-group">
+          <!-- <div class="thankyoui">
+          </div> -->
+          <div class="img-icon">
+            <img class="thankyou" src="/assets/images/BigSmiley-Blue.svg">
+            <div >
+              Thank you for your feedback.
+            </div>
+          </div>
+          <div class="btn-right">
+            <div class="btn-agenda" routerLink="/customerSession">BACK TO AGENDA</div>
+            <button class="btn-submit">SUBMIT</button>
+          </div>
+
         </div>
-      </div>
-      <div class="btn-right">
-        <div class="btn-agenda" routerLink="/customerSession">BACK TO AGENDA</div>
-        <button class="btn-submit" >SUBMIT</button>
-      </div>
-     </div>
-  </form>
+    </form>
   </div>
 
 
@@ -128,9 +143,9 @@
     </form>
   </div>
   <div class="modal-footer modal-footer-ref">
-    <button type="button" aria-label="Close" class="btn btn-md cancelbtn1"
-    (click)="modal.close('No')">CANCEL</button>
-    <button type="button" aria-label="Close" class="btn btn-sm btn-ref-id delete-btn-id " (click)="modal.close('Yes')">OK</button>
+    <button type="button" aria-label="Close" class="btn btn-md cancelbtn1" (click)="modal.close('No')">CANCEL</button>
+    <button type="button" aria-label="Close" class="btn btn-sm btn-ref-id delete-btn-id "
+      (click)="modal.close('Yes')">OK</button>
   </div>
 </ng-template>
 

@@ -102,6 +102,7 @@
     height: 200px;
     align-items: center;
     padding: 0 90px 0 60px;
+    margin-top: 7rem;
 }
 
 .btn-agenda {
@@ -119,15 +120,29 @@
 }
 
 .img-icon {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+}
+/* .thankyou{ */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+    /* background-image: url(/assets/images/4-Grey.svg);
+    background-repeat: no-repeat;
+    background-size: 4rem; */
+    /* margin-left: 5rem; */
+    /* width: 20px; */
+/* } */
+
+.thankyou{
+    padding-left: 4rem;
+    height: 6rem;
 }
 
 .btn-right {
     display: flex;
     flex-direction: row;
+    margin-top: 6rem
 }
 
 .btn-submit {

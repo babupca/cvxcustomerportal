@@ -26,7 +26,7 @@ export class CustomerFeedbackComponent implements OnInit {
 
       {
         "id": 2,
-        "image": "/assets/images/2-Grey.svg"
+        "image": "/assets/images/2-grey.svg"
       },
 
       {
@@ -40,11 +40,11 @@ export class CustomerFeedbackComponent implements OnInit {
       }
     ];
   feedbackModel = [];
-  
+
   capability = { questionNumber: '1', rating: null, comments: 'asdfasf' };
   experience = {
     agenda: {
-      questionNumber: '2a', rating: 1, comments: '2a'
+      questionNumber: '2a', rating: '3', comments: '2a'
     },
     arrangements: {
       questionNumber: '2b', rating: 2, comments: '2b'
