@@ -22,9 +22,12 @@ export class VisitInfoComponent implements OnInit {
     console.log("Visit Info: "+JSON.stringify(this.visitInfo));
   }
   getVisitInfo(){
-    this.visitInfoService.getVisitInfo(this.visitId).subscribe(data =>{
-      this.visitInfo = data;
-    });
+    if(this.visitId){
+      this.visitInfoService.getVisitInfo(this.visitId).subscribe(data =>{
+        this.visitInfo = data;
+      });
+    }
+    
   }
 
 }

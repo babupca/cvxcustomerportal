@@ -59,6 +59,7 @@ export class SessionsComponent implements OnInit {
     this.visitDates = [];
     this.visitDate = null;
     this.visitCity = null;
+    if(this.visitId){
     this.sessionService.getCities(this.visitId).subscribe(data => {
       console.log(data);
       this.visitInfo = data;
@@ -106,7 +107,8 @@ export class SessionsComponent implements OnInit {
       //this.getSessionState();
       console.log(this.visitDate);
       // this.visitCity = this.visitInfo[0]
-    })
+    });
+  }
   }
   dateFormat() {
     return moment(this.visitDate).format('YYYY-MM-DD');

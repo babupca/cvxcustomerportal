@@ -25,13 +25,18 @@ export class DaysCountComponent implements OnInit {
     return this.todaysdate = moment(today).format('YYYY-MM-DD');
 
   }
+  ngOnChanges(){
+    this.getRemainingDays();
+  }
 
   getRemainingDays() {
+    if(this.visitId){
     this.daysRemaining.getDaysToGo(this.visitId).subscribe((data) => {
       this.numberOfDays = data;
       this.visitHappeningDate = moment(this.numberOfDays).add(5, 'hours').add(30, 'minutes');
        this.daysToGO = this.visitHappeningDate.diff(this.todaysdate, 'days');
     });
+  }
 
   }
 
