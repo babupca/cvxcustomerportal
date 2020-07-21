@@ -39,7 +39,8 @@ export class CustomerFeedbackComponent implements OnInit {
         "image": "/assets/images/4-Grey.svg"
       }
     ];
-  feedbackModel: feedbackForm;
+  feedbackModel = [];
+  
   capability = { questionNumber: '1', rating: null, comments: 'asdfasf' };
   experience = {
     agenda: {
@@ -57,43 +58,58 @@ export class CustomerFeedbackComponent implements OnInit {
   };
   currentneeds = {
     questionNumber: '3', rating: null, comments: ''
+  };
+  feedbackObj = {
+    "visitId": null,
+    "customerId": null,
+    "feedBack": []
   }
-
   // experience = {}
   constructor(
     private modalService: NgbModal,
     private router: Router,
     private bsModalRef :BsModalService,
-    private feedbaackInc: FeedbackService
+    private feedbackService: FeedbackService
   ) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+    console.log("customerDetails", this.customerDetails);
+    this.getCustomerFeedback();
   }
 
 
+  getCustomerFeedback(){
+    this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data)=>{
+      console.log("get feedback", data);
+    });
+  }
 
-
-  // sendCustomerFeedback() {
-  //   this.feedback.sendFeedback(this.feedbackModel.getRawValue()).subscribe((data) => {
-  //     console.log('data');
-  //   })
-
-  // }
-   closeModal(modal) {
-        modal.hide();
+  sendCustomerFeedback(feedBackPayLoad) {
+    this.feedbackService.sendFeedback(feedBackPayLoad).subscribe((data) =>{
+      console.log("testing", data);
+      alert("success !..");
+    });
   }
 
   onSubmit(f: NgForm, feedbackSubmitmodal) {
     console.log("f", f);
     if (f.valid === true) {
+    this.feedbackModel = [];
+    this.feedbackModel.push(this.capability, this.experience.agenda, this.experience.arrangements, this.experience.expectation, this.experience.quality, this.currentneeds);
+    console.log(this.feedbackModel);
       const modalRef1 = this.modalService.open(feedbackSubmitmodal);
       modalRef1.result.then((result) => {
         if (result === 'No') {
             modalRef1.close();
         }
         if (result === 'Yes') {
-          // this.sendCustomerFeedback();
+          let feedBackPayLoad = {
+            "visitId": this.customerDetails.OngoingVisitId,
+            "customerId": this.customerDetails.nameid,
+            "feedBack": [...this.feedbackModel]
+          }
+         this.sendCustomerFeedback(feedBackPayLoad);
         }
       });
     } else {
@@ -104,7 +120,12 @@ export class CustomerFeedbackComponent implements OnInit {
 
 }
 interface feedbackForm {
-  questions: string,
-  rating: number,
+  questionNumber: string,
+  rating: any,
   comments: string
+}
+interface feedbackAPIObj {
+  "visitId": null,
+  "customerId": null,
+  "feedBack": []
 }

@@ -9,6 +9,7 @@ export class FeedbackService {
   private customerApi = environment.API_URL;
   constructor(private httpClient: HttpClient
     ) { }
+  
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -17,11 +18,11 @@ export class FeedbackService {
 
   }
 
-  getFeedback(visitId,customerId){
+  getFeedback(visitId, customerId){
     return this.httpClient.get(this.customerApi+'/api/FeedBack?visitID='+visitId + "&customerID=" +customerId,this.httpOptions);
   }
 
   sendFeedback(feedbackData){
-    return this.httpClient.post(this.customerApi+'/api/FeedBackthis',feedbackData.httpOptions);
+    return this.httpClient.post(this.customerApi+'/api/FeedBack',feedbackData, this.httpOptions);
   }
 }
