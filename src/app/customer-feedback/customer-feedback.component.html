@@ -44,7 +44,7 @@
               <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
                 <img [src]="item.image">
               </div>
-              <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a" />
+              <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a"/>
               <input type="hidden" name="rating" [ngModel]="experience.agenda.rating" />
             </div>
             <div class="agenda">Any specific suggestions / comments:</div>
@@ -81,7 +81,7 @@
               </div>
 
             </div>
-            <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber" value="2c" />
+            <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber"  value="2c"/>
             <input type="hidden" name="rating" [ngModel]="experience.quality.rating" />
             <div class="agenda">Any specific suggestions / comments:</div>
             <div class="">
@@ -94,7 +94,7 @@
           <div class="agenda-conatainer">
             <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.
             </div>
-            <input type="hidden" name="questionNumber" [ngModel]="experience.expectation.questionNumber" value="2d" />
+            <input type="hidden" name="questionNumber" [ngModel]="experience.expectation.questionNumber" value="2d"/>
             <input type="hidden" name="rating" [ngModel]="experience.expectation.rating" />
             <div class="">
               <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.expectation.comments"
@@ -109,8 +109,8 @@
           <label>Any area(s) where DXC should immediately connect with you/ your team to address your current
             needs?</label>
         </div>
-        <input type="hidden" name="currentneeds.questionNumber" [ngModel]="currentneeds.questionNumber" value="2d" />
-        <input type="hidden" name="currentneeds.rating" [ngModel]="currentneeds.rating" value="null" />
+        <input type="hidden" name="questionNumber" [ngModel]="currentneeds.questionNumber" value="3"/>
+        <input type="hidden" name="rating" [ngModel]="currentneeds.rating" value="null" />
         <textarea rows="6" maxlength="500" name="comments" [ngModel]="currentneeds.comments" class="textarea-ref"
           required></textarea>
       </div>
