@@ -20,8 +20,10 @@ export class FactsheetsComponent implements OnInit {
     this.factsheets();
   }
   factsheets() {
+    if(this.visitId){
     this.factSheetsIns.getFactsheets(this.visitId).subscribe((data) => {
       this.factsheetsArray = data;
-    })
+    });
+  }
   }
 }

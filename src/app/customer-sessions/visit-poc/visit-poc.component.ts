@@ -10,7 +10,7 @@ import { VisitPocService} from 'src/app/services/visit-poc.service'
 })
 export class VisitPocComponent implements OnInit {
 
-  loggedInUser = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+
   customerDetails: any;
   managers:"string";
   managerDetails:any;
@@ -21,9 +21,13 @@ export class VisitPocComponent implements OnInit {
     console.log(this.customerDetails);
     this.visitManagers();
   }
+  ngOnChanges(){
+    this.visitManagers();
+    
+  }
 
   visitManagers(){
-    this.visitPoc.assignedPOC(this.loggedInUser).subscribe((data)=>{
+    this.visitPoc.assignedPOC(this.customerDetails.nameid).subscribe((data)=>{
       console.log(data);
 
     })

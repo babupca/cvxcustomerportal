@@ -17,11 +17,16 @@ export class KeyLeadersComponent implements OnInit {
   ngOnInit() {
   this.keyLeaders();
   }
+  ngOnChanges(){
+    this.keyLeaders();
+  }
   // this.visitId
   keyLeaders() {
-    this.keyleaders.getdxcKeyLeaders("A4E6A048-5F1B-4FDA-A765-495B691A37B6").subscribe((data) => {
+    if(this.visitId){
+    this.keyleaders.getdxcKeyLeaders(this.visitId).subscribe((data) => {
       console.log(data);
       this.keyLeadersArray = data;
-    })
+    });
+  }
   }
 }
