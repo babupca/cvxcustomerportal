@@ -12,7 +12,7 @@ export class VisitPocComponent implements OnInit {
 
 
   customerDetails: any;
-  managers:"string";
+  managers:any;
   managerDetails:any;
   constructor( private visitPoc: VisitPocService) { }
 
@@ -29,8 +29,8 @@ export class VisitPocComponent implements OnInit {
   visitManagers(){
     this.visitPoc.assignedPOC(this.customerDetails.nameid).subscribe((data)=>{
       console.log(data);
-
-    })
+      this.managers = data;
+    });
   }
 
   showUserDetails(popover,obj ) {

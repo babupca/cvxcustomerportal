@@ -1,7 +1,7 @@
-<div>
+<div >
   <!-- <div class="col-lg-9 col-md-9 col-sm-6 bdr-right"> -->
 
-  <section class="session-filters">
+  <!-- <section class="session-filters">
     <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
     <div class="session-filter-container">
       <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
@@ -11,7 +11,21 @@
         <option *ngFor="let dates of visitDates">{{dates.dateValue}}</option>
       </select>
     </div>
+  </section> -->
+  <div class="session-filter" id="session-filter" [stickyMenu] elementId="session-filter">
+  <section class="session-filters">
+    <h2 class="upcoming-session">{{sessions?.upcomingSessionsCount}} UPCOMING SESSIONS</h2>
+    <div class="session-filter-container">
+      <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
+        <option *ngFor="let session of visitInfo" [ngValue] = "session.location">{{session.location}}</option>
+      </select>
+      <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
+        <option *ngFor="let dates of visitDates" [ngValue] = "dates.dateValue">{{dates.dateValue}}</option>
+      </select>
+    </div>
   </section>
+</div>
+
   <!-- Section container -->
   <div class="sessioncardscontainer" *ngIf="sessiondata && sessiondata.length > 0">
     <perfect-scrollbar style="max-height: 30rem; margin-top: 2px;">
