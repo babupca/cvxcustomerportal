@@ -42,7 +42,7 @@
     <div class="rating">
 
        <div>
-      <button class="actionitems-icon" (click)="ShowActionItems()"> </button>
+      <button class="actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"> </button>
             <div *ngIf="ShowActionItem" class="custom-popover action-container-popup"
             >
               <div class="row">
@@ -70,7 +70,7 @@
     </div>
 
       <button class="feedback-icon"
-       (click)="ShowFeedbackPopOver()"> </button>Ratings
+       (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button>Ratings
       <div>
       <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
     </div>

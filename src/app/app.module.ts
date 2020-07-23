@@ -33,6 +33,7 @@ import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { StickyDirective } from './services/sticky.directive';
 // import { FeedbackComponent } from './services/feedback/feedback.component';
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     SessionItemComponent,
     CustomerFeedbackComponent,
     PageNotFoundComponent,
-    TruncatePipePipe
+    TruncatePipePipe,
+     StickyDirective 
     // FeedbackComponent
   ],
   imports: [
