@@ -18,8 +18,11 @@
         <div class="query-one">1.
           <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
         </div>
+
+
         <input type="hidden" name="questionNumber" [(ngModel)]="capability.questionNumber" value="1" />
-        <input type="hidden" name="rating" [(ngModel)]="capability.rating" value="null" />
+        <dxc-rating></dxc-rating>
+        <!-- <input type="hidden" name="rating" [(ngModel)]="capability.rating" value="null" /> -->
         <textarea rows="6" name="comments" [(ngModel)]="capability.comments" maxlength="500" class="textarea-ref"
           required></textarea>
       </div>

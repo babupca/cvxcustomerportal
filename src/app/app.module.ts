@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-
 import {
   PerfectScrollbarModule,
   PERFECT_SCROLLBAR_CONFIG,
@@ -33,6 +32,7 @@ import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DxcRatingComponent } from './services/dxc-rating.component';
 // import { FeedbackComponent } from './services/feedback/feedback.component';
 
 @NgModule({
@@ -55,8 +55,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     SessionItemComponent,
     CustomerFeedbackComponent,
     PageNotFoundComponent,
-    TruncatePipePipe
-    // FeedbackComponent
+    TruncatePipePipe,
+    DxcRatingComponent
   ],
   imports: [
     BrowserModule,
