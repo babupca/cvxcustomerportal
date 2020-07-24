@@ -143,10 +143,9 @@
     }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (max-width: 576px) {
     .bdr-right {
-        border-right: 0px;
-        /* margin-top: 10px; */
+        display: none !important;
     }
     .bdr-left {
         border-left: 0 px;
@@ -157,5 +156,8 @@
     .mobile-dayscount {
         display: block;
         padding-bottom: 20px
+    }
+    .session-list{
+        margin-left: 0px;
     }
 }
