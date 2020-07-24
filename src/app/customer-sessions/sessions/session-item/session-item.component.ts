@@ -137,7 +137,7 @@ export class SessionItemComponent implements OnInit {
     // this.modalService.open(this.actionPointModal)
 
     var actionPointData = {
-      "sessionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "sessionId": this.sessionID,
       "actionPoint": this.actionPoints,
       "loggedInUser": this.customerDetails.nameid
     }
@@ -158,7 +158,7 @@ export class SessionItemComponent implements OnInit {
 
   sendFeedback(){
     var feedBackData ={
-      "sessionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "sessionId": this.sessionID,
       "feedback": this.FeedbackMessage,
       "loggedInUser": this.customerDetails.nameid
     }
@@ -171,7 +171,7 @@ export class SessionItemComponent implements OnInit {
 
   sessionCardRating(){
     var ratings ={
-      "sessionId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "sessionId":this.sessionID,
       "ratings": this.starsCount,
       "loggedInUser": this.customerDetails.nameid
     }

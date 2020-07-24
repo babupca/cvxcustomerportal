@@ -27,8 +27,9 @@
 	 box-shadow: 1 0 0 42.2rem rgb(255, 255, 255);
 }
 
-.visit-dates div {
+.visit-dates div :focus{
     padding-top: 0.2rem;
+
 }
 
 .perfect-scroll-ref {
