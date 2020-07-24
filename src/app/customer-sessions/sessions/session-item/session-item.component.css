@@ -221,7 +221,7 @@ ul{
   color:black !important;
   font-size: 0.875rem;
   margin-left: 0.5rem;
-
+border-bottom: 1px solid #00c8ff;
 }
 
 .popoverdetails{

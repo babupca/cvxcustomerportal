@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef ,Input} from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef ,Output, EventEmitter, Input} from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
@@ -12,7 +12,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class SessionItemComponent implements OnInit {
   @ViewChild('actionPointmodal', {static: false}) actionPointModal;
-
+  @Output() reloadSessionListData: EventEmitter<any> = new EventEmitter();
   @Input() session: any;
   @Input() SessionNos: number;
 
@@ -61,7 +61,8 @@ export class SessionItemComponent implements OnInit {
     }
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.getString();
-
+    this.getStarCount();
+    this.getActionPoint();
   }
   getString() {
     var repString = "";
@@ -77,17 +78,37 @@ export class SessionItemComponent implements OnInit {
     this.session['representativeString'] = newrepString;
 
   }
-  ShowActionItems(){
-    this.ShowActionItem = true;
+  ShowActionItems(actionPointText: string){
+    this.actionPoints="";
+    this.editorConfig.placeholder="Enter action items..."
+    this.ShowActionItem = true;  
     this.ShowFeedback = false;
+    if(actionPointText!==null){
+    this.actionPoints = actionPointText;
+    }
   }
-  ShowFeedbackPopOver(){
+  ShowFeedbackPopOver(feedbackText: string) {
+    this.editorConfig.placeholder="Enter feedback..."
     this.ShowFeedback = true;
     this.ShowActionItem = false;
+    this.FeedbackMessage = feedbackText;
   }
   close() {
     this.ShowActionItem = false;
     this.ShowFeedback = false;
+  }
+  getStarCount(){
+    if(this.session && this.session.ratingAndFeedBack!==null && this.session.ratingAndFeedBack.ratings!==null){
+      this.starsCount = this.session.ratingAndFeedBack.ratings
+    }
+    else{
+      this.starsCount=0;
+    }
+  }
+  getActionPoint(){
+    if(this.session && this.session.ratingAndFeedBack!==null && this.session.ratingAndFeedBack.actionPoint!==null){
+      this.actionPoints = this.session.ratingAndFeedBack.actionPoint
+    }
   }
 
   attachments(popover,attachments){
@@ -125,7 +146,7 @@ export class SessionItemComponent implements OnInit {
     this.sessionService.addActionPoints(actionPointData).subscribe(data => {
 
       this.reset();
-
+      this.reloadSessionListData.emit();
       this.modalService.open(this.actionPointModal)
       console.log("Point: "+JSON.stringify(actionPointData))
 
@@ -143,7 +164,7 @@ export class SessionItemComponent implements OnInit {
     }
     this.sessionService.sendFeedBack(feedBackData).subscribe((data) =>{
       this.reset();
-
+      this.reloadSessionListData.emit();
     })
 
   }
@@ -156,7 +177,10 @@ export class SessionItemComponent implements OnInit {
     }
     this.sessionService.sessionRatings(ratings).subscribe((data)=>{
       console.log(data);
-    })
+    },
+    error=>{
+      this.getStarCount();
+    });
   }
 
   contentCollapse = (event) => {

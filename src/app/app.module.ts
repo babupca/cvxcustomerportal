@@ -33,7 +33,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DxcRatingComponent } from './services/dxc-rating.component';
-// import { FeedbackComponent } from './services/feedback/feedback.component';
+import { StickyDirective } from './services/sticky.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,9 @@ import { DxcRatingComponent } from './services/dxc-rating.component';
     CustomerFeedbackComponent,
     PageNotFoundComponent,
     TruncatePipePipe,
-    DxcRatingComponent
+    DxcRatingComponent,
+    StickyDirective 
+    // FeedbackComponent
   ],
   imports: [
     BrowserModule,
