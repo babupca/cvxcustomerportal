@@ -33,3 +33,10 @@ h6 {
     font-size: 14px;
     color: #00C9FF;
 }
+
+@media (max-width: 575.98px){
+    .main-container{
+        height: 5rem;
+        margin-bottom: 3rem;
+    }
+}

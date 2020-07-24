@@ -21,15 +21,12 @@
     /* box-shadow: white; */
     cursor: pointer;
     flex-direction: column;
-
     background: none;
-	
-	 box-shadow: 1 0 0 42.2rem rgb(255, 255, 255);
+    box-shadow: 1 0 0 42.2rem rgb(255, 255, 255);
 }
 
-.visit-dates div :focus{
+.visit-dates div :focus {
     padding-top: 0.2rem;
-
 }
 
 .perfect-scroll-ref {
@@ -37,14 +34,25 @@
     overflow-y: auto;
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (max-width: 576px) {
     .myvisit-class {
         margin-bottom: 4rem !important;
     }
+    .myvisit-content {
+        border: 1px solid #D9D9D9;
+        opacity: 1;
+        height: 3.5rem;
+    }
+    
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .myvisit-class {
         margin-bottom: 8rem;
+    }
+    .myvisit-content {
+        border: 1px solid #D9D9D9;
+        opacity: 1;
+        height: 6.5rem;
     }
 }
