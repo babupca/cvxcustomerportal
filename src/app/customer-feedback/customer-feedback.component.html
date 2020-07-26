@@ -3,8 +3,8 @@
   <app-customer-banner></app-customer-banner>
   <!-- INSERT BANNER HERE :: Ends -->
   <div class="main-container">
-    <!-- <pre>{{ f.name | json}}</pre> -->
-    <form #f="ngForm" (ngSubmit)="onSubmit(f,feedbackSubmitmodal) && f.form.valid" novalidate>
+    <pre>{{customerFeedbackForm.value | json}}</pre>
+    <form #customerFeedbackForm="ngForm" (ngSubmit)="onSubmit(customerFeedbackForm,feedbackSubmitmodal) && customerFeedbackForm.form.valid" novalidate>
       <div class="feedback-container">
         <div class="wlecome">Dear Customer,</div>
         <div class="welcome-msg">It has been our pleasure to host you.
@@ -13,115 +13,106 @@
           we request you to provide your valuable feedback to us.
         </div>
       </div>
-      <pre>{{capability | json}}</pre>
+      <pre>{{capability.value | json}}</pre>
       <div class="main-query" ngModelGroup="capability">
         <div class="query-one">1.
           <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
         </div>
-
-
-        <input type="hidden" name="questionNumber" [(ngModel)]="capability.questionNumber" value="1" />
-        <dxc-rating></dxc-rating>
-        <!-- <input type="hidden" name="rating" [(ngModel)]="capability.rating" value="null" /> -->
-        <textarea rows="6" name="comments" [(ngModel)]="capability.comments" maxlength="500" class="textarea-ref"
+        <input type="hidden" name="questionNumber" [ngModel]="capability.questionNumber" />       
+        <input type="hidden" name="rating" [ngModel]="capability.rating" value="null" />
+        <textarea rows="6" name="comments" [ngModel]="capability.comments" maxlength="500" class="textarea-ref"
           required></textarea>
       </div>
-      <!-- <div class="main-query ">
-      <div class="">
-        <div class="query-one">2.
-          <label> What are the major capabilities/areas where you believe DXC adds value to your business?</label>
-
-        </div>
-        <textarea rows="6" maxlength="500" class="textarea-ref"></textarea>
-      </div>
-    </div> -->
       <pre>{{experience | json}}</pre>
       <div ngModelGroup="experience">
-        <div class="main-query">
-          <div class="query-one">2.
-            <label>Please rate your experience at DXC during this visit on the following:</label>
-          </div>
-          <div class="agenda-conatainer" ngModelGroup="agenda">
-            <div class="agenda">Visit agenda/Plan<span>(Please rate us)</span></div>
-            <div class="ratings">
-              <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-                <img [src]="item.image">
+          <div class="main-query">
+            <div class="query-one">2.
+              <label>Please rate your experience at DXC during this visit on the following:</label>
+            </div>
+            <div class="agenda-conatainer" ngModelGroup="agenda">
+              <div class="agenda">Visit agenda/Plan<span>(Please rate us)</span></div>
+              <div class="ratings">
+                <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+                  <img [src]="item.image">
+                </div> -->
+                <dxc-rating name="rating" [(ngModel)]="experience.agenda.rating" [disabled]="isRatingDisabled"></dxc-rating>
+                <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a"/>
+                <!-- <input type="hidden" name="rating" [ngModel]="experience.agenda.rating" /> -->
+                
+             
               </div>
-              <input type="hidden" name="questionNumber" [(ngModel)]="experience.agenda.questionNumber" value="2a"/>
-              <input type="hidden" name="rating" [(ngModel)]="experience.agenda.rating" />
-            </div>
-            <div class="agenda">Any specific suggestions / comments:</div>
-            <div class="">
-              <textarea rows="6" name="comments" [(ngModel)]="experience.agenda.comments" maxlength="500"
-                class="textarea-agenda" required></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="main-query" ngModelGroup="arrangements">
-          <div class="agenda-conatainer">
-            <div class="agenda">Visit arrangements and management<span>(Please rate us)</span></div>
-            <div class="ratings">
-              <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-                <img [src]="item.image">
+              <div class="agenda">Any specific suggestions / comments:</div>
+              <div class="">
+                <textarea rows="6" name="comments" [ngModel]="experience.agenda.comments" maxlength="500"
+                  class="textarea-agenda" required></textarea>
               </div>
-              <input type="hidden" name="questionNumber" [(ngModel)]="experience.arrangements.questionNumber"
-                value="2b" />
-              <input type="hidden" name="rating" [(ngModel)]="experience.arrangements.rating" />
-            </div>
-            <div class="agenda">Any specific suggestions / comments:</div>
-            <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [(ngModel)]="experience.arrangements.comments"
-                class="textarea-agenda" required></textarea>
             </div>
           </div>
-        </div>
-        <div class="main-query" ngModelGroup="quality">
-          <div class="agenda-conatainer">
-            <div class="agenda">Quality of interactions <span>(Please rate us)</span></div>
-            <div class="ratings">
-              <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
-                <img [src]="item.image">
+          <div class="main-query" ngModelGroup="arrangements">
+            <div class="agenda-conatainer">
+              <div class="agenda">Visit arrangements and management<span>(Please rate us)</span></div>
+              <div class="ratings">
+                <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+                  <img [src]="item.image">
+                </div> -->
+                <dxc-rating name="rating" [(ngModel)]="experience.arrangements.rating" [disabled]="isRatingDisabled"></dxc-rating>
+                <input type="hidden" name="questionNumber" [ngModel]="experience.arrangements.questionNumber"
+                  value="2b" />
+                <!-- <input type="hidden" name="rating" [ngModel]="experience.arrangements.rating" /> -->
+              
               </div>
-
+              <div class="agenda">Any specific suggestions / comments:</div>
+              <div class="">
+                <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.arrangements.comments"
+                  class="textarea-agenda" required></textarea>
+              </div>
             </div>
-            <input type="hidden" name="questionNumber" [(ngModel)]="experience.quality.questionNumber"  value="2c"/>
-            <input type="hidden" name="rating" [(ngModel)]="experience.quality.rating" />
-            <div class="agenda">Any specific suggestions / comments:</div>
-            <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [(ngModel)]="experience.quality.comments"
-                class="textarea-agenda" required></textarea>
+          </div>
+          <div class="main-query" ngModelGroup="quality">
+            <div class="agenda-conatainer">
+              <div class="agenda">Quality of interactions <span>(Please rate us)</span></div>
+              <div class="ratings">
+                <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
+                  <img [src]="item.image">
+                </div> -->
+                <dxc-rating name="rating" [(ngModel)]="experience.quality.rating" [disabled]="isRatingDisabled"></dxc-rating>
+              </div>
+              <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber"  value="2c"/>
+              <!-- <input type="hidden" name="rating" [ngModel]="experience.quality.rating" /> -->
+             
+              <div class="agenda">Any specific suggestions / comments:</div>
+              <div class="">
+                <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.quality.comments"
+                  class="textarea-agenda" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="main-query" ngModelGroup="expectation">
+            <div class="agenda-conatainer">
+              <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.
+              </div>
+              <input type="hidden" name="questionNumber" [ngModel]="experience.expectation.questionNumber" value="2d"/>
+              <!-- <input type="hidden" name="rating" [ngModel]="experience.expectation.rating" /> -->
+              <!-- <dxc-rating name="rating" [(ngModel)]="experience.expectation.rating"></dxc-rating> -->
+              <div class="">
+                <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.expectation.comments"
+                  class="textarea-agenda" required></textarea>
+              </div>
             </div>
           </div>
         </div>
-        <div class="main-query" ngModelGroup="expectation">
-          <div class="agenda-conatainer">
-            <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.
-            </div>
-            <input type="hidden" name="questionNumber" [(ngModel)]="experience.expectation.questionNumber" value="2d"/>
-            <input type="hidden" name="rating" [(ngModel)]="experience.expectation.rating" />
-            <div class="">
-              <textarea rows="6" maxlength="500" name="comments" [(ngModel)]="experience.expectation.comments"
-                class="textarea-agenda" required></textarea>
-            </div>
+        <!-- <pre>{{currentneeds | json}}</pre> -->
+        <div class="main-query" ngModelGroup="currentneeds">
+          <div class="query-one">3.
+            <label>Any area(s) where DXC should immediately connect with you/ your team to address your current
+              needs?</label>
           </div>
+          <input type="hidden" name="questionNumber" [ngModel]="currentneeds.questionNumber" value="3"/>
+          <input type="hidden" name="rating" [ngModel]="currentneeds.rating" value="null" />
+          <textarea rows="6" maxlength="500" name="comments" [ngModel]="currentneeds.comments" class="textarea-ref"
+            required></textarea>
         </div>
-      </div>
-      <pre>{{currentneeds | json}}</pre>
-      <div class="main-query" ngModelGroup="currentneeds">
-        <div class="query-one">3.
-          <label>Any area(s) where DXC should immediately connect with you/ your team to address your current
-            needs?</label>
-        </div>
-        <input type="hidden" name="questionNumber" [(ngModel)]="currentneeds.questionNumber" value="3"/>
-        <input type="hidden" name="rating" [(ngModel)]="currentneeds.rating" value="null" />
-        <textarea rows="6" maxlength="500" name="comments" [(ngModel)]="currentneeds.comments" class="textarea-ref"
-          required></textarea>
-      </div>
-
-
-        <div class="button-group">
-          <!-- <div class="thankyoui">
-          </div> -->
+        <div class="button-group">    
           <div class="img-icon">
             <img class="thankyou" src="/assets/images/BigSmiley-Blue.svg">
             <div >
@@ -134,10 +125,9 @@
           </div>
 
         </div>
-    </form>
+
+      </form>
   </div>
-
-
 </div>
 <ng-template #feedbackSubmitmodal let-modal>
   <div class="modal-body mt-3 ml-2">

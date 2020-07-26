@@ -13,75 +13,51 @@ import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
   styleUrls: ['./customer-feedback.component.css']
 })
 export class CustomerFeedbackComponent implements OnInit {
-
+  @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm : NgForm;
   @ViewChild('feedbackSubmitValidmodal', { static: false }) feedbackSubmitValidmodal: ElementRef;
   customerDetails: any;
+  isRatingDisabled: boolean = false;
   submitted: boolean = false;
-  public feedbackEmoji =
-    [
-      {
-        "id": 1,
-        "image": "/assets/images/1-Blue.svg"
-      },
-
-      {
-        "id": 2,
-        "image": "/assets/images/2-grey.svg"
-      },
-
-      {
-        "id": 3,
-        "image": "/assets/images/3-Grey.svg"
-      },
-
-      {
-        "id": 4,
-        "image": "/assets/images/4-Grey.svg"
-      }
-    ];
-    feedbackModel = [];
+ 
+  feedbackModel = [];
   capability = {
-    questionNumber :'1',
+    questionNumber: '1',
     rating: null,
-    comments: null
-  };
+    comments: ''
+  }
+  currentneeds = {
+    questionNumber: '3',
+    rating: null,
+    comments: ''
+  }
+
   experience = {
     agenda: {
-      questionNumber :'2a',
-       rating: null,
+      questionNumber: '2a',
+      rating: null,
       comments: null
     },
     arrangements: {
-      questionNumber :'2b',
-       rating: null,
+      questionNumber: '2b',
+      rating: null,
       comments: null
     },
     quality: {
-      questionNumber :'2c',
+      questionNumber: '2c',
       rating: null,
       comments: null
     },
     expectation: {
-      questionNumber :'2d',
+      questionNumber: '2d',
       rating: null,
       comments: null
     }
   };
-  currentneeds = {
-    questionNumber :'3',
-    rating: null,
-      comments: null
-  };
-  feedbackObj = {
-    "visitId": null,
-    "customerId": null,
-    "feedBack": []
-  }
-  // experience = {}
+
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    private bsModalRef :BsModalService,
+    private bsModalRef: BsModalService,
     private feedbackService: FeedbackService
   ) { }
 
@@ -92,10 +68,11 @@ export class CustomerFeedbackComponent implements OnInit {
   }
 
 
-  getCustomerFeedback(){
-    this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data)=>{
+  getCustomerFeedback() {
+    this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data) => {
       console.log("get feedback", data);
-      if(data['feedBack']) {
+      debugger;
+      if (data['feedBack'].length > 0) {
         this.capability = data['feedBack'][0];
         this.experience.agenda = data['feedBack'][1];
         this.experience.arrangements = data['feedBack'][2];
@@ -107,28 +84,31 @@ export class CustomerFeedbackComponent implements OnInit {
   }
 
   sendCustomerFeedback(feedBackPayLoad) {
-    this.feedbackService.sendFeedback(feedBackPayLoad).subscribe((data) =>{
+    this.feedbackService.sendFeedback(feedBackPayLoad).subscribe((data) => {
       console.log("testing", data);
       alert("success !..");
+      this.isRatingDisabled = true;
+      this.customerFeedbackForm.form.disable();
     });
   }
 
   onSubmit(f: NgForm, feedbackSubmitmodal) {
     console.log("f", f);
+    debugger;
     if (f.valid === true) {
-    this.feedbackModel = [];
-    this.capability = f.value.capability;
-    this.experience.agenda = f.value.experience.agenda;
-    this.experience.arrangements = f.value.experience.arrangements;
-    this.experience.quality = f.value.experience.quality;
-    this.experience.expectation = f.value.experience.expectation;
-    this.currentneeds = f.value.currentneeds;
-    this.feedbackModel.push(this.capability, this.experience.agenda, this.experience.arrangements, this.experience.expectation, this.experience.quality, this.currentneeds);
-    console.log(this.feedbackModel);
+      this.feedbackModel = [];
+      this.capability = f.value.capability;
+      this.experience.agenda = f.value.experience.agenda;
+      this.experience.arrangements = f.value.experience.arrangements;
+      this.experience.quality = f.value.experience.quality;
+      this.experience.expectation = f.value.experience.expectation;
+      this.currentneeds = f.value.currentneeds;
+      this.feedbackModel.push(this.capability, this.experience.agenda, this.experience.arrangements, this.experience.expectation, this.experience.quality, this.currentneeds);
+      console.log(this.feedbackModel);
       const modalRef1 = this.modalService.open(feedbackSubmitmodal);
       modalRef1.result.then((result) => {
         if (result === 'No') {
-            modalRef1.close();
+          modalRef1.close();
         }
         if (result === 'Yes') {
           let feedBackPayLoad = {
@@ -136,7 +116,7 @@ export class CustomerFeedbackComponent implements OnInit {
             "customerId": this.customerDetails.nameid,
             "feedBack": [...this.feedbackModel]
           }
-         this.sendCustomerFeedback(feedBackPayLoad);
+          this.sendCustomerFeedback(feedBackPayLoad);
         }
       });
     } else {
@@ -145,14 +125,4 @@ export class CustomerFeedbackComponent implements OnInit {
 
   }
 
-}
-interface feedbackForm {
-  questionNumber: string,
-  rating: any,
-  comments: string
-}
-interface feedbackAPIObj {
-  "visitId": null,
-  "customerId": null,
-  "feedBack": []
 }
