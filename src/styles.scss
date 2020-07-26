@@ -40,8 +40,7 @@ body {
 .sticky-menu {
     position: fixed;
     top: 46px;
-    width: 54.54%;
-    z-index: 888;
+    width: 54.1%;
 }
 
 .hamburger-icon {
@@ -61,6 +60,9 @@ body {
 }
 .textarea-ref :focus{
     border-color:none;
+}
+*:focus {
+    outline: none !important;
 }
 .glyphicon.glyphicon-star, .glyphicon.glyphicon-star-empty {
     font-size: 50px;
@@ -106,12 +108,15 @@ body {
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: .3rem;
 }
+
 @media (max-width: 576px) {
     .sticky-menu {
         position: fixed;
         top: 46px;
-        width: 100%;
+        // width: 100%;
         z-index: 888;
+        width: 85.2%;
+
     }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {

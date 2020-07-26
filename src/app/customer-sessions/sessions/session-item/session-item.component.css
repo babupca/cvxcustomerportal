@@ -237,4 +237,40 @@ border-bottom: 1px solid #00c8ff;
    white-space: nowrap;
    width: 95%;
 }
+@media (min-width: 320px) and (max-width: 575.98px){
+  .mail-container-popup {
+   width:15rem;
+  }
+  .teams-container-popup {
+    width:15rem;
 
+  }
+  .action-container-popup {
+    width:18rem;
+
+  }
+ }
+
+@media (max-width: 575.98px) {
+  .session-item-details {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .session-item-details .topic {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .session-item-details .presenters {
+    padding: 0 0 0.865rem 0;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .session-item-btn-group {
+    flex-direction: column-reverse;
+  }
+  .session-item-btn-group .buttons {
+    padding: 1rem 0 0;
+  }
+}
