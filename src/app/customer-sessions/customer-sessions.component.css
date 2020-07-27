@@ -138,6 +138,7 @@
     .session-body-container {
         margin: 2px;
     }
+
     .bdr-right-dyas, .bdr-right, .mobile-dayscount {
         display: none;
     }
@@ -150,12 +151,9 @@
 }
 
 @media (max-width: 576px) {
-    /* .bdr-right {
-        display: none !important;
-    } */
-    /* .mobile-css{
-        display: block;
-    } */
+    .mobile-sessions{
+        padding-left: 8px;
+    }
     .bdr-right{
         text-decoration: none;
         border: none;
