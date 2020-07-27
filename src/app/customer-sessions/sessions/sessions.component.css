@@ -105,6 +105,7 @@
     .session-filter{
         margin-top: 10px;
         z-index: 1000 !important;
+        width: 20rem;
     }
     /* .session-filters{
         padding: 0px;
