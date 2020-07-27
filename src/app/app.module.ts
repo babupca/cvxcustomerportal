@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {
   PerfectScrollbarModule,
@@ -63,6 +64,7 @@ import { StickyDirective } from './services/sticky.directive';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxSpinnerModule,
     AppRoutingModule,
     AngularEditorModule,
     PerfectScrollbarModule,

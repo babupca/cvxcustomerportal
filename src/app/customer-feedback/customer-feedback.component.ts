@@ -18,7 +18,7 @@ export class CustomerFeedbackComponent implements OnInit {
   customerDetails: any;
   isRatingDisabled: boolean = false;
   submitted: boolean = false;
- 
+
   feedbackModel = [];
   capability = {
     questionNumber: '1',
@@ -71,7 +71,6 @@ export class CustomerFeedbackComponent implements OnInit {
   getCustomerFeedback() {
     this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data) => {
       console.log("get feedback", data);
-      debugger;
       if (data['feedBack'].length > 0) {
         this.capability = data['feedBack'][0];
         this.experience.agenda = data['feedBack'][1];
