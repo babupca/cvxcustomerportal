@@ -130,6 +130,9 @@
 .mobile-dayscount, .tablet-right, .tablet-rightdays {
     display: none;
 }
+.mobile-css{
+    display: none;
+}
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .session-body-container {
@@ -141,17 +144,32 @@
     .tablet-right, .tablet-rightdays {
         display: block;
     }
+    .tablet-right-mobile{
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {
-    .bdr-right {
+    /* .bdr-right {
         display: none !important;
+    } */
+    /* .mobile-css{
+        display: block;
+    } */
+    .bdr-right{
+        text-decoration: none;
+        border: none;
+        display: none;
     }
     .bdr-left {
-        border-left: 0 px;
+        text-decoration: none;
+        border: none;
     }
     .tablet-rightdays {
         display: none;
+    }
+    .tablet-right-mobile{
+        display: block;
     }
     .mobile-dayscount {
         display: block;
