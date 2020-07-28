@@ -1,17 +1,7 @@
+<!-- <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size="medium">
+  <p class="loading">Loading Please wait...</p>
+</ngx-spinner> -->
 <div >
-  <!-- <div class="col-lg-9 col-md-9 col-sm-6 bdr-right"> -->
-
-  <!-- <section class="session-filters">
-    <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
-    <div class="session-filter-container">
-      <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
-        <option *ngFor="let session of visitInfo">{{session.location}}</option>
-      </select>
-      <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
-        <option *ngFor="let dates of visitDates">{{dates.dateValue}}</option>
-      </select>
-    </div>
-  </section> -->
   <div class="session-filter" id="session-filter" [stickyMenu] elementId="session-filter">
   <section class="session-filters">
     <h2 class="upcoming-session">{{sessions?.upcomingSessionsCount}} UPCOMING SESSIONS</h2>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PopoverModule } from 'ngx-bootstrap/popover';
@@ -27,6 +28,7 @@ import { DaysCountComponent } from './customer-sessions/days-count/days-count.co
 import { MyVisitsComponent } from './customer-sessions/my-visits/my-visits.component';
 import { VisitInfoComponent } from './customer-sessions/visit-info/visit-info.component';
 import { KeyLeadersComponent } from './customer-sessions/key-leaders/key-leaders.component';
+import { LoaderInterceptorService } from '../app/services/Interceptor/loader-interceptor.service';
 import { VisitPocComponent } from './customer-sessions/visit-poc/visit-poc.component';
 import { SessionItemComponent } from './customer-sessions/sessions/session-item/session-item.component';
 import { CustomerFeedbackComponent } from './customer-feedback/customer-feedback.component';
@@ -35,6 +37,8 @@ import { TruncatePipePipe } from './pipes/truncate-pipe.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DxcRatingComponent } from './services/dxc-rating.component';
 import { StickyDirective } from './services/sticky.directive';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderservicecircleService } from './shared/loader/loaderservicecircle.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,8 @@ import { StickyDirective } from './services/sticky.directive';
     PageNotFoundComponent,
     TruncatePipePipe,
     DxcRatingComponent,
-    StickyDirective 
+    StickyDirective,
+    LoaderComponent 
     // FeedbackComponent
   ],
   imports: [
@@ -66,6 +71,7 @@ import { StickyDirective } from './services/sticky.directive';
     HttpClientModule,
     NgxSpinnerModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     AngularEditorModule,
     PerfectScrollbarModule,
     RatingModule.forRoot(),
@@ -73,9 +79,22 @@ import { StickyDirective } from './services/sticky.directive';
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NoopAnimationsModule
   ],
-  providers: [HttpClientModule],
+  providers: [
+    LoaderservicecircleService,
+    // {
+    //   provide: PERFECT_SCROLLBAR_CONFIG,
+    //   useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true
+    },
+    LoaderservicecircleService,
+    HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

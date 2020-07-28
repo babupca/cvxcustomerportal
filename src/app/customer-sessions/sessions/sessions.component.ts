@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver';
 import { Subscription } from 'rxjs';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { HttpHeaders } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-sessions',
@@ -34,6 +35,7 @@ export class SessionsComponent implements OnInit {
   @Input() visitId:any;
 
   constructor(private sessionService: CustomerSessionsService,
+    private spinner: NgxSpinnerService,
     public changeDetecref: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -60,6 +62,7 @@ export class SessionsComponent implements OnInit {
     this.visitDate = null;
     this.visitCity = null;
     if(this.visitId){
+      this.spinner.show();
     this.sessionService.getCities(this.visitId).subscribe(data => {
       console.log(data);
       this.visitInfo = data;
@@ -76,6 +79,7 @@ export class SessionsComponent implements OnInit {
         return this.visitCity === data.location
 
       });
+       this.spinner.hide();
       var dateFlag = false;
       this.visitInfo.forEach(data => {
         if (dateFlag !== true) {
@@ -108,6 +112,7 @@ export class SessionsComponent implements OnInit {
       console.log(this.visitDate);
       // this.visitCity = this.visitInfo[0]
     });
+    this.spinner.hide();
   }
   }
   dateFormat() {
@@ -150,6 +155,7 @@ export class SessionsComponent implements OnInit {
       'cityID': this.info.locationId,
       'loggedinUserId': this.customerDetails.nameid
     }
+    this.spinner.show();
     this.sessionService.getSessions(this.visitId, sessionData).subscribe(data => {
       this.sessions = data;
       console.log(this.sessions);
@@ -160,7 +166,8 @@ export class SessionsComponent implements OnInit {
 
       // }
       console.log(this.visitDate);
-    })
+    });
+    this.spinner.hide();
     console.log(this.sessiondata);
     // this.visitDates=info.visitDates;
   }
