@@ -4,7 +4,7 @@
 <div >
   <div class="session-filter" id="session-filter" [stickyMenu] elementId="session-filter">
   <section class="session-filters">
-    <h2 class="upcoming-session">{{sessions?.upcomingSessionsCount}} UPCOMING SESSIONS</h2>
+    <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
     <div class="session-filter-container">
       <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
         <option *ngFor="let session of visitInfo" [ngValue] = "session.location">{{session.location}}</option>

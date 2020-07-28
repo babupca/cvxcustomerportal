@@ -164,6 +164,10 @@
     position: absolute;
     top: 25px;
     right: 125px;
+    
+  }
+  .container-popup:last-child, .action-container-popup:last-child {
+    margin-bottom: 3rem;
   }
 
   .action-container-popup {
@@ -177,7 +181,9 @@
     position: absolute;
     top: 25px;
     right: 0px;
+    
   }
+  
 .attachments{
   display: flex;
   justify-content: flex-start;
@@ -273,7 +279,5 @@ border-bottom: 1px solid #00c8ff;
   .session-item-btn-group .buttons {
     padding: 1rem 0 0;
   }
-  .session-item-container {
-  min-width: max-content;
-}
+  
 }
