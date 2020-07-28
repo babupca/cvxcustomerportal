@@ -81,7 +81,7 @@
 }
 
 .session-footer {
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
