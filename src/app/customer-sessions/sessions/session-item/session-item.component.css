@@ -273,4 +273,7 @@ border-bottom: 1px solid #00c8ff;
   .session-item-btn-group .buttons {
     padding: 1rem 0 0;
   }
+  .session-item-container {
+  min-width: max-content;
+}
 }

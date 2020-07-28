@@ -131,5 +131,8 @@
     .bdr-right {
         margin-right: none;;
     };
+    .section-list-container {
+        padding: 0.786rem;
+    }
 
 }
