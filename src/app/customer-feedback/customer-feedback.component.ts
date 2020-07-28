@@ -79,6 +79,8 @@ export class CustomerFeedbackComponent implements OnInit {
         this.experience.quality = data['feedBack'][3];
         this.experience.expectation = data['feedBack'][4];
         this.currentneeds = data['feedBack'][5];
+        this.isRatingDisabled = true;
+        this.customerFeedbackForm.form.disable();
       }
     });
   }
