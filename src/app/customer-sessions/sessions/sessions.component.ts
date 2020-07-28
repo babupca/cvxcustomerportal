@@ -210,16 +210,30 @@ export class SessionsComponent implements OnInit {
   }
 
   downloadAgenda() {
-    this.subscription = this.sessionService.getAgenda(this.visitId).subscribe(res => {
-      let blob = new Blob([res['_body']], { type: 'application/octet-stream' });
-      // const contentDisposition = res.headers.get('Content-Disposition').split('filename=')[1].replace(/['"]+/g, '')
-      // const fileName = contentDisposition.split(";", 2);
-      // this.saved = false;
-      // saveAs(blob, fileName[0]);
-      // this.saved = true;
-      // if (this.saved) {
-      // }
-    });
+    this.subscription = this.sessionService
+      .getAgenda(this.visitId)
+      .subscribe((res) => {
+        console.log("Res here: " + res);
+        // let blob = new Blob([res.body], {
+        //   type: "application/octet-stream",
+        // });
+        const contentDisposition = res.headers
+          .get("Content-Disposition")
+          .split("filename=")[1]
+          .replace(/['"]+/g, "");
+        const fileName = contentDisposition.split(";", 2);
+        saveAs(res.body, fileName[0]);
+        // this.saved = false;
+        // saveAs(blob, fileName[0]);
+        // this.saved = true;
+        // if (this.saved) {
+        // }
+      });
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 
 }
