@@ -89,7 +89,9 @@
     display: flex;
     flex-direction: row;
 }
-
+.customer-feedback{
+    margin-top: 60px;
+}
 .feedback-emoji {
     padding: 0 0.75rem 0 0;
 }

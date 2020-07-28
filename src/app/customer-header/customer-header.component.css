@@ -1,6 +1,10 @@
 .headerbg {
 	background: #000000;
-	padding-right: 0px;
+    padding-right: 0px;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
 }
 .HeaderPanel {
     margin: 0px auto;
