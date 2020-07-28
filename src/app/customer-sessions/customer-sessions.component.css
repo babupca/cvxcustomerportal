@@ -149,7 +149,7 @@
         display: block;
     }
     .tablet-right-mobile{
-        display: none;
+        display: block;
     }
 }
 
