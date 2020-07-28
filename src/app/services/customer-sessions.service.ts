@@ -91,26 +91,50 @@ export class CustomerSessionsService {
    * @param visitId
    */
 
-  getAgenda(visitId){
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
-    })
+  getAgenda(visitId) {
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json',
+    //   'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+    // })
     //  let options = new RequestOptions({
     //   headers, responseType: ResponseContentType.Blob,
     // });
+    // let headers = new HttpHeaders({
+    //   "Content-Type": "application/octet-stream",
+    //   Accept: "application/octet-stream",
+    //   "Ocp-Apim-Subscription-Key": environment.API_URL_KEY,
+    // });
+
+    // let option = {
+    //   headers: headers,
+    //   // responseType:Blob
+    // };
     const options = {
-      headers :new HttpHeaders({
-        'Content-Type': 'application/json',
-         Accept:'application/json',
-        'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
+      headers: new HttpHeaders({
+        "Content-Type": "application/octet-stream",
+        Accept: "application/json",
+        "Ocp-Apim-Subscription-Key": environment.API_URL_KEY,
       }),
-      responseType:'blob' as 'json'
-    }
+      responseType: "blob" as "json",
+      observe: "response" as "response",
+    };
+
+    // const headers = new Headers({
+    //   "Content-Type": "application/json",
+    //   "Ocp-Apim-Subscription-Key": environment.API_URL_KEY,
+    // });
+    // let options = new RequestOptions({
+    //   headers,
+    //   responseType: ResponseContentType.Blob,
+    // });
     // return this.http.get(this.customerApi + '/DownloadAgenda?visitID='+ visitId,options).pipe(map(result=>result),finalize(()=>{
     // }));
-      return this.http.get(this.customerApi+'/DownloadAgenda?VisitID='+visitId, options).pipe(map(result=>result),finalize(()=>{
-      }));
+    return this.http
+      .get(this.customerApi + "/DownloadAgenda?VisitID=" + visitId, options)
+      .pipe(
+        map((result) => result),
+        finalize(() => {})
+      );
   }
 
 }

@@ -87,10 +87,12 @@
   background-size: 0.865rem;
   display: inline-block;
   width: 15px;
-  height: 20px;
+  height: 23px;
   padding: 0;
   border: 0 none;
   margin-right: 5px;
+  background-size: 0.965rem;
+  background-position: 0 2px;
 }
 
 .feedback-icon {
@@ -242,6 +244,10 @@ border-bottom: 1px solid #00c8ff;
   text-overflow: ellipsis;
    white-space: nowrap;
    width: 95%;
+}
+.ratings {
+  font-size: 12px;
+  font-weight: bold;
 }
 @media (min-width: 320px) and (max-width: 575.98px){
   .mail-container-popup {
