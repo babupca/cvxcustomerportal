@@ -70,7 +70,7 @@
     </div>
 
       <button class="feedback-icon"
-       (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button>Ratings
+       (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button><span class="ratings">Ratings</span>
       <div>
       <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
     </div>
