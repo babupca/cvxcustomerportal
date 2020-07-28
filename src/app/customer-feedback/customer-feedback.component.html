@@ -3,7 +3,7 @@
   <app-customer-banner></app-customer-banner>
   <!-- INSERT BANNER HERE :: Ends -->
   <div class="main-container">
-    <pre>{{customerFeedbackForm.value | json}}</pre>
+    <!-- <pre>{{customerFeedbackForm.value | json}}</pre> -->
     <form #customerFeedbackForm="ngForm" (ngSubmit)="onSubmit(customerFeedbackForm,feedbackSubmitmodal) && customerFeedbackForm.form.valid" novalidate>
       <div class="feedback-container">
         <div class="wlecome">Dear Customer,</div>
@@ -13,17 +13,17 @@
           we request you to provide your valuable feedback to us.
         </div>
       </div>
-      <pre>{{capability.value | json}}</pre>
+      <!-- <pre>{{capability.value | json}}</pre> -->
       <div class="main-query" ngModelGroup="capability">
         <div class="query-one">1.
           <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
         </div>
-        <input type="hidden" name="questionNumber" [ngModel]="capability.questionNumber" />       
+        <input type="hidden" name="questionNumber" [ngModel]="capability.questionNumber" />
         <input type="hidden" name="rating" [ngModel]="capability.rating" value="null" />
         <textarea rows="6" name="comments" [ngModel]="capability.comments" maxlength="500" class="textarea-ref"
           required></textarea>
       </div>
-      <pre>{{experience | json}}</pre>
+      <!-- <pre>{{experience | json}}</pre> -->
       <div ngModelGroup="experience">
           <div class="main-query">
             <div class="query-one">2.
@@ -38,8 +38,8 @@
                 <dxc-rating name="rating" [(ngModel)]="experience.agenda.rating" [disabled]="isRatingDisabled"></dxc-rating>
                 <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a"/>
                 <!-- <input type="hidden" name="rating" [ngModel]="experience.agenda.rating" /> -->
-                
-             
+
+
               </div>
               <div class="agenda">Any specific suggestions / comments:</div>
               <div class="">
@@ -59,7 +59,7 @@
                 <input type="hidden" name="questionNumber" [ngModel]="experience.arrangements.questionNumber"
                   value="2b" />
                 <!-- <input type="hidden" name="rating" [ngModel]="experience.arrangements.rating" /> -->
-              
+
               </div>
               <div class="agenda">Any specific suggestions / comments:</div>
               <div class="">
@@ -79,7 +79,7 @@
               </div>
               <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber"  value="2c"/>
               <!-- <input type="hidden" name="rating" [ngModel]="experience.quality.rating" /> -->
-             
+
               <div class="agenda">Any specific suggestions / comments:</div>
               <div class="">
                 <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.quality.comments"
@@ -112,7 +112,7 @@
           <textarea rows="6" maxlength="500" name="comments" [ngModel]="currentneeds.comments" class="textarea-ref"
             required></textarea>
         </div>
-        <div class="button-group">    
+        <div class="button-group">
           <div class="img-icon">
             <img class="thankyou" src="/assets/images/BigSmiley-Blue.svg">
             <div >
