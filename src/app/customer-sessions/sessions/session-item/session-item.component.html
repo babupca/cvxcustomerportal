@@ -1,5 +1,4 @@
-
-<section class="session-item-container"  [attr.data-sessionid]="session.id">
+<section class="session-item-container" [attr.data-sessionid]="session.id">
   <!-- Session header -->
   <div class="session-item-header">
     <h6 class="time-duration">{{session?.startDateTime |  date:'shortTime' }} to
@@ -7,7 +6,7 @@
     <h6 class="session-status upcoming"
       [ngClass]="{'cancelled': session?.sessionState === 'Cancelled', 'completed': session?.sessionState === 'Completed','inprogress': session?.sessionState === 'In Progress'}">
 
-        {{session?.sessionState | uppercase}}</h6>
+      {{session?.sessionState | uppercase}}</h6>
   </div>
   <!-- Session Title -->
 
@@ -20,8 +19,9 @@
     </h6>
   </div>
   <!-- Description -->
-  <div class="session-item-description" >
-    <div> <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary" ></p>
+  <div class="session-item-description">
+    <div>
+      <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary"></p>
       <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
       <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
 
@@ -39,41 +39,51 @@
         </div>
       </div>
     </div>
-    <div class="rating">
+    <div class="rating"
+      [ngClass]="{'upcomingOpacity':session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'}">
 
-       <div>
-      <button class="actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"> </button>
-            <div *ngIf="ShowActionItem" class="custom-popover action-container-popup"
-            >
-              <div class="row">
-                <div class="col-12 pr-1">
-                  <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg" (click)="close()">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 pr-3">
-                  <div >
-                     <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 pr-3">
-                  <div class="senddiv">
-                    <button [disabled]="dataService.convertHtmltoText(actionPoints)?.length==0"  (click)="sendActionPoints()">SEND</button></div>
-                </div>
+      <div>
+        <button class="actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"> </button>
+        <div *ngIf="ShowActionItem" class="custom-popover action-container-popup">
+          <div class="row">
+            <div class="col-12 pr-1">
+              <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg"
+                  (click)="close()">
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pr-3">
+              <div>
+                <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pr-3">
+              <div class="senddiv">
+                <button [disabled]="dataService.convertHtmltoText(actionPoints)?.length==0"
+                  (click)="sendActionPoints()">SEND</button></div>
+            </div>
+          </div>
+        </div>
 
 
-    </div>
+      </div>
 
       <button class="feedback-icon"
-       (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button>Ratings
-      <div>
-      <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
-    </div>
+        [ngClass]="{'added':session?.ratingAndFeedBack?.feedback !== null && session?.ratingAndFeedBack?.feedback !== ''}"
+        [disabled]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
+        (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button>Ratings
+      <div *ngIf="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled'">
+        <rating [(ngModel)]="starsCount"
+          [readonly]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
+          [max]="max"></rating>
+      </div>
+      <div *ngIf="session?.sessionState !=='Upcoming' && session?.sessionState !=='Cancelled'">
+        <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
+      </div>
+
 
       <!-- Feedback Popup  -->
       <div *ngIf="ShowFeedback" class="container-popup ">
@@ -86,7 +96,7 @@
         <div class="row">
           <div class="col-12 pr-3">
             <div class="messagediv">
-              <angular-editor [(ngModel)]="FeedbackMessage"  [config]="editorConfig" maxLength="500"></angular-editor>
+              <angular-editor [(ngModel)]="FeedbackMessage" [config]="editorConfig" maxLength="500"></angular-editor>
 
             </div>
           </div>
@@ -94,7 +104,8 @@
         <div class="row">
           <div class="col-12 pr-3">
             <div class="senddiv">
-              <button [disabled]="dataService.convertHtmltoText(FeedbackMessage)?.length==0 || FeedbackMessage === null" (click)="sendFeedback()">SEND</button>
+              <button [disabled]="dataService.convertHtmltoText(FeedbackMessage)?.length==0 || FeedbackMessage === null"
+                (click)="sendFeedback()">SEND</button>
             </div>
           </div>
         </div>
@@ -122,7 +133,7 @@
 
 <ng-template #actionPointmodal let-modal>
   <div class="modal-header header-ref">
-    <button type="button"  class="close" aria-label="Close" (click)="modal.close('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
