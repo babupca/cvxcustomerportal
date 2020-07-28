@@ -105,14 +105,14 @@
     .session-filter{
         margin-top: 10px;
         z-index: 1000 !important;
-        width: 20rem;
+        width: 20.6rem;
     }
     /* .session-filters{
         padding: 0px;
     } */
     .sessioncardscontainer{
         margin-top: 1.5rem;
-        width: 20rem;
+        width: 20.6rem;
     }
     .session-filter-container select {
         min-width: auto;
@@ -131,5 +131,12 @@
     .bdr-right {
         margin-right: none;;
     };
+    
+    
 
 }
+/* @media (min-width: 320px) and (max-width: 575.98px){
+    .section-list-container{
+        padding: 0.786rem;
+    }
+} */

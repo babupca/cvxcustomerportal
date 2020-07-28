@@ -61,7 +61,7 @@
               <div class="row">
                 <div class="col-12 pr-3">
                   <div class="senddiv">
-                    <button (click)="sendActionPoints()">SEND</button></div>
+                    <button [disabled]="dataService.convertHtmltoText(actionPoints)?.length==0"  (click)="sendActionPoints()">SEND</button></div>
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@
         <div class="row">
           <div class="col-12 pr-3">
             <div class="senddiv">
-              <button (click)="sendFeedback()">SEND</button>
+              <button [disabled]="dataService.convertHtmltoText(FeedbackMessage)?.length==0 || FeedbackMessage === null" (click)="sendFeedback()">SEND</button>
             </div>
           </div>
         </div>

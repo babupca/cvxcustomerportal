@@ -149,13 +149,13 @@
         display: block;
     }
     .tablet-right-mobile{
-        display: none;
+        display: block;
     }
 }
 
 @media (max-width: 576px) {
     .mobile-sessions{
-        padding-left: 8px;
+        padding-left: 3px;
     }
     .bdr-right{
         text-decoration: none;

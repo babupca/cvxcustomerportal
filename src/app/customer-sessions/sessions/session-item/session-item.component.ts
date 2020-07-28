@@ -3,7 +3,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import { DataserviceService } from 'src/app/services/dataservice.service';
 
 @Component({
   selector: 'app-session-item',
@@ -53,7 +53,7 @@ export class SessionItemComponent implements OnInit {
 
 
   constructor(private sessionService: CustomerSessionsService,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,private dataService:DataserviceService,) { }
 
   ngOnInit() {
     this.attachmentScrollConfig = {
