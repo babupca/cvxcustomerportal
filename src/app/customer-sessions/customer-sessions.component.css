@@ -130,28 +130,47 @@
 .mobile-dayscount, .tablet-right, .tablet-rightdays {
     display: none;
 }
+.mobile-css{
+    display: none;
+}
+.tablet-right-mobile{
+    display: none;
+}
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .session-body-container {
         margin: 2px;
     }
+
     .bdr-right-dyas, .bdr-right, .mobile-dayscount {
         display: none;
     }
     .tablet-right, .tablet-rightdays {
         display: block;
     }
+    .tablet-right-mobile{
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {
-    .bdr-right {
-        display: none !important;
+    .mobile-sessions{
+        padding-left: 8px;
+    }
+    .bdr-right{
+        text-decoration: none;
+        border: none;
+        display: none;
     }
     .bdr-left {
-        border-left: 0 px;
+        text-decoration: none;
+        border: none;
     }
     .tablet-rightdays {
         display: none;
+    }
+    .tablet-right-mobile{
+        display: block;
     }
     .mobile-dayscount {
         display: block;
