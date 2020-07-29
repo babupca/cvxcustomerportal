@@ -165,14 +165,14 @@
     width: 20rem;
     background-color: white;
    /* // position: bottom-right; */
-    z-index: 1000;
+    z-index: 998;
     border: 1px #cfcfcf solid;
     padding: 0.5rem 0.75rem 0.875rem 0.75rem;
     box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.17);
     position: absolute;
     top: 25px;
     right: 125px;
-    
+
   }
   .container-popup:last-child, .action-container-popup:last-child {
     margin-bottom: 3rem;
@@ -182,16 +182,16 @@
     height: auto;
     width: 20rem;
     background-color: white;
-    z-index: 1000;
+    z-index: 998;
     box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.17);
     border: 1px #cfcfcf solid;
     padding: 0.5rem 0.75rem 0.875rem 0.75rem;
     position: absolute;
     top: 25px;
     right: 0px;
-    
+
   }
-  
+
 .attachments{
   display: flex;
   justify-content: flex-start;
@@ -292,5 +292,5 @@ border-bottom: 1px solid #00c8ff;
   .session-item-btn-group .buttons {
     padding: 1rem 0 0;
   }
-  
+
 }
