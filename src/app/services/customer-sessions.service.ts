@@ -5,7 +5,7 @@ import { Observable, from } from 'rxjs';
 import { retry, catchError, map, tap, finalize } from 'rxjs/operators';
 import {  RequestOptions, ResponseContentType, Headers } from '@angular/http';
 import * as moment from 'moment';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class CustomerSessionsService {
 
   private customerApi = environment.API_URL + '/api/Session';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private spinner: NgxSpinnerService) { }
 
   public httpOptions = {
     headers: new HttpHeaders({
@@ -74,7 +75,14 @@ export class CustomerSessionsService {
   }
 
   getSessions(visitId, sessionData) {
-    return this.http.post(this.customerApi + '/GetCustomerInflightSessions?visitId='+visitId, sessionData, this.httpOptions);
+    this.spinner.show();
+    return this.http.post(this.customerApi + '/GetCustomerInflightSessions?visitId='+visitId, sessionData, this.httpOptions).pipe(
+      map((result) => result),
+      finalize(() => {
+    this.spinner.hide();
+        
+      })
+    );
   }
 
     /**
@@ -109,6 +117,7 @@ export class CustomerSessionsService {
     //   headers: headers,
     //   // responseType:Blob
     // };
+    this.spinner.show();
     const options = {
       headers: new HttpHeaders({
         "Content-Type": "application/octet-stream",
@@ -133,7 +142,10 @@ export class CustomerSessionsService {
       .get(this.customerApi + "/DownloadAgenda?VisitID=" + visitId, options)
       .pipe(
         map((result) => result),
-        finalize(() => {})
+        finalize(() => {
+      this.spinner.hide();
+          
+        })
       );
   }
 
