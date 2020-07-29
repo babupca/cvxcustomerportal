@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { map, finalize } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class LoginService {
   private customerAPI = environment.API_URL;  
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private spinner: NgxSpinnerService) { }
 
   public httpOptions = {
     headers: new HttpHeaders({
@@ -18,7 +20,14 @@ export class LoginService {
   }
 
   customerLogin(customerObj:customerLoginSchema){
-    return this.httpClient.post(this.customerAPI+'/api/Auth/login', customerObj , this.httpOptions);
+    this.spinner.show()
+    return this.httpClient.post(this.customerAPI+'/api/Auth/login', customerObj , this.httpOptions).pipe(
+      map((result) => result),
+      finalize(() => {
+    this.spinner.hide();
+        
+      })
+    );
   }
 }
 

@@ -24,12 +24,12 @@ export class MyVisitsComponent implements OnInit {
     this.getVisitDates();
   }
   getVisitDates() {
-    this.spinner.show();
+    // this.spinner.show();
         this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
       this.visitIdAnddatesArray = data;
 
     });
-    this.spinner.hide();
+    // this.spinner.hide();
     console.log(this.visitIdAnddatesArray);
 
 
