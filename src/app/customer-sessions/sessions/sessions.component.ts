@@ -62,7 +62,7 @@ export class SessionsComponent implements OnInit {
     this.visitDate = null;
     this.visitCity = null;
     if(this.visitId){
-      this.spinner.show();
+     
     this.sessionService.getCities(this.visitId).subscribe(data => {
       console.log(data);
       this.visitInfo = data;
@@ -79,7 +79,7 @@ export class SessionsComponent implements OnInit {
         return this.visitCity === data.location
 
       });
-       this.spinner.hide();
+       
       var dateFlag = false;
       this.visitInfo.forEach(data => {
         if (dateFlag !== true) {
@@ -112,7 +112,7 @@ export class SessionsComponent implements OnInit {
       console.log(this.visitDate);
       // this.visitCity = this.visitInfo[0]
     });
-    this.spinner.hide();
+    
   }
   }
   dateFormat() {
@@ -155,7 +155,7 @@ export class SessionsComponent implements OnInit {
       'cityID': this.info.locationId,
       'loggedinUserId': this.customerDetails.nameid
     }
-    this.spinner.show();
+    // this.spinner.show();
     this.sessionService.getSessions(this.visitId, sessionData).subscribe(data => {
       this.sessions = data;
       console.log(this.sessions);
@@ -167,7 +167,7 @@ export class SessionsComponent implements OnInit {
       // }
       console.log(this.visitDate);
     });
-    this.spinner.hide();
+    // this.spinner.hide();
     console.log(this.sessiondata);
     // this.visitDates=info.visitDates;
   }
@@ -210,6 +210,7 @@ export class SessionsComponent implements OnInit {
   }
 
   downloadAgenda() {
+    
     this.subscription = this.sessionService
       .getAgenda(this.visitId)
       .subscribe((res) => {
@@ -229,10 +230,11 @@ export class SessionsComponent implements OnInit {
         // if (this.saved) {
         // }
       });
+      
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 
