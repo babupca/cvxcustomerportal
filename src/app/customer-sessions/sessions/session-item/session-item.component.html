@@ -74,7 +74,7 @@
       <button class="feedback-icon"
         [ngClass]="{'added':session?.ratingAndFeedBack?.feedback !== null && session?.ratingAndFeedBack?.feedback !== ''}"
         [disabled]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
-        (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button>Ratings
+        (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button><span class="ratings">Ratings</span>
       <div *ngIf="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled'">
         <rating [(ngModel)]="starsCount"
           [readonly]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
