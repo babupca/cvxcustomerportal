@@ -8,7 +8,7 @@
     <!-- <pre>
     {{factsheetsArray | json}}</pre> -->
     <div class="city-names" *ngFor="let item of factsheetsArray; let i = index">
-      <div *ngIf="item.factSheetLink !== null"><a class="city-name" [href]="item.factSheetLink !== null ? item.factSheetLink : 'javascript;'">{{item?.location}}</a></div>
+      <div *ngIf="item.factSheetLink !== null"><a class="city-name" target="_blank" [href]="item.factSheetLink !== null ? item.factSheetLink : 'javascript;'">{{item?.location}}</a></div>
 
     </div>
 
