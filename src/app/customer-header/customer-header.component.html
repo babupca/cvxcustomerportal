@@ -1,0 +1,77 @@
+
+  <div class="headerbg">
+    <header class="container-fluid HeaderPanel">
+      <div class="header-column">
+        <div class="header-column-logo">
+          <img src="assets/images/logo.png" class="sdphumberger" alt="Logo" />
+          <img src="assets/images/dxc_logo-white.png" class="sdphumberger-mobile" alt="Logo" />
+          <div class="sub-header-ref">
+            <label class="mb-0 user-role-ref">Client Visit Experience
+            </label>
+          </div>
+        </div>
+        <div class="Headermenu">
+          <ul>
+            <!-- <li class="search nav-item padding-top-ref"> -->
+              <!-- <a href="nav-link" class="notification">
+                <img src="assets/images/notification-icon.svg" alt="notification">
+                <span class="badge">23</span>
+              </a> -->
+              <!-- <span class="pl-2 content">Notification</span> -->
+            <!-- </li> -->
+            <li class="search nav-item">
+              <!-- START -->
+              <div class="d-inline-block" ngbDropdown header-dropdown>
+                <a class="btn drop-down-ref-id" ngbDropdownToggle id="dropdownMenuLink">
+                  <!-- <span class="shortname">{{this.initials}}</span>
+                  <span class="fullname">{{userDetails.lastName}}, {{userDetails.firstname}}</span> -->
+                  <!-- <span class="shortname">VL</span> -->
+                  <!-- <span class="fullname">Vishnubhotla, Lakshmi Tejaswini</span> -->
+                  <span class="fullname">{{customerName.email}}</span>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdownMenuLink" class="logout-container">
+                  <a class="dropdown-item" (click)="logout(logoutMdl)">Logout</a>
+                </div>
+              </div>
+            </li>
+
+            <li class="hamburger-icon nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+              <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+                <img src="/assets/images/hamburger.svg" />
+              </a>
+              <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                <nav class="nav-reference-id">
+
+                  <!-- <a *ngIf="userDetails?.role==='CVM' || 'CVA'" href="#" class="home-menu" routerLinkActive="is-active" routerLink="dashboard">Home / Dashboard</a> -->
+                  <!-- <a *ngIf="userDetails?.role==='CVA' || userDetails?.role==='CVM'"  class="home-menu" routerLinkActive="is-active" routerLink="/dashboard">Home / Dashboard</a>
+                  <a *ngIf="userDetails?.role==='Employee' || 'CVM' || 'CVA'"  class="initiate-new-visit-menu" routerLinkActive="is-active" routerLink="/Initiate-New-Visit">Initiate New Visit</a>
+                  <a *ngIf="userDetails?.role==='Employee' || 'CVM' || 'CVA'"  class="drafts-menu" routerLinkActive="is-active" routerLink="/draft">Drafts</a>
+                  <a *ngIf="userDetails?.role==='CVA' || userDetails?.role==='CVM'"  class="all-visits-menu" routerLinkActive="is-active" routerLink="/allVisits">All Visits</a>
+                  <a *ngIf="userDetails?.role==='Employee'"  class="all-visits-menu" routerLinkActive="is-active" routerLink="/allVisits">My Visits</a>
+                  <a *ngIf="userDetails?.role==='CVM' || userDetails?.role==='CVA'"class="report-menu" routerLinkActive="is-active" routerLink="/reports-analytics">Reports & Analytics</a>
+                  <a *ngIf="userDetails?.role=== 'CVA'"   class="admin-menu"  routerLinkActive="is-active" routerLink="/admin-management">Admin Management</a> -->
+                  <a class="dropdown-item logout-link" (click)="open(logoutMdl)">Logout</a>
+                </nav>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ng-template #logoutMdl let-modal>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <h5>Do you want to logout? please confirm</h5>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="modal.close('Save click')">cancel</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="logout()">confirm</button>
+        </div>
+      </ng-template>
+    </header>
+  </div>
+<!-- </body> -->
+

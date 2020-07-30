@@ -1,0 +1,16 @@
+<div class="fact-class" >
+  <div class="fact-heading">
+    <h6>Fact Sheet(s)</h6>
+  </div>
+  <div class="fact-content">
+    <!-- <perfect-scrollbar>
+    </perfect-scrollbar> -->
+    <!-- <pre>
+    {{factsheetsArray | json}}</pre> -->
+    <div class="city-names" *ngFor="let item of factsheetsArray; let i = index">
+      <div *ngIf="item.factSheetLink !== null"><a class="city-name" [href]="item.factSheetLink !== null ? item.factSheetLink : 'javascript;'">{{item?.location}}</a></div>
+
+    </div>
+
+  </div>
+</div>

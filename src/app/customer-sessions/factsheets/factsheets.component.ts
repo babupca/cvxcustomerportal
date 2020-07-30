@@ -1,0 +1,29 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { FactsheetsService } from 'src/app/services/factsheets.service'
+
+
+@Component({
+  selector: 'app-factsheets',
+  templateUrl: './factsheets.component.html',
+  styleUrls: ['./factsheets.component.css']
+})
+
+export class FactsheetsComponent implements OnInit {
+  constructor(private factSheetsIns: FactsheetsService) { }
+  @Input() visitId: any;
+  factsheetsArray: any;
+
+  ngOnInit() {
+    // this.factsheets();
+  }
+  ngOnChanges(){
+    this.factsheets();
+  }
+  factsheets() {
+    if(this.visitId){
+    this.factSheetsIns.getFactsheets(this.visitId).subscribe((data) => {
+      this.factsheetsArray = data;
+    });
+  }
+  }
+}

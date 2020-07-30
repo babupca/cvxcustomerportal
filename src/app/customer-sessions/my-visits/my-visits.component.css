@@ -1,0 +1,58 @@
+.myvisit-heading {
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    margin-bottom: 0.8rem;
+}
+
+.myvisit-content {
+    border: 1px solid #D9D9D9;
+    opacity: 1;
+    height: 6.5rem;
+}
+
+.visit-dates button {
+    margin: 0.2rem 0.5rem 0rem 0.6rem;
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.65rem;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #00C9FF;
+    height: 15px;
+    padding: 0px;
+    cursor: pointer;
+    flex-direction: column;
+    background: none;
+    box-shadow: 1 0 0 42.2rem rgb(255, 255, 255);
+}
+
+.visit-dates div :focus {
+    padding-top: 0.2rem;
+}
+
+.perfect-scroll-ref {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+@media (max-width: 576px) {
+    .myvisit-class {
+        margin-bottom: 4rem !important;
+    }
+    .myvisit-content {
+        border: 1px solid #D9D9D9;
+        opacity: 1;
+        height: 3.5rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .myvisit-class {
+        margin-bottom: 8rem;
+    }
+    .myvisit-content {
+        border: 1px solid #D9D9D9;
+        opacity: 1;
+        height: 6.5rem;
+    }
+}

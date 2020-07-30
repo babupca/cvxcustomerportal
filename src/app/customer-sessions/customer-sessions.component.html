@@ -1,0 +1,48 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+  <p class="loading">Loading Please wait...</p>
+</ngx-spinner>
+<div class="customer-sessions">
+  <!-- INSERT BANNER HERE :: Start -->
+  <app-customer-banner></app-customer-banner>
+  <!-- INSERT BANNER HERE :: Ends -->
+
+  <!-- Session Body Container Starts Here -->
+  <div class="row session-body-container">
+    <div class="bdr-right col-lg-2 col-sm-2 col-md-12 pr-0 pl-0 ">
+
+      <div class="right-margin">
+        <app-days-count [visitId]= "visitId"></app-days-count>
+        <app-factsheets [visitId]= "visitId"></app-factsheets>
+        <app-my-visits  (parentcustomer)="reloadVisitDetails($event)"></app-my-visits>
+      </div>
+    </div>
+    <div class="mobile-sessions col-lg-7 col-sm-12 col-md-8">
+      <div>
+        <div class="mobile-dayscount">
+          <app-days-count [visitId]="visitId"></app-days-count>
+        </div>
+        <div class="session-comp">
+        <app-sessions #sessionCmpt [visitId]= "visitId"  ></app-sessions>
+      </div>
+      </div>
+    </div>
+
+    <div class="bdr-left col-lg-3 col-sm-3 col-md-4">
+      <div>
+        <div class="tablet-rightdays">
+          <app-days-count [visitId]="visitId"></app-days-count>
+        </div>
+        <app-visit-poc></app-visit-poc>
+
+        <app-visit-info [visitId]="visitId"></app-visit-info>
+        <app-key-leaders [visitId]="visitId"></app-key-leaders>
+        <div class="tablet-right-mobile">
+          <app-factsheets [visitId]="visitId"></app-factsheets>
+          <app-my-visits (parentcustomer)="reloadVisitDetails($event)"></app-my-visits>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Body Container Ends Here-->
+</div>

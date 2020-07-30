@@ -1,0 +1,45 @@
+<div class="main-container">
+  <h6>Visit Point Of Contact(s)</h6>
+  <div class="poc-container perfect-scroll-ref ">
+    <perfect-scrollbar>
+    <div class="poc-details display-flex">
+      <ul>
+        <li class="poc-list" *ngFor="let item of managers; let i=index">
+          <span class="visit-pocs" triggers="manual" container="body" [ngbPopover]="popContent"
+          [autoClose]="'outside'" #p1="ngbPopover" placement="auto" popoverClass="customWidth"
+          (click)="showUserDetails(p1, item)"> {{item.displayName | titlecase}}
+          </span>
+        </li>
+        <!-- <li class="poc-list">
+          <span class="visit-pocs"> Babu Arumugam
+          </span>
+        </li>
+        <li class="poc-list">
+          <span class="visit-pocs"> Ankam Ankam Lakshmipathi Nirmala
+          </span>
+        </li> -->
+      </ul>
+    </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+
+<ng-template #popContent let-managerdetails>
+  <div class="popoverdetails">
+
+    <div>
+      <img class="popImg" src="/assets/images/Usericonpopover.svg" />
+      <a class="popoverusername">{{managerDetails?.name  | titlecase}}</a>
+    </div>
+
+    <div>
+      <img class="popImg" src="/assets/images/phoneicon.svg" />
+      <a class="popovermobileno">{{managerDetails?.phone}}</a>
+    </div>
+
+    <div>
+      <img class="popImg" src="/assets/images/Emailicon.svg" />
+      <a class="popoveremail">{{managerDetails?.emailId}}</a>
+    </div>
+  </div>
+</ng-template>

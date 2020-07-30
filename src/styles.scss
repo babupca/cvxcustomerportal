@@ -1,0 +1,149 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+    font-family: 'dxc-Regular';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Regular.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/GT-Walsheim-Pro-Regular.ttf') format('truetype');
+
+}
+
+@font-face {
+    font-family: 'dxc-Bold';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Bold.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/GT-Walsheim-Pro-Bold.ttf') format('truetype');
+
+}
+
+@font-face {
+    font-family: 'dxc-Light';
+    src: url('./assets/fonts/GT-Walsheim-Pro-Light.eot?#iefix') format('embedded-opentype'),
+          url('./assets/fonts/GT-Walsheim-Pro-Light.ttf') format('truetype');
+
+}
+
+
+// styles.scss
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+html, body {
+    height: 100%;
+    font-family: "dxc-Regular";
+}
+
+body {
+    font-family: "dxc-Regular";
+    font-size: 100%;
+    position: relative;
+}
+.sticky-menu {
+    position: fixed;
+    top: 56px;
+    width: 54.1%;
+    z-index: 6666;
+}
+
+.hamburger-icon {
+    display: none;
+}
+
+.bs-rating-star.ng-star-inserted{
+    font-size: 1.23rem;
+}
+
+.bs-rating-star.ng-star-inserted.active{
+    font-size: 1.23rem;
+    color: #00C9FF !important;
+}
+::placeholder, input::placeholder {
+    opacity: 0.5;
+}
+.textarea-ref :focus{
+    border-color:none;
+}
+*:focus {
+    outline: none !important;
+}
+.glyphicon.glyphicon-star, .glyphicon.glyphicon-star-empty {
+    font-size: 50px;
+}
+.bs-rating-star.active{
+    font-size: 16px;
+    color: #00C9FF;
+}
+.angular-editor-toolbar-set:nth-child(-n+4){
+    display: none !important;
+}
+
+
+.angular-editor-toolbar-set:nth-child(n+6){
+    display: none !important;
+}
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    display: block;
+    max-width: 300px;
+    width: 252px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    white-space: normal;
+    line-break: auto;
+    font-size: .875rem;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+}
+.customer-sessions{
+    margin-top: 60px;
+}
+.loading{
+    color: white;
+    padding-top: 50px;
+}
+
+@media (max-width: 576px) {
+    .sticky-menu {
+        position: fixed;
+        top: 46px;
+        // width: 100%;
+        z-index: 888;
+        width: 85.2%;
+
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .sticky-menu {
+        position: fixed;
+        top: 48px;
+        width: 76.4%;
+        z-index: 888;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .sticky-menu {
+        position: fixed;
+        top: 48px;
+        width: 62.45%;;
+        z-index: 888;
+    }
+    .session-filters {
+        width: 480px;
+    }
+}
+

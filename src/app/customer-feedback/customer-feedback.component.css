@@ -1,0 +1,232 @@
+.main-container {
+    margin: 0px 0px 30px 0px;
+}
+
+.feedback-container {
+    margin: 30px;
+}
+
+.wlecome {
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem;
+    margin-bottom: 10px;
+}
+
+.welcome-msg {
+    font-family: 'dxc-Regular', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem;
+}
+
+.main-query {
+    margin-bottom: 15px;
+    margin-left: 13px;
+}
+
+.query-one {
+    margin: 0 0 5px 15px;
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem
+}
+
+.query-one label {
+    margin-left: 10px;
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem;
+}
+
+.textarea-ref {
+    margin-left: 40px;
+    border-radius: 0;
+    border: 1px solid #D9D9D9;
+    font-size: 12px;
+    padding: 5px;
+    width: 95%;
+}
+
+.textarea-ref:focus {
+    outline: none;
+}
+
+.textarea-agenda {
+    outline: none;
+}
+
+.textarea-agenda {
+    border-radius: 0;
+    border: 1px solid #D9D9D9;
+    font-size: 12px;
+    padding: 5px;
+    width: 95%;
+}
+
+.textarea-ref :focus {
+    border-color: none;
+}
+
+.agenda-conatainer {
+    border: 1px solid #D9D9D9;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 0rem 0.5rem 0.75rem;
+    height: 100%;
+    margin: 0 0 10px 42px;
+    width: 95%;
+}
+
+.agenda-conatainer span {
+    font-family: 'dxc-Regular', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem;
+    margin-left: 5px;
+}
+
+.agenda {
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.865rem;
+    margin: 5px 20px 15px 20px;
+}
+
+.ratings {
+    margin: 5px 0px 15px 20px;
+    display: flex;
+    flex-direction: row;
+}
+.customer-feedback{
+    margin-top: 60px;
+}
+.feedback-emoji {
+    padding: 0 0.75rem 0 0;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 75px 90px 100px 60px;
+}
+
+.btn-agenda {
+    border-bottom: 1px solid #00C9FF;
+    font-size: 0.865rem;
+    max-height: 20px;
+    margin-top: 9px;
+    cursor: pointer;
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+}
+.btn-agenda:focus {
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.img-icon {
+
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+}
+/* .thankyou{ */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+    /* background-image: url(/assets/images/4-Grey.svg);
+    background-repeat: no-repeat;
+    background-size: 4rem; */
+    /* margin-left: 5rem; */
+    /* width: 20px; */
+/* } */
+
+.thankyou{
+    padding-left: 4rem;
+    height: 6rem;
+}
+
+.btn-right {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6rem
+}
+
+.btn-submit {
+    background: #FFED00;
+    color: black;
+    font-family: 'dxc-Bold' Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border-radius: 0;
+    text-decoration: none;
+    border: 0 none;
+    box-shadow: none;
+    padding: 5px 30px;
+    margin-left: 16px;
+}
+
+.cancelbtn1 {
+    border-bottom: 1px solid #00c9ff !important;
+    margin: 0 15px;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: #000000;
+    border: 0;
+    box-shadow: 0 0 0 0.2rem rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .delete-btn-id {
+    background: #FFED00;
+    font-weight: 600;
+    border-radius: 0;
+}
+
+.modal-footer-ref {
+    border: 0;
+}
+
+
+@media (max-width: 575.98px) {
+    .main-container {
+        margin: 0px;
+    }
+    .feedback-container {
+        margin: 20px 20px;
+    }
+    .query-one {
+        display: flex;
+        margin: 0px;
+    }
+    .textarea-ref {
+        margin: 0px;
+    }
+    .agenda-conatainer {
+        margin: 0 0 10px 0;
+    }
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        white-space: nowrap;
+        justify-content: center;
+    }
+    /* .btn-right{
+        margin-bottom: 4rem;
+    } */
+    .img-icon {
+        margin-bottom: 40px
+    }
+    .btn-submit {
+        margin-left: 30px;
+    }
+    .btn-agenda {
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .agenda-conatainer {
+        width: 90%;
+    }
+    .textarea-agenda {
+        width: 95%;
+    }
+    .textarea-ref {
+        width: 90%;
+    }
+}

@@ -1,0 +1,286 @@
+.headerbg {
+	background: #000000;
+    padding-right: 0px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+}
+.HeaderPanel {
+    margin: 0px auto;
+    min-height: 3.5rem;
+    color: #FFFFFF;
+}
+.header-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.header-column-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.sdphumberger {
+    width: 195px;
+    margin-left: -18px;
+}
+
+.sub-header-ref {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+.Headermenu {
+	display: flex;
+	flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.search {
+    font-size: 12px;
+}
+.search a,
+.drop-down-ref-id {
+    /* color: #FFFFFF; */
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    padding: .2rem 0;
+    margin: 0.15rem 0 0;
+    border-radius: 0;
+    min-width: 8rem;
+}
+.dropdown-item-value {
+    color: black !important;
+}
+.logout-btn-ref {
+    background-color: white;
+    border: none;
+    width: 100%;
+
+
+}
+
+.notification {
+    color: white;
+    text-decoration: none;
+    padding: 2px 8px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+.notification .badge {
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    padding: 5px 4px;
+    border-radius: 50%;
+    background-color: yellow;
+    color: black;
+}
+.shortname {
+    background: #fff;
+    border-radius: 50%;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 5px;
+    margin-right: 3px;
+}
+.search-icon-ref {
+   width: 20px;
+   height: 20px;
+}
+.padding-top-ref {
+    padding-top: 5px;
+    white-space: nowrap;
+}
+
+/* .dropdown-menu {
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin-left: 6rem;
+    display: flex !important;
+} */
+.Headermenu ul:first-child {
+    margin: 0;
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+.dropdown-item.logout-link{
+    color: black;
+    background: transparent url(/assets/images/logout-white.svg) no-repeat 16px center;
+    background-size: 17px;
+}
+.dropdown-item.logout-link:hover{
+    color: black;
+    background: transparent url(/assets/images/logout-black.svg) no-repeat 16px center;
+    background-size: 17px;
+}
+.btn.focus, .btn:focus {
+    box-shadow: 0 none;
+}
+.sdphumberger-mobile {
+    display: none;
+}
+.header-column {
+    width: 100%;
+}
+.hamburger-icon .nav-link {
+    padding: 0;
+    margin-top: 5px;
+}
+.nav-reference-id {
+    background-color: #000;
+    font-size: 0.85rem;
+    padding: 10px 0;
+}
+.dropdown-menu {
+    padding: 0;
+    width: auto;
+}
+.nav-reference-id a {
+    font-size: 0.85rem;
+    display: block;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+.nav-reference-id a:hover,.nav-reference-id a:active {
+    background-color: #FFDE00;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-reference-id a.home-menu {
+    background: transparent url(/assets/images/home.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.home-menu:hover,.nav-reference-id a.home-menu.is-active {
+    background: transparent url(/assets/images/home-black.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;color: black;
+}
+.nav-reference-id a.initiate-new-visit-menu {
+    background: transparent url(/assets/images/1-white.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.initiate-new-visit-menu:hover, .nav-reference-id a.initiate-new-visit-menu.is-active{
+    background: transparent url(/assets/images/initiate-new-visit.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;color: black;
+}
+
+.nav-reference-id a.drafts-menu {
+    background: transparent url(/assets/images/drafts-white.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.drafts-menu:hover,.nav-reference-id a.drafts-menu.is-active {
+    background: transparent url(/assets/images/draft-icon.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;color: black;
+}
+
+.nav-reference-id a.all-visits-menu {
+    background: transparent url(/assets/images/allvisit-white.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.all-visits-menu:hover,.nav-reference-id a.all-visits-menu.is-active {
+    background: transparent url(/assets/images/all-visits.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;color: black;
+}
+
+.nav-reference-id a.report-menu {
+    background: transparent url(/assets/images/reports-analytics-white.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.report-menu:hover,.nav-reference-id a.report-menu.is-active  {
+    background: transparent url(/assets/images/reports-analysis.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;color: black;
+}
+
+.nav-reference-id a.admin-menu {
+    background: transparent url(/assets/images/admin-management-white.svg) no-repeat 15px center;
+    background-size: 18px;
+}
+.nav-reference-id a.admin-menu:hover, .nav-reference-id a.admin-menu.is-active {
+    background: transparent url(/assets/images/pc-administrator.svg) no-repeat 15px center;
+    background-size: 18px;
+    background-color: #FFDE00;
+    color: black;
+}
+@media (max-width: 575.98px) {
+    .sub-header-ref {
+        /* padding-left: 0.5rem; */
+        display: flex;
+        align-items: center;
+    }
+    .Headermenu ul {
+        padding: 0;
+    }
+    .sdphumberger{
+        display:none;
+    }
+    .sdphumberger-mobile {
+        display: block;
+    }
+    .HeaderPanel {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .logout-container{
+        display: none;
+    }
+    .sdphumberger-mobile {
+        display: flex;
+        width: 2.4rem;
+        flex-direction: row;
+    }
+    .dropdown-menu {
+        padding: 0;
+        width: 11rem;
+    }
+    .fullname{
+        display: none;
+    }
+    .hamburger-icon{
+        display: block;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .dropdown-menu {
+        padding: 0;
+        width: 11rem;
+    }
+    .sdphumberger-mobile {
+        display: flex;
+        width: 3.1rem;
+        flex-direction: row;
+    }
+    .sub-header-ref {
+        padding-left: 10px;
+    }
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .hamburger-icon .nav-link {
+        padding: 0.5rem 0;
+    }
+    .logout-container{
+        display: none;
+    }
+}
+
