@@ -30,7 +30,7 @@
                   <span class="fullname">{{customerName.email}}</span>
                 </a>
                 <div ngbDropdownMenu aria-labelledby="dropdownMenuLink" class="logout-container">
-                  <a class="dropdown-item" (click)="logout(logoutMdl)">Logout</a>
+                  <a class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
               </div>
             </li>
@@ -50,7 +50,7 @@
                   <a *ngIf="userDetails?.role==='Employee'"  class="all-visits-menu" routerLinkActive="is-active" routerLink="/allVisits">My Visits</a>
                   <a *ngIf="userDetails?.role==='CVM' || userDetails?.role==='CVA'"class="report-menu" routerLinkActive="is-active" routerLink="/reports-analytics">Reports & Analytics</a>
                   <a *ngIf="userDetails?.role=== 'CVA'"   class="admin-menu"  routerLinkActive="is-active" routerLink="/admin-management">Admin Management</a> -->
-                  <a class="dropdown-item logout-link" (click)="open(logoutMdl)">Logout</a>
+                  <a class="dropdown-item logout-link" (click)="logout()">Logout</a>
                 </nav>
 
               </div>

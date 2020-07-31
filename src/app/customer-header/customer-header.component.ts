@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-header.component.css']
 })
 export class CustomerHeaderComponent implements OnInit {
-  customerName: object;
+  customerName: any;
   constructor(private route:Router) { }
 
   ngOnInit() {
