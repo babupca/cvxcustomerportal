@@ -75,7 +75,6 @@ export class SessionItemComponent implements OnInit {
       }
 
     });
-    debugger;
     this.newrepString = repString.substring(0, repString.length - 1);
     console.log(this.newrepString);
     this.session['representativeString'] = this.newrepString;
@@ -84,7 +83,7 @@ export class SessionItemComponent implements OnInit {
   ShowActionItems(actionPointText: string){
     this.actionPoints="";
     this.editorConfig.placeholder="Enter action items..."
-    this.ShowActionItem = true;  
+    this.ShowActionItem = true;
     this.ShowFeedback = false;
     if(actionPointText!==null){
     this.actionPoints = actionPointText;
