@@ -64,6 +64,7 @@ body {
 }
 *:focus {
     outline: none !important;
+
 }
 .glyphicon.glyphicon-star, .glyphicon.glyphicon-star-empty {
     font-size: 50px;
@@ -115,6 +116,9 @@ body {
 .loading{
     color: white;
     padding-top: 50px;
+}
+.angular-editor{
+    text-align: left;
 }
 
 @media (max-width: 576px) {
