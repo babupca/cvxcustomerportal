@@ -95,7 +95,6 @@ export class CustomerFeedbackComponent implements OnInit {
 
   onSubmit(f: NgForm, feedbackSubmitmodal) {
     console.log("f", f);
-    debugger;
     if (f.valid === true) {
       this.feedbackModel = [];
       this.capability = f.value.capability;
