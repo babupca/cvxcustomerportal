@@ -16,6 +16,7 @@ export class CustomerFeedbackComponent implements OnInit {
   @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm : NgForm;
   @ViewChild('feedbackSubmitValidmodal', { static: false }) feedbackSubmitValidmodal: ElementRef;
   customerDetails: any;
+  selectedVisitId: string;
   isRatingDisabled: boolean = false;
   submitted: boolean = false;
 
@@ -58,18 +59,23 @@ export class CustomerFeedbackComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private bsModalRef: BsModalService,
+    private route: ActivatedRoute,
     private feedbackService: FeedbackService
   ) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     console.log("customerDetails", this.customerDetails);
+    this.route.params.subscribe(params => {
+      console.log(params.id)
+      this.selectedVisitId = params.id
+    });
     this.getCustomerFeedback();
   }
 
 
   getCustomerFeedback() {
-    this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data) => {
+    this.feedbackService.getFeedback(this.selectedVisitId, this.customerDetails.nameid).subscribe((data) => {
       console.log("get feedback", data);
       if (data['feedBack'].length > 0) {
         this.capability = data['feedBack'][0];

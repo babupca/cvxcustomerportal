@@ -235,8 +235,10 @@ export class SessionsComponent implements OnInit {
       });
 
   }
-  onclickfeedback(){
-      this.router.navigateByUrl('feedback')
+  onclickfeedback(visitId){
+      console.log(visitId);
+      //this.router.navigateByUrl('feedback')
+      this.router.navigate(['/feedback/',visitId]);
   }
 
   // currentStage(){
