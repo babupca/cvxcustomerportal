@@ -19,7 +19,7 @@
       <!-- <pre>{{capability.value | json}}</pre> -->
       <div class="main-query" ngModelGroup="capability">
         <div class="query-one">1.
-          <label>What are the major capability areas where you think DXC needs improvement to serve you better?</label>
+          <label>What are the major capabilities or areas where you think DXC can add value or improve to serve you better?</label>
         </div>
         <input type="hidden" name="questionNumber" [ngModel]="capability.questionNumber" />
         <input type="hidden" name="rating" [ngModel]="capability.rating" value="null" />
@@ -38,7 +38,7 @@
                 <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
                   <img [src]="item.image">
                 </div> -->
-                <dxc-rating name="rating" [(ngModel)]="experience.agenda.rating" [disabled]="isRatingDisabled"></dxc-rating>
+                <dxc-rating name="rating" [(ngModel)]="experience.agenda.rating" [disabled]="isRatingDisabled" required></dxc-rating>
                 <input type="hidden" name="questionNumber" [ngModel]="experience.agenda.questionNumber" value="2a"/>
                 <!-- <input type="hidden" name="rating" [ngModel]="experience.agenda.rating" /> -->
 
@@ -58,7 +58,7 @@
                 <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
                   <img [src]="item.image">
                 </div> -->
-                <dxc-rating name="rating" [(ngModel)]="experience.arrangements.rating" [disabled]="isRatingDisabled"></dxc-rating>
+                <dxc-rating name="rating" [(ngModel)]="experience.arrangements.rating" [disabled]="isRatingDisabled" required></dxc-rating>
                 <input type="hidden" name="questionNumber" [ngModel]="experience.arrangements.questionNumber"
                   value="2b" />
                 <!-- <input type="hidden" name="rating" [ngModel]="experience.arrangements.rating" /> -->
@@ -78,7 +78,7 @@
                 <!-- <div class="feedback-emoji" *ngFor="let item of feedbackEmoji">
                   <img [src]="item.image">
                 </div> -->
-                <dxc-rating name="rating" [(ngModel)]="experience.quality.rating" [disabled]="isRatingDisabled"></dxc-rating>
+                <dxc-rating name="rating" [(ngModel)]="experience.quality.rating" [disabled]="isRatingDisabled" required></dxc-rating>
               </div>
               <input type="hidden" name="questionNumber" [ngModel]="experience.quality.questionNumber"  value="2c"/>
               <!-- <input type="hidden" name="rating" [ngModel]="experience.quality.rating" /> -->
