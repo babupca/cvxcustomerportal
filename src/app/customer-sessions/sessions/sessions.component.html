@@ -36,8 +36,7 @@
     <a type="generate pdf" (click)="downloadAgenda()" class="session-footer-cta">DOWNLOAD AGENDA
 
     </a>
-    <!--[disabled]="stage !=='Completed'|| stage !=='Closed'"-->
-    <button class="btn overallfeedback" (click)= "onclickfeedback(visitId)"  >OVERALL FEEDBACK
+    <button class="btn overallfeedback" (click)= "onclickfeedback()" [disabled]="stage !=='Completed'|| stage !=='Closed'" >OVERALL FEEDBACK
     </button>
   </div>
 
