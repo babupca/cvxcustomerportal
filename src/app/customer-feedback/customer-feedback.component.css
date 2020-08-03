@@ -78,6 +78,10 @@
     margin-left: 5px;
 }
 
+textarea:disabled, input:disabled{
+    background-color: #e9ecef;
+    opacity: 0.5;
+}
 .agenda {
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
     font-size: 0.865rem;
