@@ -100,6 +100,19 @@
 .session-footer-cta:hover {
     text-decoration: none;
 }
+.overallfeedback{
+    color: #000000;
+    border-bottom: 1px solid #00C9FF;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin: 0.675rem 0;
+    cursor: pointer;
+   padding: 0px;
+}
+.overallfeedback:focus{
+    text-decoration: none;
+
+}
 
 @media (max-width: 575.98px) {
     .session-filter{
@@ -131,8 +144,8 @@
     .bdr-right {
         margin-right: none;;
     };
-    
-    
+
+
 
 }
 /* @media (min-width: 320px) and (max-width: 575.98px){

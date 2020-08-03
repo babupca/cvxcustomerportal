@@ -30,6 +30,7 @@ export class SessionItemComponent implements OnInit {
   max = 5;
   ShowActionItem:boolean = false;
   ShowFeedback:boolean = false;
+  visitDetails:any;
   editorConfig: AngularEditorConfig = {
     editable: true,
       height: 'auto',
@@ -53,7 +54,7 @@ export class SessionItemComponent implements OnInit {
 
 
   constructor(private sessionService: CustomerSessionsService,
-              private modalService: NgbModal,private dataService:DataserviceService,) { }
+              private modalService: NgbModal,public dataService:DataserviceService,) { }
 
   ngOnInit() {
     this.attachmentScrollConfig = {
@@ -64,6 +65,7 @@ export class SessionItemComponent implements OnInit {
     this.getStarCount();
     this.getActionPoint();
   }
+  newrepString:string ="";
   getString() {
     var repString = "";
     this.session.representatives.forEach((rep) => {
@@ -73,15 +75,15 @@ export class SessionItemComponent implements OnInit {
       }
 
     });
-    var newrepString = repString.substring(0, repString.length - 1);
-    console.log(newrepString);
-    this.session['representativeString'] = newrepString;
+    this.newrepString = repString.substring(0, repString.length - 1);
+    console.log(this.newrepString);
+    this.session['representativeString'] = this.newrepString;
 
   }
   ShowActionItems(actionPointText: string){
     this.actionPoints="";
     this.editorConfig.placeholder="Enter action items..."
-    this.ShowActionItem = true;  
+    this.ShowActionItem = true;
     this.ShowFeedback = false;
     if(actionPointText!==null){
     this.actionPoints = actionPointText;

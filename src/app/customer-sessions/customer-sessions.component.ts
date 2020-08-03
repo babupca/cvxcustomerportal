@@ -13,6 +13,7 @@ export class CustomerSessionsComponent implements OnInit {
   customerDetails:any;
   visitId:string;
   visitInfo: any;
+  stage:string;
   visitIdAnddatesArray:any;
   constructor(private myVisitsvc:MyvisitService,
     private spinner:NgxSpinnerService) { }
@@ -31,6 +32,7 @@ export class CustomerSessionsComponent implements OnInit {
 
       console.log(data[0].visitId);
       this.reloadVisitDetails(data[0].visitId);
+      this.reloadCurrentStage(data[0].currentStage);
       });
       // this.spinner.hide();
       console.log(this.visitIdAnddatesArray);
@@ -40,6 +42,10 @@ export class CustomerSessionsComponent implements OnInit {
   reloadVisitDetails(newvisitId){
     this.visitId = newvisitId;
     // this.reloadSessioncomponent();
+  }
+  reloadCurrentStage(currentStage){
+    console.log(currentStage);
+    this.stage = currentStage;
   }
 
 

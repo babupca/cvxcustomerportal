@@ -12,15 +12,16 @@
 
   <div class="session-item-details">
     <h6 class="topic">{{SessionNos}} - {{session?.title}}</h6>
-
+    <!-- <pre>{{session | json}}</pre> -->
+<!-- <pre>sxxvxcvxv{{session?.representativeString | json}}</pre> -->
     <h6 class="presenters" title="{{session.representativeString}}">
-      {{session.representativeString|truncatePipe:[50, '...']}}
+      {{session?.representativeString | truncatePipe : 50}}
 
     </h6>
   </div>
   <!-- Description -->
   <div class="session-item-description">
-    <div>
+    <div class="readmore">
       <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary"></p>
       <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
       <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
@@ -39,11 +40,11 @@
         </div>
       </div>
     </div>
-    <div class="rating"
+    <div class="btn rating"
       [ngClass]="{'upcomingOpacity':session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'}">
 
       <div>
-        <button class="actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"> </button>
+        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" [disabled]="session?.sessionState ==='Upcoming'"> </button>
         <div *ngIf="ShowActionItem" class="custom-popover action-container-popup">
           <div class="row">
             <div class="col-12 pr-1">
@@ -71,7 +72,7 @@
 
       </div>
 
-      <button class="feedback-icon"
+      <button class="btn feedback-icon"
         [ngClass]="{'added':session?.ratingAndFeedBack?.feedback !== null && session?.ratingAndFeedBack?.feedback !== ''}"
         [disabled]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
         (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button><span class="ratings">Ratings</span>

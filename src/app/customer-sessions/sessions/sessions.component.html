@@ -1,34 +1,33 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
   <p class="loading">Loading Please wait...</p>
 </ngx-spinner>
-<div >
+<div>
   <div class="session-filter" id="session-filter" [stickyMenu] elementId="session-filter">
-  <section class="session-filters">
-    <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
-    <div class="session-filter-container">
-      <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
-        <option *ngFor="let session of visitInfo" [ngValue] = "session.location">{{session.location}}</option>
-      </select>
-      <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
-        <option *ngFor="let dates of visitDates" [ngValue] = "dates.dateValue">{{dates.dateValue}}</option>
-      </select>
-    </div>
-  </section>
-</div>
+    <section class="session-filters">
+      <h2 class="upcoming-session">{{sessions?.upcomingSessionCount}} UPCOMING SESSIONS</h2>
+      <div class="session-filter-container">
+        <select [(ngModel)]="visitCity" (ngModelChange)="cityChanged($event)">
+          <option *ngFor="let session of visitInfo" [ngValue]="session.location">{{session.location}}</option>
+        </select>
+        <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
+          <option *ngFor="let dates of visitDates" [ngValue]="dates.dateValue">{{dates.dateValue}}</option>
+        </select>
+      </div>
+    </section>
+  </div>
 
   <!-- Section container -->
   <div class="sessioncardscontainer" *ngIf="sessiondata && sessiondata.length > 0">
     <!-- <perfect-scrollbar style="max-height: 30rem; margin-top: 2px;"> -->
-      <section class="section-list-container">
+    <section class="section-list-container">
 
-        <div *ngFor="let session of sessiondata; let i=index;">
-          <app-session-item  (reloadSessionListData)="reloadForm()"
-          [session]="session" [visitId]="visitId" [sessionID]="session.id" [SessionNos]="i+1"
-          [sessionState]="sessionState">
-          </app-session-item>
-        </div>
+      <div *ngFor="let session of sessiondata; let i=index;">
+        <app-session-item (reloadSessionListData)="reloadForm()" [session]="session" [visitId]="visitId"
+          [sessionID]="session.id" [SessionNos]="i+1" [sessionState]="sessionState">
+        </app-session-item>
+      </div>
 
-      </section>
+    </section>
 
     <!-- </perfect-scrollbar> -->
   </div>
@@ -37,11 +36,8 @@
     <a type="generate pdf" (click)="downloadAgenda()" class="session-footer-cta">DOWNLOAD AGENDA
 
     </a>
-
-    <a href="javascript:;" class="session-footer-cta" routerLink="/feedback">OVERALL FEEDBACK
-
-    </a>
-
+    <button class="btn overallfeedback" (click)= "onclickfeedback()" [disabled]="stage !=='Closed'" >OVERALL FEEDBACK
+    </button>
   </div>
 
 
