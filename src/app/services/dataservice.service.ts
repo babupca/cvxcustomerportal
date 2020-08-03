@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-
+import { Subject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataserviceService {
-
+  private subject = new Subject<any>();
+  visitId: string;
   constructor() { }
   convertHtmltoText(html) {
     if (html !== null) {
@@ -20,4 +21,17 @@ export class DataserviceService {
     }
     return html
   }
+
+  setVisitId(Id: string){
+    this.visitId = Id;
+  }
+
+  clearVisitId() {
+      this.subject.next();
+  }
+
+  getVisitId(){
+    return this.visitId
+  }
+
 }

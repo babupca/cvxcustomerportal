@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
+import { DataserviceService } from '../services/dataservice.service';
 
 @Component({
   selector: 'app-customer-feedback',
@@ -60,7 +61,8 @@ export class CustomerFeedbackComponent implements OnInit {
     private router: Router,
     private bsModalRef: BsModalService,
     private route: ActivatedRoute,
-    private feedbackService: FeedbackService
+    private feedbackService: FeedbackService,
+    private dataService: DataserviceService
   ) { }
 
   ngOnInit() {
@@ -131,4 +133,11 @@ export class CustomerFeedbackComponent implements OnInit {
 
   }
 
+  /**
+   * Takes back to Agenda Screen
+   */
+  backtosession(){    
+    this.dataService.setVisitId(this.selectedVisitId);
+    this.router.navigate(['/customerSession']);
+  }
 }
