@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CustomerSessionsService } from 'src/app/services/customer-sessions.service';
 import { HttpHeaders } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sessions',
@@ -31,10 +32,12 @@ export class SessionsComponent implements OnInit {
   control: any;
   subscription: Subscription;
   saved = false;
+  visitCurrentStage:any;
   customerDetails: any;
   @Input() visitId:any;
+  @Input() stage:any;
 
-  constructor(private sessionService: CustomerSessionsService,
+  constructor(private sessionService: CustomerSessionsService,private router: Router,
     private spinner: NgxSpinnerService,
     public changeDetecref: ChangeDetectorRef) { }
 
@@ -62,7 +65,7 @@ export class SessionsComponent implements OnInit {
     this.visitDate = null;
     this.visitCity = null;
     if(this.visitId){
-     
+
     this.sessionService.getCities(this.visitId).subscribe(data => {
       console.log(data);
       this.visitInfo = data;
@@ -79,7 +82,7 @@ export class SessionsComponent implements OnInit {
         return this.visitCity === data.location
 
       });
-       
+
       var dateFlag = false;
       this.visitInfo.forEach(data => {
         if (dateFlag !== true) {
@@ -112,7 +115,7 @@ export class SessionsComponent implements OnInit {
       console.log(this.visitDate);
       // this.visitCity = this.visitInfo[0]
     });
-    
+
   }
   }
   dateFormat() {
@@ -210,7 +213,7 @@ export class SessionsComponent implements OnInit {
   }
 
   downloadAgenda() {
-    
+
     this.subscription = this.sessionService
       .getAgenda(this.visitId)
       .subscribe((res) => {
@@ -230,8 +233,15 @@ export class SessionsComponent implements OnInit {
         // if (this.saved) {
         // }
       });
-      
+
   }
+  onclickfeedback(){
+      this.router.navigateByUrl('feedback')
+  }
+
+  // currentStage(){
+  //   visitCurrentStage = this.stage;
+  // }
 
   ngOnDestroy() {
     // this.subscription.unsubscribe();

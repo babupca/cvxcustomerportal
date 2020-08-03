@@ -11,6 +11,7 @@ export class MyVisitsComponent implements OnInit {
   visitIdAnddatesArray: any;
   customerDetails: any;
   @Output() parentcustomer = new EventEmitter<object>();
+  @Output() customerStage = new EventEmitter<object>();
   constructor(private myVisitsvc: MyvisitService,
     private spinner:NgxSpinnerService) { }
 
@@ -34,8 +35,10 @@ export class MyVisitsComponent implements OnInit {
 
 
   }
-  sendVisitId(visitId) {
+  sendVisitId(visitId,currentStage) {
     this.parentcustomer.emit(visitId);
+    this.customerStage.emit(currentStage);
+    console.log(currentStage);
   }
 
 
