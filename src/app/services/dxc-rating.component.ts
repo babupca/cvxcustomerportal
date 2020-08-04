@@ -3,9 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from "underscore";
 @Component({
   selector: 'dxc-rating',
-  template: `  
-  <ul class="rating-container">
-    <li class="feedback-emoji" *ngFor="let item of feedbackEmoji; let i=index;">       
+  template: `
+  <ul class="rating-container" [ngClass]="{'ratingDisabled' : disabled }">
+    <li class="feedback-emoji" *ngFor="let item of feedbackEmoji; let i=index;">
         <span [class]="'icon-'+(i+1)" [ngClass]="{'active': item.active === true }" (click)="getCurrentStar(item)"></span>
     </li>
   </ul>
@@ -42,9 +42,12 @@ import * as _ from "underscore";
     background:transparent url('/assets/images/grey-4.svg') no-repeat left center;
     width: 41px; height: 41px;
     display:block;
-  }  
+  }
   .icon-4.active{
     background:transparent url('/assets/images/blue-4.svg') no-repeat left center;
+  }
+  .ratingDisabled{
+  opacity: 0.4;
   }
   `],
   providers: [
@@ -93,8 +96,8 @@ export class DxcRatingComponent {
     if (val !== undefined && this.val !== val && this.val != null) {
       this.val = val;
       this.onChange(val);
-      this.onTouch(val);      
-      let checkVal = _.find(this.feedbackEmoji,(obj, i)=>{ 
+      this.onTouch(val);
+      let checkVal = _.find(this.feedbackEmoji,(obj, i)=>{
         obj.active = false;
         if(obj.id === val){
           obj.active = !obj.active;
@@ -107,7 +110,7 @@ export class DxcRatingComponent {
     if(value !== null){
       console.log("write value", value);
       this.value = value;
-    }   
+    }
   }
 
   registerOnChange(fn: any) {

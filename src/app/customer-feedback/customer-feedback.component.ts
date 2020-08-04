@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
+import { DataserviceService } from '../services/dataservice.service';
 
 @Component({
   selector: 'app-customer-feedback',
@@ -16,6 +17,7 @@ export class CustomerFeedbackComponent implements OnInit {
   @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm : NgForm;
   @ViewChild('feedbackSubmitValidmodal', { static: false }) feedbackSubmitValidmodal: ElementRef;
   customerDetails: any;
+  selectedVisitId: string;
   isRatingDisabled: boolean = false;
   submitted: boolean = false;
 
@@ -58,18 +60,24 @@ export class CustomerFeedbackComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private bsModalRef: BsModalService,
-    private feedbackService: FeedbackService
+    private route: ActivatedRoute,
+    private feedbackService: FeedbackService,
+    private dataService: DataserviceService
   ) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     console.log("customerDetails", this.customerDetails);
+    this.route.params.subscribe(params => {
+      console.log(params.id)
+      this.selectedVisitId = params.id
+    });
     this.getCustomerFeedback();
   }
 
 
   getCustomerFeedback() {
-    this.feedbackService.getFeedback(this.customerDetails.OngoingVisitId, this.customerDetails.nameid).subscribe((data) => {
+    this.feedbackService.getFeedback(this.selectedVisitId, this.customerDetails.nameid).subscribe((data) => {
       console.log("get feedback", data);
       if (data['feedBack'].length > 0) {
         this.capability = data['feedBack'][0];
@@ -125,4 +133,11 @@ export class CustomerFeedbackComponent implements OnInit {
 
   }
 
+  /**
+   * Takes back to Agenda Screen
+   */
+  backtosession(){    
+    this.dataService.setVisitId(this.selectedVisitId);
+    this.router.navigate(['/customerSession']);
+  }
 }

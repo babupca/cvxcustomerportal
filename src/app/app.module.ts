@@ -5,7 +5,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { NgModule } from '@angular/core';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PopoverModule } from 'ngx-bootstrap/popover';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {
   PerfectScrollbarModule,
@@ -83,6 +83,7 @@ import { LoaderservicecircleService } from './shared/loader/loaderservicecircle.
     NoopAnimationsModule
   ],
   providers: [
+    NgxSpinnerService,
     LoaderservicecircleService,
     // {
     //   provide: PERFECT_SCROLLBAR_CONFIG,
@@ -94,7 +95,8 @@ import { LoaderservicecircleService } from './shared/loader/loaderservicecircle.
       multi: true
     },
     LoaderservicecircleService,
-    HttpClientModule],
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

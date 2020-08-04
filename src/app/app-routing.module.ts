@@ -28,7 +28,7 @@ const routes: Routes = [
         path: 'customerSession', component: CustomerSessionsComponent
       },   
       {
-        path: 'feedback', component: CustomerFeedbackComponent
+        path: 'feedback/:id', component: CustomerFeedbackComponent
       },
       { path: '**', component: PageNotFoundComponent }
     ]

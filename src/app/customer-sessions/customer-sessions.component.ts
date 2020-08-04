@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, SimpleChanges } from '@angular/cor
 import { SessionsComponent} from 'src/app/customer-sessions/sessions/sessions.component';
 import { MyvisitService} from 'src/app/services/myvisit.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import { DataserviceService } from '../services/dataservice.service';
 @Component({
   selector: 'app-customer-sessions',
   templateUrl: './customer-sessions.component.html',
@@ -15,8 +15,12 @@ export class CustomerSessionsComponent implements OnInit {
   visitInfo: any;
   stage:string;
   visitIdAnddatesArray:any;
-  constructor(private myVisitsvc:MyvisitService,
-    private spinner:NgxSpinnerService) { }
+  getVisitId: string;
+  getCurrentStage: string;
+  constructor(
+    private myVisitsvc:MyvisitService,
+    private spinner:NgxSpinnerService,
+    public dataService: DataserviceService) { }
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.loadFirstVisit();
@@ -26,17 +30,22 @@ export class CustomerSessionsComponent implements OnInit {
 
 
 
-  loadFirstVisit(){
+  loadFirstVisit() {
     // this.spinner.show();
-    this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data)=>{
-
-      console.log(data[0].visitId);
-      this.reloadVisitDetails(data[0].visitId);
-      this.reloadCurrentStage(data[0].currentStage);
-      });
-      // this.spinner.hide();
-      console.log(this.visitIdAnddatesArray);
-
+  
+    this.getVisitId = this.dataService.getVisitId();
+   
+    this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {   
+  
+        if(this.getVisitId){       
+          this.reloadVisitDetails(this.getVisitId);
+        }else{
+          this.reloadVisitDetails(data[0].visitId);          
+        }
+        this.reloadCurrentStage(data[0].currentStage);      
+    });
+    // this.spinner.hide();
+    console.log(this.visitIdAnddatesArray);
   }
 
   reloadVisitDetails(newvisitId){

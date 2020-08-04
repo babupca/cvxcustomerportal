@@ -78,6 +78,10 @@
     margin-left: 5px;
 }
 
+textarea:disabled, input:disabled{
+    background-color: #e9ecef;
+    opacity: 0.5;
+}
 .agenda {
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
     font-size: 0.865rem;
@@ -120,7 +124,6 @@
 }
 
 .img-icon {
-
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
 }
 /* .thankyou{ */
@@ -142,7 +145,7 @@
 .btn-right {
     display: flex;
     flex-direction: row;
-    margin-top: 6rem
+    margin-top: 6rem;
 }
 
 .btn-submit {
