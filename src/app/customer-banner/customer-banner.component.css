@@ -34,3 +34,11 @@
         margin: 15px;
     }
 }
+@media (max-width: 575.98px ){
+    .welcomeinfo-left-container .welcome-title{
+        font-size: 1rem;
+    }
+    .welcomeinfo-left-container img {
+        width: 65%;
+    }
+}
