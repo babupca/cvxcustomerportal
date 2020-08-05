@@ -28,6 +28,8 @@ export class SessionItemComponent implements OnInit {
   attachmentScrollConfig: object = {};
   starsCount = 0;
   max = 5;
+  sharable : any;
+  attachmentCount : any;
   ShowActionItem:boolean = false;
   ShowFeedback:boolean = false;
   visitDetails:any;
@@ -64,6 +66,7 @@ export class SessionItemComponent implements OnInit {
     this.getString();
     this.getStarCount();
     this.getActionPoint();
+    this.isAttachmentSharable();
   }
   newrepString:string ="";
   getString() {
@@ -79,6 +82,14 @@ export class SessionItemComponent implements OnInit {
     console.log(this.newrepString);
     this.session['representativeString'] = this.newrepString;
 
+  }
+  isAttachmentSharable(){
+    
+    this.sharable = this.session.attachments.filter(element => {
+      return element.isSharable === true;
+      
+    });
+    
   }
   ShowActionItems(actionPointText: string){
     this.actionPoints="";
