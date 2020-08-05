@@ -41,4 +41,10 @@
     .welcomeinfo-left-container img {
         width: 65%;
     }
+    .welcomeinfo-left-container{
+        padding: 20px 20px 0px 20px;
+    }
+    .welcomeinfo-left-container .welcome-message{
+        font-size: 0.65rem;
+    }
 }
