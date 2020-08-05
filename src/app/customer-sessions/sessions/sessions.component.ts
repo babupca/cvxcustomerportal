@@ -6,6 +6,7 @@ import { CustomerSessionsService } from 'src/app/services/customer-sessions.serv
 import { HttpHeaders } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { Subject, Observer, Observable, interval, TimeInterval} from 'rxjs'
 
 @Component({
   selector: 'app-sessions',
@@ -13,8 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sessions.component.css']
 })
 export class SessionsComponent implements OnInit {
-
-
+  
   visitInfo: any;
   visitDates: any;
   visitCity: any;
@@ -47,6 +47,21 @@ export class SessionsComponent implements OnInit {
     console.log(this.visitId);
    // this.getSessionState();
     this.todaydate = this.getTodayDate();
+
+    // let source = interval(1000);
+    //     source.subscribe(()=>{
+    //       this.getsessions();
+    //     },
+    //     (err)=>{
+
+    //     },
+    //     ()=>{
+    //       console.log('completed');
+    //     })
+    // setInterval(()=>{
+    //   this.getsessions();
+    // }, 10000)
+
   }
   reloadsession(){
     // console.log(this.visitId);
