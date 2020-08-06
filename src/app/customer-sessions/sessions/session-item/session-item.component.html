@@ -2,7 +2,7 @@
   <!-- Session header -->
   <div class="session-item-header">
     <h6 class="time-duration">{{session?.startDateTime |  date:'shortTime' }} to
-      {{session?.endDateTime|  date:'shortTime'}} - {{session.shortVenue}}</h6>
+      {{session?.endDateTime|  date:'shortTime'}} - {{session.office}} - {{session.shortVenue}}</h6>
     <h6 class="session-status upcoming"
       [ngClass]="{'cancelled': session?.sessionState === 'Cancelled', 'completed': session?.sessionState === 'Completed','inprogress': session?.sessionState === 'In Progress'}">
 
