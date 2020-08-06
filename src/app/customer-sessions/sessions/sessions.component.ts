@@ -155,6 +155,7 @@ export class SessionsComponent implements OnInit {
       this.stage = data[0].currentStage;
       this.getsessions();
       this.showRefreshAlert = true;
+      this.startTimer();
     });
   }
 
