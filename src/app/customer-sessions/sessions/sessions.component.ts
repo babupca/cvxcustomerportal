@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { Subject, Observer, Observable, interval, TimeInterval} from 'rxjs'
-
+import { MyvisitService } from 'src/app/services/myvisit.service';
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -32,12 +32,16 @@ export class SessionsComponent implements OnInit {
   control: any;
   subscription: Subscription;
   saved = false;
+  showRefreshAlert: boolean = true;
   visitCurrentStage:any;
   customerDetails: any;
   @Input() visitId:any;
   @Input() stage:any;
 
-  constructor(private sessionService: CustomerSessionsService,private router: Router,
+  constructor(
+    private sessionService: CustomerSessionsService, 
+    private router: Router,
+    private myVisitsvc: MyvisitService,
     private spinner: NgxSpinnerService,
     public changeDetecref: ChangeDetectorRef) { }
 
@@ -47,6 +51,10 @@ export class SessionsComponent implements OnInit {
     console.log(this.visitId);
    // this.getSessionState();
     this.todaydate = this.getTodayDate();
+
+    setTimeout(()=>{
+      this.showRefreshAlert = false;
+    },60000)
 
     // let source = interval(1000);
     //     source.subscribe(()=>{
@@ -135,6 +143,14 @@ export class SessionsComponent implements OnInit {
   }
   dateFormat() {
     return moment(this.visitDate).format('YYYY-MM-DD');
+  }
+
+  getRecentData(){   
+    this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
+      this.visitId = data[0].visitId;
+      this.stage = data[0].currentStage;
+      this.getsessions();
+    });
   }
 
   dataChanged(event) {

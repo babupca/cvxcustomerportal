@@ -111,7 +111,19 @@
 }
 .overallfeedback:focus{
     text-decoration: none;
-
+}
+.refresh-icon {
+    background: transparent url(/assets/images/refresh.svg) no-repeat left center;
+    background-size: 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 1rem;
+    cursor: pointer;
+}
+.alert-success {
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 575.98px) {
