@@ -7,6 +7,7 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { DataserviceService } from '../services/dataservice.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-customer-feedback',
@@ -14,8 +15,9 @@ import { DataserviceService } from '../services/dataservice.service';
   styleUrls: ['./customer-feedback.component.css']
 })
 export class CustomerFeedbackComponent implements OnInit {
-  @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm : NgForm;
+  @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm: NgForm;
   @ViewChild('feedbackSubmitValidmodal', { static: false }) feedbackSubmitValidmodal: ElementRef;
+  @ViewChild('feedbackSuccessmodal', { static: false }) feedbackSuccessmodal: ElementRef;
   customerDetails: any;
   selectedVisitId: string;
   isRatingDisabled: boolean = false;
@@ -95,7 +97,6 @@ export class CustomerFeedbackComponent implements OnInit {
   sendCustomerFeedback(feedBackPayLoad) {
     this.feedbackService.sendFeedback(feedBackPayLoad).subscribe((data) => {
       console.log("testing", data);
-      alert("success !..");
       this.isRatingDisabled = true;
       this.customerFeedbackForm.form.disable();
     });
@@ -125,6 +126,7 @@ export class CustomerFeedbackComponent implements OnInit {
             "feedBack": [...this.feedbackModel]
           }
           this.sendCustomerFeedback(feedBackPayLoad);
+          this.modalService.open(this.feedbackSuccessmodal);
         }
       });
     } else {
@@ -133,10 +135,12 @@ export class CustomerFeedbackComponent implements OnInit {
 
   }
 
+
+
   /**
    * Takes back to Agenda Screen
    */
-  backtosession(){    
+  backtosession() {
     this.dataService.setVisitId(this.selectedVisitId);
     this.router.navigate(['/customerSession']);
   }

@@ -33,10 +33,10 @@
     <div class="file-attachments">
       <div class="file-details">
 
-        <div class="attachments-container display-flex">
+        <div class="attachments-container ">
           <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
-            [autoClose]="'outside'" #p1="ngbPopover" placement="bottom-left" popoverClass="customWidth"
-            (click)="attachments(p1,session?.attachments)"> ({{session.attachments.length}} Attachments ) </a>
+            [autoClose]="'outside'" #p1="ngbPopover" placement="right-bottom" popoverClass="customWidth"
+            (click)="attachments(p1,sharable)"> ({{sharable.length}} Attachments ) </a>
         </div>
       </div>
     </div>
