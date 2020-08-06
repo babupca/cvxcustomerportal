@@ -20,6 +20,9 @@
     color: black;
     flex-direction: column;
 }
+.city-names a:hover{
+    text-decoration: none;
+}
 .perfect-scroll-ref{
     overflow: hidden;
     overflow-y: auto;
