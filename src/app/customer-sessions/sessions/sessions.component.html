@@ -13,11 +13,12 @@
         <select [(ngModel)]="visitDate" (ngModelChange)="dataChanged($event)">
           <option *ngFor="let dates of visitDates" [ngValue]="dates.dateValue">{{dates.dateValue}}</option>
         </select>
-        <span class="refresh-icon" (click)="getRecentData()"></span>
+
       </div>
     </section>
     <div class="alert alert-success" role="alert" [hidden]="showRefreshAlert">
-      Click on refresh button above to get latest session info!.. 
+      Click on refresh button above to get latest session info!..
+      <span class="refresh-icon" (click)="getRecentData()"></span>
     </div>
   </div>
 
