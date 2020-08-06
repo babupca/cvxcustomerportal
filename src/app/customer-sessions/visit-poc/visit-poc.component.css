@@ -14,6 +14,10 @@
     padding: 0 0 6px 20px;
 }
 
+.poc-details{
+    margin-bottom: 12px;
+}
+
 h6 {
     font-family: 'dxc-Bold',Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -53,7 +57,7 @@ ul{
     width:20px;
 }
 @media (max-width: 768px){
-    
+
 }
 
 
