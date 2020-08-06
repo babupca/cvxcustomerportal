@@ -52,9 +52,7 @@ export class SessionsComponent implements OnInit {
    // this.getSessionState();
     this.todaydate = this.getTodayDate();
 
-    setTimeout(()=>{
-      this.showRefreshAlert = false;
-    },60000)
+    this.startTimer();
 
     // let source = interval(1000);
     //     source.subscribe(()=>{
@@ -70,6 +68,12 @@ export class SessionsComponent implements OnInit {
     //   this.getsessions();
     // }, 10000)
 
+  }
+
+  startTimer(){
+    setTimeout(()=>{
+      this.showRefreshAlert = false;
+    },60000)
   }
   reloadsession(){
     // console.log(this.visitId);
@@ -150,6 +154,7 @@ export class SessionsComponent implements OnInit {
       this.visitId = data[0].visitId;
       this.stage = data[0].currentStage;
       this.getsessions();
+      this.showRefreshAlert = true;
     });
   }
 
@@ -240,7 +245,7 @@ export class SessionsComponent implements OnInit {
     console.log(this.visitCity);
     console.log(this.visitDate);
     this.getVisitCitiesAndDates();
-
+    this.startTimer();
   }
 
   downloadAgenda() {
