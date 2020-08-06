@@ -34,6 +34,9 @@ h6 {
     color:black;
     border-bottom: 1px solid black;
 }
+.bio-file:hover{
+    text-decoration: none;
+}
 
 @media (max-width: 575.98px){
     .main-container{
