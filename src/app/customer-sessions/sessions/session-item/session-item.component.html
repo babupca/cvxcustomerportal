@@ -44,7 +44,7 @@
       [ngClass]="{'upcomingOpacity':session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'}">
 
       <div>
-        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" [disabled]="session?.sessionState ==='Upcoming'"> </button>
+        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" > </button>
         <div *ngIf="ShowActionItem" class="custom-popover action-container-popup">
           <div class="row">
             <div class="col-12 pr-1">
