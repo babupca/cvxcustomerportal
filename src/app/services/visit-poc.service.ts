@@ -15,7 +15,8 @@ export class VisitPocService {
       'Ocp-Apim-Subscription-Key': environment.API_URL_KEY
     })
   }
-  assignedPOC(customerId){
-    return this.http.get(this.customerApi+'/api/customer/'+customerId+'/AssignedPOCs',this.httpOptions);
+  
+  assignedPOC(customerId,visitId){
+    return this.http.get(this.customerApi+'/api/customer/'+customerId+'/AssignedPOCsOfVisit/'+visitId,this.httpOptions);
   }
 }
