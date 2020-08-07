@@ -10,7 +10,7 @@ h6 {
 }
 
 .info-left {
-  width: 30%;
+  width: 40%;
 }
 .info-details {
   background-color: #e0e0e0;
@@ -34,7 +34,7 @@ h6 {
 }
 .bio-file {
   font-family: "dxc-Regular", Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   color: black;
   border-bottom: 1px solid black;
   /* float: right; */
