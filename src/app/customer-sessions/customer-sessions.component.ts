@@ -26,9 +26,9 @@ export class CustomerSessionsComponent implements OnInit {
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.loadFirstVisit();
-    setInterval(()=>{
-      this.loadFirstVisit();
-    }, 10000)
+    // setInterval(()=>{
+    //   this.loadFirstVisit();
+    // }, 10000)
   }
 
 

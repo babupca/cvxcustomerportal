@@ -18,17 +18,20 @@ h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 12px;
     /* padding: 0px 15px; */
 }
 
 .visit-city {
     font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
     font-size: 12px;
+    flex: 1 0 32%;
 }
 
 .visit-dates {
     font-family: 'dxc-Regular', Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
+    flex: 1 0 68%;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
