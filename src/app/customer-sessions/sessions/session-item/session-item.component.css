@@ -153,6 +153,9 @@
     border: 1px solid #ffed00;
     font-size: 13px;
   }
+  .modal-content {
+    z-index: 6666 !important;
+  }
 
   .messagediv {
     padding-top: 8px;
