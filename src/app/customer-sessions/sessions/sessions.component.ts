@@ -78,6 +78,7 @@ export class SessionsComponent implements OnInit {
   reloadsession(){
     // console.log(this.visitId);
     this.getVisitCitiesAndDates();
+    this.startTimer();
   }
   ngOnChanges(){
     this.reloadsession();
@@ -242,12 +243,7 @@ export class SessionsComponent implements OnInit {
     })
   }
 
-  reloadForm() {
-    console.log(this.visitCity);
-    console.log(this.visitDate);
-    this.getVisitCitiesAndDates();
-    this.startTimer();
-  }
+  
 
   downloadAgenda() {
 

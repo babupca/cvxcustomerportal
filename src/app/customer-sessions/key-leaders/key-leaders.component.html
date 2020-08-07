@@ -1,18 +1,27 @@
 <div>
   <h6>DXC Key Leaders</h6>
   <div class="main-container perfect-scroll-ref">
-    <perfect-scrollbar style="padding: 0 13px 0 0;">
-      <div class="info-details" *ngFor="let item of keyLeadersArray; let i = index">
+    <perfect-scrollbar style="padding: 0 0 0 0;">
+      <div
+        class="info-details"
+        *ngFor="let item of keyLeadersArray; let i = index"
+      >
         <div class="info-left">
-          <div class="name">{{item?.name}}</div>
-          <div class="role">{{item?.role}}</div>
+          <div class="name">{{ item?.name }}</div>
+          <div class="role">{{ item?.role }}</div>
         </div>
-        <div class="info-right">
-          <a class="bio-file"
-            [href]="item.bioFileUrl !== null ? item.bioFileUrl : 'javascript;'">{{item?.bioFileName}}</a>
+        <div class="info-right text-right">
+          <div style="display: flow-root;">
+            <a
+              class="bio-file"
+              [href]="
+                item.bioFileUrl !== null ? item.bioFileUrl : 'javascript;'
+              "
+              >{{ item?.bioFileName }}</a
+            >
+          </div>
         </div>
       </div>
     </perfect-scrollbar>
   </div>
-
 </div>
