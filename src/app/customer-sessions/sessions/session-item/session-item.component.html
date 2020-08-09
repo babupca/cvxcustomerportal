@@ -44,7 +44,7 @@
       [ngClass]="{'upcomingOpacity':session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'}">
 
       <div>
-        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" [disabled]="session?.sessionState ==='Upcoming'"> </button>
+        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" > </button>
         <div *ngIf="ShowActionItem" class="custom-popover action-container-popup">
           <div class="row">
             <div class="col-12 pr-1">
@@ -64,7 +64,7 @@
             <div class="col-12 pr-3">
               <div class="senddiv">
                 <button [disabled]="dataService.convertHtmltoText(actionPoints)?.length==0"
-                  (click)="sendActionPoints()">SEND</button></div>
+                  (click)="sendActionPoints()">SAVE</button></div>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
           <div class="col-12 pr-3">
             <div class="senddiv">
               <button [disabled]="dataService.convertHtmltoText(FeedbackMessage)?.length==0 || FeedbackMessage === null"
-                (click)="sendFeedback()">SEND</button>
+                (click)="sendFeedback()">SAVE</button>
             </div>
           </div>
         </div>

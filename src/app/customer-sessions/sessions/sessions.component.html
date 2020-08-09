@@ -28,7 +28,7 @@
     <section class="section-list-container">
 
       <div *ngFor="let session of sessiondata; let i=index;">
-        <app-session-item (reloadSessionListData)="reloadForm()" [session]="session" [visitId]="visitId"
+        <app-session-item (reloadSessionListData)="getsessions()" [session]="session" [visitId]="visitId"
           [sessionID]="session.id" [SessionNos]="i+1" [sessionState]="sessionState">
         </app-session-item>
       </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 import { VisitPocService} from 'src/app/services/visit-poc.service'
 
@@ -10,7 +10,7 @@ import { VisitPocService} from 'src/app/services/visit-poc.service'
 })
 export class VisitPocComponent implements OnInit {
 
-
+  @Input() visitId:any;
   customerDetails: any;
   managers:any;
   managerDetails:any;
@@ -27,10 +27,12 @@ export class VisitPocComponent implements OnInit {
   }
 
   visitManagers(){
-    this.visitPoc.assignedPOC(this.customerDetails.nameid).subscribe((data)=>{
+    if(this.visitId){
+    this.visitPoc.assignedPOC(this.customerDetails.nameid,this.visitId).subscribe((data)=>{
       console.log(data);
       this.managers = data;
     });
+  }
   }
 
   showUserDetails(popover,obj ) {

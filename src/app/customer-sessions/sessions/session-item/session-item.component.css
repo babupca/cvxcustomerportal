@@ -15,6 +15,10 @@
     color: #7E7E7E;
     font-size: 0.765rem;
     margin: 0;
+
+}
+.time-duration{
+  width: 70%;
 }
 /* Session Status classes use :: .upcoming & .completed accordingly */
 .session-item-header .session-status.upcoming {
@@ -148,6 +152,9 @@
     font-weight: bold;
     border: 1px solid #ffed00;
     font-size: 13px;
+  }
+  .modal-content {
+    z-index: 6666 !important;
   }
 
   .messagediv {
