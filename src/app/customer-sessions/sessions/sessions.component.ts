@@ -37,6 +37,7 @@ export class SessionsComponent implements OnInit {
   customerDetails: any;
   @Input() visitId:any;
   @Input() stage:any;
+  @Input() status:string;
 
   constructor(
     private sessionService: CustomerSessionsService, 
@@ -48,11 +49,14 @@ export class SessionsComponent implements OnInit {
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     // this.getVisitCitiesAndDates();
+    debugger;
     console.log(this.visitId);
    // this.getSessionState();
     this.todaydate = this.getTodayDate();
-
-    this.startTimer();
+    if(this.visitId != undefined) {
+      this.getRecentData();
+      this.startTimer();
+    }
 
     // let source = interval(1000);
     //     source.subscribe(()=>{
@@ -71,16 +75,26 @@ export class SessionsComponent implements OnInit {
   }
 
   startTimer(){
-    setTimeout(()=>{
-      this.showRefreshAlert = false;
-    },60000)
+    this.showRefreshAlert = true;
+    if(this.status !== 'Cancelled' || this.stage !== 'Completed' ) {   
+      setTimeout(()=>{
+        this.showRefreshAlert = false;
+        this.getRecentData();
+      },900000);
+    }
   }
+
   reloadsession(){
     // console.log(this.visitId);
     this.getVisitCitiesAndDates();
   }
   ngOnChanges(){
-    this.reloadsession();
+ 
+    if(this.visitId != undefined) {
+      this.reloadsession();
+      this.getRecentData();
+      this.startTimer();
+    }
   }
   getTodayDate(){
     var today = moment();
@@ -150,12 +164,17 @@ export class SessionsComponent implements OnInit {
   }
 
   getRecentData(){   
-    this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
-      this.visitId = data[0].visitId;
-      this.stage = data[0].currentStage;
-      this.getsessions();
-      this.showRefreshAlert = true;
-      this.startTimer();
+    this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data:any) => {
+      let index = data.findIndex((obj, i) => {
+        return obj.visitId === this.visitId;
+      });
+      console.log(index);
+      if(index > -1){
+        this.visitId = data[index].visitId;
+        this.stage = data[index].currentStage;
+        this.status = data[index].currentStatus;
+        this.getsessions();
+      }
     });
   }
 
