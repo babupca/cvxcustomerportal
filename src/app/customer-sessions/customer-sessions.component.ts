@@ -16,6 +16,7 @@ export class CustomerSessionsComponent implements OnInit {
   visitId: string;
   visitInfo: any;
   stage: string;
+  status: string;
   visitIdAnddatesArray: any;
   getVisitId: string;
   getCurrentStage: string;
@@ -26,9 +27,6 @@ export class CustomerSessionsComponent implements OnInit {
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.loadFirstVisit();
-    // setInterval(()=>{
-    //   this.loadFirstVisit();
-    // }, 10000)
   }
 
 
@@ -39,23 +37,23 @@ export class CustomerSessionsComponent implements OnInit {
     this.getVisitId = this.dataService.getVisitId();
 
     this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
-      if (this.getVisitId) {
+      if (this.getVisitId && this.getVisitId !== undefined) {
         this.reloadVisitDetails(this.getVisitId);
       } else {
         this.reloadVisitDetails(data[0].visitId);
       }
-      this.reloadCurrentStage(data[0].currentStage);
+      this.reloadCurrentStage(data[0].currentStage, data[0].currentStatus);
     });
-    console.log(this.visitIdAnddatesArray);
   }
 
   reloadVisitDetails(newvisitId) {
     this.visitId = newvisitId;
     // this.reloadSessioncomponent();
   }
-  reloadCurrentStage(currentStage) {
+  reloadCurrentStage(currentStage, currentStatus) {
     console.log(currentStage);
     this.stage = currentStage;
+    this.status = currentStatus;
   }
 
   ngOnDestroy() {

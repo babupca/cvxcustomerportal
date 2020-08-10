@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { Subject, Observer, Observable, interval, TimeInterval} from 'rxjs'
 import { MyvisitService } from 'src/app/services/myvisit.service';
+import { DaysTogoService } from 'src/app/services/days-togo.service'
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -35,24 +36,34 @@ export class SessionsComponent implements OnInit {
   showRefreshAlert: boolean = true;
   visitCurrentStage:any;
   customerDetails: any;
+  numberOfDays:any;
+  visitHappeningDate:any;
+  daysToGO:any;
+  todaysdate:any;
   @Input() visitId:any;
   @Input() stage:any;
+  @Input() status:string;
 
   constructor(
     private sessionService: CustomerSessionsService, 
     private router: Router,
     private myVisitsvc: MyvisitService,
     private spinner: NgxSpinnerService,
+    private daysRemaining: DaysTogoService,
     public changeDetecref: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     // this.getVisitCitiesAndDates();
+    debugger;
     console.log(this.visitId);
+    this.getRemainingDays();
    // this.getSessionState();
     this.todaydate = this.getTodayDate();
-
-    this.startTimer();
+    if(this.visitId != undefined) {
+      this.getRecentData();
+      this.startTimer();
+    }
 
     // let source = interval(1000);
     //     source.subscribe(()=>{
@@ -71,17 +82,28 @@ export class SessionsComponent implements OnInit {
   }
 
   startTimer(){
-    setTimeout(()=>{
-      this.showRefreshAlert = false;
-    },60000)
+    this.showRefreshAlert = true;
+    if(this.stage === "In Flight" && (this.status !== 'Cancelled' || this.stage !== 'Completed' || this.stage !== 'Closed' || this.stage !== 'Finalized')) {   
+      this.getRecentData();
+      setTimeout(()=>{        // this.getRemainingDays();
+        this.showRefreshAlert = false;      
+      },30000);     
+    }
   }
+
   reloadsession(){
     // console.log(this.visitId);
+    this.getRemainingDays();
     this.getVisitCitiesAndDates();
     this.startTimer();
   }
   ngOnChanges(){
-    this.reloadsession();
+ 
+    if(this.visitId != undefined) {
+      this.reloadsession();
+      this.getRecentData();
+      this.startTimer();
+    }
   }
   getTodayDate(){
     var today = moment();
@@ -151,12 +173,17 @@ export class SessionsComponent implements OnInit {
   }
 
   getRecentData(){   
-    this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
-      this.visitId = data[0].visitId;
-      this.stage = data[0].currentStage;
-      this.getsessions();
-      this.showRefreshAlert = true;
-      this.startTimer();
+    this.subscription = this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data:any) => {
+      let index = data.findIndex((obj, i) => {
+        return obj.visitId === this.visitId;
+      });
+      console.log(index);
+      if(index > -1){
+        this.visitId = data[index].visitId;
+        this.stage = data[index].currentStage;
+        this.status = data[index].currentStatus;
+        this.getsessions();
+      }
     });
   }
 
@@ -273,10 +300,20 @@ export class SessionsComponent implements OnInit {
       //this.router.navigateByUrl('feedback')
       this.router.navigate(['/feedback/',visitId]);
   }
+  gettodaysdate() {
+    var today = moment();
+    return this.todaysdate = moment(today).format('YYYY-MM-DD');
+  }
 
-  // currentStage(){
-  //   visitCurrentStage = this.stage;
-  // }
+  getRemainingDays() {
+    if(this.visitId){
+      this.daysRemaining.getDaysToGo(this.visitId).subscribe((data) => {
+        this.numberOfDays = data;
+        this.visitHappeningDate = moment(this.numberOfDays).add(5, 'hours').add(30, 'minutes');
+        this.daysToGO = this.visitHappeningDate.diff(this.todaysdate, 'days');
+      });
+    }
+  }
 
   ngOnDestroy() {
     // this.subscription.unsubscribe();

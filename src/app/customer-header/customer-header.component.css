@@ -259,40 +259,16 @@
     .hamburger-icon{
         display: block;
     }
+    .nav-reference-id a {
+        background-color: white;
+        color: black;
+    }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
-    /* .dropdown-menu {
-        padding: 0;
-        width: 11rem;
+    .nav-reference-id a {
+        background-color: white;
+        color: black;
     }
-    .sdphumberger-mobile {
-        display: flex;
-        width: 3.1rem;
-        flex-direction: row;
-    }
-    .sub-header-ref {
-        padding-left: 10px;
-    }
-    .logout-container{
-        display: none;
-    }
-    .sdphumberger-mobile {
-        display: flex;
-        width: 2.4rem;
-        flex-direction: row;
-    }
-    .dropdown-toggle::after {
-        display: none;
-    }
-    .hamburger-icon .nav-link {
-        padding: 0.5rem 0;
-    }
-    .logout-container{
-        display: none;
-    }
-    .sdphumberger-mobile {
-        display: block;
-    } */
     .sub-header-ref {
         /* padding-left: 0.5rem; */
         display: flex;
