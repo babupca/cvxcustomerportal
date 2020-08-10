@@ -42,17 +42,20 @@ export class CustomerSessionsComponent implements OnInit {
       } else {
         this.reloadVisitDetails(data[0].visitId);
       }
-      this.reloadCurrentStage(data[0].currentStage, data[0].currentStatus);
+      this.reloadCurrentStage(data[0].currentStage);
+      this.reloadCurrentStatus(data[0].currentStatus);
     });
   }
 
   reloadVisitDetails(newvisitId) {
     this.visitId = newvisitId;
-    // this.reloadSessioncomponent();
   }
-  reloadCurrentStage(currentStage, currentStatus) {
+  reloadCurrentStage(currentStage) {
     console.log(currentStage);
     this.stage = currentStage;
+  }
+  reloadCurrentStatus(currentStatus) {
+    console.log(currentStatus);
     this.status = currentStatus;
   }
 
