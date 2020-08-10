@@ -23,7 +23,6 @@ export class DaysCountComponent implements OnInit {
   gettodaysdate() {
     var today = moment();
     return this.todaysdate = moment(today).format('YYYY-MM-DD');
-
   }
   ngOnChanges(){
     this.getRemainingDays();
