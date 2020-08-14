@@ -17,7 +17,7 @@
               [href]="
                 item.bioFileUrl !== null ? item.bioFileUrl : 'javascript;'
               "
-              >{{ item?.bioFileName }}</a
+              >{{ (item?.bioFileName | slice:0:7)+'...' }}</a
             >
           </div>
         </div>

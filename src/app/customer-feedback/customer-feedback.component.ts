@@ -121,7 +121,7 @@ export class CustomerFeedbackComponent implements OnInit {
         }
         if (result === 'Yes') {
           let feedBackPayLoad = {
-            "visitId": this.customerDetails.OngoingVisitId,
+            "visitId": this.selectedVisitId,
             "customerId": this.customerDetails.nameid,
             "feedBack": [...this.feedbackModel]
           }
