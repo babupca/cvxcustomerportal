@@ -84,12 +84,12 @@ export class SessionItemComponent implements OnInit {
 
   }
   isAttachmentSharable(){
-    
+
     this.sharable = this.session.attachments.filter(element => {
       return element.isSharable === true;
-      
+
     });
-    
+
   }
   ShowActionItems(actionPointText: string){
     this.actionPoints="";
@@ -135,7 +135,7 @@ export class SessionItemComponent implements OnInit {
       }
     }
     else {
-      alert('norecords');
+      // alert('norecords');
     }
 
   }
