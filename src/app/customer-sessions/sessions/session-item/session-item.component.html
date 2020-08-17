@@ -21,7 +21,7 @@
   </div>
   <!-- Description -->
   <div class="session-item-description">
-    <div class="readmore">
+    <div>
       <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary"></p>
       <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
       <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
