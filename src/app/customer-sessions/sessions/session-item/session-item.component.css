@@ -193,7 +193,9 @@
 .action-container-popup:last-child {
   margin-bottom: 3rem;
 }
-
+.header-ref {
+  border-bottom: white;
+}
 .action-container-popup {
   height: auto;
   width: 20rem;
