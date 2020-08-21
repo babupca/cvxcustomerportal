@@ -1,0 +1,15 @@
+<div class="main-container">
+  <h6>Visit Information</h6>
+  <div class="visit-container perfect-scroll-ref">
+    <perfect-scrollbar style="padding: 0 13px 0 0;">
+      <div class="info-list" *ngFor="let visit of visitInfo">
+        <div class="visit-city">
+          {{ visit.location }}
+        </div>
+        <div class="visit-dates">
+          {{ visit.startDate | date: 'dd-MMM-yyyy' }} to {{ visit.endDate | date: 'dd-MMM-yyyy' }}
+        </div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

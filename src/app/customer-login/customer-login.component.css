@@ -1,0 +1,194 @@
+.login-container-outersapce {
+    height: 100%;
+    max-width: 75%;
+}
+
+.login-container {
+    background: #000;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin: 0 -15px;
+    height: 100%;
+    border: 1px solid #D1D1D1;
+}
+
+.login-container .left-container {
+    background-color: black;
+    flex: 1 0 10%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.login-container .right-container {
+    background-color: white;
+    flex: 1 0 80%;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.left-container img {
+    width: 100%;
+}
+
+.one-dxc-logo {
+    margin: 0 0 1rem 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer-name, .application {
+    font-family: 'dxc-bold', Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.signin-tagline {
+    font-size: 1.2rem;
+    font-family: 'dxc-Regular', Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: 400;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container ul {
+    margin: 20px 0 0 0;
+    width: 400px;
+    padding: 0;
+}
+
+.form-container ul li {
+    padding: 0;
+}
+
+.form-container ul li input[type=text], .form-container ul li input[type=password] {
+    /* border: 1px solid #D1D1D1; */
+    color: black;
+    padding: 15px 15px;
+    width: 100%;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    outline: none;
+    height: auto;
+}
+
+.btn-link {
+    font-family: 'dxc-regular', Arial, Helvetica, sans-serif;
+    padding: 0;
+    font-size: 0.865rem;
+    font-weight: 600;
+    color: #000;
+    border-bottom: 1px solid rgb(87, 204, 240);
+    border-radius: 0px;
+    text-decoration: none;
+    outline: none;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button-container .btn-link:first-child {
+    margin-right: 20px;
+}
+
+.btn-dark {
+    margin-top: 1.5rem;
+    border-radius: 40px;
+    width: 160px;
+    padding: 0.765rem;
+    font-size: 0.765rem;
+    padding: 0.5rem;
+}
+
+.errormsg {
+    color: red;
+    list-style-type: none;
+    margin-top: 0px;
+}
+@media (min-width: 768px) and (max-width: 991.98px){
+    .left-container img{
+        width: 69px;
+    }
+    .application, .customer-name{
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .login-container-outersapce {
+        height: 100%;
+        margin: 0px;
+        width: 100%;
+    }
+    .login-container .left-container {
+        display: flex;
+        flex: 1 0 25%;
+        padding: 15px;
+    }
+    .login-container .right-container {
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+    .customer-name {
+        font-size: 1rem;
+    }
+    .signin-tagline {
+        font-size: 0.8rem;
+        margin-top: 15px;
+    }
+    .form-container ul {
+        margin: 15px 0 0 0;
+        width: 194px;
+        padding: 0;
+    }
+    .form-container ul li {
+        padding: 0;
+    }
+    .form-container ul li input[type=text], .form-container ul li input[type=password] {
+        /* border: 1px solid #D1D1D1; */
+        padding: 10px 10px;
+        width: 100%;
+        border-radius: 40px;
+        font-size: 0.765rem;
+    }
+    .btn-link {
+        font-size: 0.665rem;
+        border-bottom: 1px solid rgb(0, 153, 255);
+        border-radius: 0px;
+        text-decoration: none;
+        outline: none;
+    }
+    .button-grp {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+    }
+    .button-container .btn-link:first-child {
+        margin-right: 8px;
+    }
+    .customer-name, .application {
+        font-size: 0.8rem;
+    }
+    .btn-dark{
+        margin-top: 3rem;
+    }
+}

@@ -1,0 +1,47 @@
+.main-container {
+    margin: 0 0 2rem;
+}
+
+.visit-container {
+    border: 1px solid #D9D9D9;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 0rem 0.5rem 0.75rem;
+    height: 5rem;
+}
+
+h6 {
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.info-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    /* padding: 0px 15px; */
+}
+
+.visit-city {
+    font-family: 'dxc-Bold', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    flex: 1 0 32%;
+}
+
+.visit-dates {
+    font-family: 'dxc-Regular', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    flex: 1 0 68%;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .visit-city, .visit-dates {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .visit-city, .visit-dates {
+        font-size: 12px;
+    }
+}
