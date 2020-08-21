@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-build": "ng build --configuration=test"
+    "test-build": "ng build --configuration=test",
+    "preprod-build": "ng build --configuration=preprod"
   },
   "private": true,
   "dependencies": {
