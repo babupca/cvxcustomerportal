@@ -12,7 +12,7 @@ export class KeyLeadersComponent implements OnInit {
   constructor(private keyleaders: KeyleadersService) { }
   @Input() visitId: any;
   keyLeadersArray: any;
-
+  sharebio: any ;
 
   ngOnInit() {
   this.keyLeaders();
@@ -26,7 +26,17 @@ export class KeyLeadersComponent implements OnInit {
     this.keyleaders.getdxcKeyLeaders(this.visitId).subscribe((data) => {
       console.log(data);
       this.keyLeadersArray = data;
+      let bioarray;
+      bioarray = this.keyLeadersArray.filter(element => {
+        return element.bioActive === true;
+        
+      });
+      this.sharebio=bioarray;
     });
+    
+    
+    console.log(this.sharebio);
   }
   }
+
 }
