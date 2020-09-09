@@ -1,1 +1,24 @@
 <router-outlet></router-outlet>
+<ng-template #sessionExpiredModal let-modal>
+  <div class="modal-body mt-3 ml-2">
+    <form>
+      {{ idleState }}
+    </form>
+  </div>
+  <div class="modal-footer modal-footer-ref">
+    <button
+      type="button"
+      class="btn btn-sm btn-ref-id delete-btn-id"
+      (click)="modal.close('No')"
+    >
+      Logout
+    </button>
+    <button
+      type="button"
+      class="btn btn-sm btn-ref-id delete-btn-id"
+      (click)="modal.close('Yes')"
+    >
+      Stay
+    </button>
+  </div>
+</ng-template>
