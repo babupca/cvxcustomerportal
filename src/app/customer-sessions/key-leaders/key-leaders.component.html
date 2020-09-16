@@ -1,23 +1,21 @@
 <div>
   <h6>DXC Key Leaders</h6>
   <div class="main-container perfect-scroll-ref">
-    <perfect-scrollbar style="padding: 0 0 0 0;">
-      <div
-        class="info-details"
-        *ngFor="let item of sharebio; let i = index"
-      >
+    <perfect-scrollbar style="padding: 0 0 0 0">
+      <div class="info-details" *ngFor="let item of sharebio; let i = index">
         <div class="info-left">
           <div class="name">{{ item?.displayName }}</div>
           <div class="role">{{ item?.role }}</div>
         </div>
         <div class="info-right text-right">
-          <div style="display: flow-root;">
+          <div style="display: flow-root">
             <a
               class="bio-file"
               [href]="
                 item.bioFileUrl !== null ? item.bioFileUrl : 'javascript;'
               "
-              >{{ (item?.bioFileName | slice:0:7)+'...' }}</a
+              download="{{ item?.displayName }}"
+              >{{ (item?.displayName | slice: 0:7) + "..." }}</a
             >
           </div>
         </div>
