@@ -1,146 +1,248 @@
 <section class="session-item-container" [attr.data-sessionid]="session.id">
   <!-- Session header -->
   <div class="session-item-header">
-    <h6 class="time-duration">{{session?.startDateTime |  date:'shortTime' }} to
-      {{session?.endDateTime|  date:'shortTime'}} - {{session.office}} - {{session.shortVenue}}</h6>
-    <h6 class="session-status upcoming"
-      [ngClass]="{'cancelled': session?.sessionState === 'Cancelled', 'completed': session?.sessionState === 'Completed','inprogress': session?.sessionState === 'In Progress'}">
-
-      {{session?.sessionState | uppercase}}</h6>
+    <h6 class="time-duration">
+      {{ session?.startDateTime | date: "shortTime" }} to
+      {{ session?.endDateTime | date: "shortTime" }} - {{ session.office }} -
+      {{ session.shortVenue }}
+    </h6>
+    <h6
+      class="session-status upcoming"
+      [ngClass]="{
+        cancelled: session?.sessionState === 'Cancelled',
+        completed: session?.sessionState === 'Completed',
+        inprogress: session?.sessionState === 'In Progress'
+      }"
+    >
+      {{ session?.sessionState | uppercase }}
+    </h6>
   </div>
   <!-- Session Title -->
 
   <div class="session-item-details">
-    <h6 class="topic">{{SessionNos}} - {{session?.title}}</h6>
+    <h6 class="topic">{{ SessionNos }} - {{ session?.title }}</h6>
     <!-- <pre>{{session | json}}</pre> -->
-<!-- <pre>sxxvxcvxv{{session?.representativeString | json}}</pre> -->
-    <h6 class="presenters" title="{{session.representativeString}}">
-      {{session?.representativeString | truncatePipe : 50}}
-
+    <!-- <pre>sxxvxcvxv{{session?.representativeString | json}}</pre> -->
+    <h6 class="presenters" title="{{ session.representativeString }}">
+      {{ session?.representativeString | truncatePipe: 50 }}
     </h6>
   </div>
   <!-- Description -->
   <div class="session-item-description">
     <div>
-      <p [ngClass]="{'showHide': showMore}" [innerHTML]="session.summary"></p>
-      <a *ngIf="showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read more</a>
-      <a *ngIf="!showMore" (click)="contentCollapse($event)" class="readmore" id="myBtn">Read Less</a>
-
+      <p [ngClass]="{ showHide: showMore }" [innerHTML]="session.summary"></p>
+      <a
+        *ngIf="showMore"
+        (click)="contentCollapse($event)"
+        class="readmore"
+        id="myBtn"
+        >Read more</a
+      >
+      <a
+        *ngIf="!showMore"
+        (click)="contentCollapse($event)"
+        class="readmore"
+        id="myBtn"
+        >Read Less</a
+      >
     </div>
   </div>
   <!-- Attachments -->
   <div class="session-item-rating-attachments">
     <div class="file-attachments">
       <div class="file-details">
-
-        <div class="attachments-container ">
-          <a class="attachment-list" triggers="manual" container="body" [ngbPopover]="popContent"
-            [autoClose]="'outside'" #p1="ngbPopover" placement="right-bottom" popoverClass="customWidth"
-            (click)="attachments(p1,sharable)"> ({{sharable.length}} Attachments ) </a>
+        <div class="attachments-container">
+          <a
+            class="attachment-list"
+            triggers="manual"
+            container="body"
+            [ngbPopover]="popContent"
+            [autoClose]="'outside'"
+            #p1="ngbPopover"
+            placement="right-bottom"
+            popoverClass="customWidth"
+            (click)="attachments(p1, sharable)"
+          >
+            ({{ sharable.length }} Attachments )
+          </a>
         </div>
       </div>
     </div>
-    <div class="btn rating"
-      [ngClass]="{'upcomingOpacity':session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'}">
-
+    <div
+      class="btn rating"
+      [ngClass]="{
+        upcomingOpacity:
+          session?.sessionState === 'Upcoming' ||
+          session?.sessionState === 'Cancelled' ||
+          visitDetails?.visit?.visitStage === 'Closed'
+      }"
+    >
       <div>
-        <button class="btn actionitems-icon" (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)" > </button>
-        <div *ngIf="ShowActionItem" class="custom-popover action-container-popup">
+        <button
+          id="actionItem"
+          #actionItem
+          class="btn actionitems-icon"
+          (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"
+          [disabled]=""
+        ></button>
+        <div
+          *ngIf="ShowActionItem"
+          class="custom-popover action-container-popup"
+        >
           <div class="row">
             <div class="col-12 pr-1">
-              <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg"
-                  (click)="close()">
+              <div class="cancelimgTeam">
+                <img
+                  src="assets/images/iconfinder_ic_cancel_48px_352263.svg"
+                  (click)="close()"
+                />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12 pr-3">
               <div>
-                <angular-editor [(ngModel)]="actionPoints" [config]="editorConfig" maxLength="500"></angular-editor>
+                <angular-editor
+                  [(ngModel)]="actionPoints"
+                  [config]="editorConfig"
+                  maxLength="500"
+                ></angular-editor>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12 pr-3">
               <div class="senddiv">
-                <button [disabled]="dataService.convertHtmltoText(actionPoints)?.length==0"
-                  (click)="sendActionPoints()">SAVE</button></div>
+                <button
+                  [disabled]="
+                    dataService.convertHtmltoText(actionPoints)?.length == 0
+                  "
+                  (click)="sendActionPoints()"
+                >
+                  SAVE
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
-
       </div>
 
-      <button class="btn feedback-icon"
-        [ngClass]="{'added':session?.ratingAndFeedBack?.feedback !== null && session?.ratingAndFeedBack?.feedback !== ''}"
-        [disabled]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
-        (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"> </button><span class="ratings">Ratings</span>
-      <div *ngIf="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled'">
-        <rating [(ngModel)]="starsCount"
-          [readonly]="session?.sessionState ==='Upcoming' || session?.sessionState ==='Cancelled' || visitDetails?.visit?.visitStage === 'Closed'"
-          [max]="max"></rating>
+      <button
+        class="btn feedback-icon"
+        [ngClass]="{
+          added:
+            session?.ratingAndFeedBack?.feedback !== null &&
+            session?.ratingAndFeedBack?.feedback !== ''
+        }"
+        [disabled]="
+          session?.sessionState === 'Upcoming' ||
+          session?.sessionState === 'Cancelled' ||
+          visitDetails?.visit?.visitStage === 'Closed'
+        "
+        (click)="ShowFeedbackPopOver(session?.ratingAndFeedBack?.feedback)"
+      ></button
+      ><span class="ratings">Ratings</span>
+      <div
+        *ngIf="
+          session?.sessionState === 'Upcoming' ||
+          session?.sessionState === 'Cancelled'
+        "
+      >
+        <rating
+          [(ngModel)]="starsCount"
+          [readonly]="
+            session?.sessionState === 'Upcoming' ||
+            session?.sessionState === 'Cancelled' ||
+            visitDetails?.visit?.visitStage === 'Closed'
+          "
+          [max]="max"
+        ></rating>
       </div>
-      <div *ngIf="session?.sessionState !=='Upcoming' && session?.sessionState !=='Cancelled'">
-        <rating [(ngModel)]="starsCount" (click)="sessionCardRating()" [max]="max"></rating>
+      <div
+        *ngIf="
+          session?.sessionState !== 'Upcoming' &&
+          session?.sessionState !== 'Cancelled'
+        "
+      >
+        <rating
+          [(ngModel)]="starsCount"
+          (click)="sessionCardRating()"
+          [max]="max"
+        ></rating>
       </div>
-
 
       <!-- Feedback Popup  -->
-      <div *ngIf="ShowFeedback" class="container-popup ">
+      <div *ngIf="ShowFeedback" class="container-popup">
         <div class="row">
           <div class="col-12 pr-1">
-            <div class="cancelimgTeam"><img src="assets/images/iconfinder_ic_cancel_48px_352263.svg" (click)="close()">
+            <div class="cancelimgTeam">
+              <img
+                src="assets/images/iconfinder_ic_cancel_48px_352263.svg"
+                (click)="close()"
+              />
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12 pr-3">
             <div class="messagediv">
-              <angular-editor [(ngModel)]="FeedbackMessage" [config]="editorConfig" maxLength="500"></angular-editor>
-
+              <angular-editor
+                [(ngModel)]="FeedbackMessage"
+                [config]="editorConfig"
+                maxLength="500"
+              ></angular-editor>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12 pr-3">
             <div class="senddiv">
-              <button [disabled]="dataService.convertHtmltoText(FeedbackMessage)?.length==0 || FeedbackMessage === null"
-                (click)="sendFeedback()">SAVE</button>
+              <button
+                [disabled]="
+                  dataService.convertHtmltoText(FeedbackMessage)?.length == 0 ||
+                  FeedbackMessage === null
+                "
+                (click)="sendFeedback()"
+              >
+                SAVE
+              </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
 </section>
-
 
 <ng-template #popContent let-attachmenstdetails>
   <div class="popoverdetails">
-    <perfect-scrollbar style="max-height: 100px;" [config]="attachmentScrollConfig">
+    <perfect-scrollbar
+      style="max-height: 100px"
+      [config]="attachmentScrollConfig"
+    >
       <ul>
         <li *ngFor="let item of currentAttachments">
-          <a class="popoverattachemnets" [href]="item.attachmentUrl">{{item.attachmentName}}</a>
+          <a class="popoverattachemnets" [href]="item.attachmentUrl">{{
+            item.attachmentName
+          }}</a>
         </li>
       </ul>
     </perfect-scrollbar>
-
   </div>
 </ng-template>
 
-
 <ng-template #actionPointmodal let-modal>
   <div class="modal-header header-ref">
-    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.close('Cross click')"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body model-body-ref">
-    <form>
-      Action Points Noted!
-    </form>
+    <form>Action Points Noted!</form>
   </div>
 </ng-template>
