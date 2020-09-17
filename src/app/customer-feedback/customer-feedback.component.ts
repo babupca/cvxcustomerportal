@@ -1,23 +1,33 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild, ElementRef } from '@angular/core';
-import { FeedbackService } from '../services/feedback.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
-import { DataserviceService } from '../services/dataservice.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {
+  Component,
+  OnInit,
+  Input,
+  TemplateRef,
+  ViewChild,
+  ElementRef,
+} from "@angular/core";
+import { FeedbackService } from "../services/feedback.service";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
+import { NgForm } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { BsModalService, ModalModule } from "ngx-bootstrap/modal";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import { ɵELEMENT_PROBE_PROVIDERS } from "@angular/platform-browser";
+import { DataserviceService } from "../services/dataservice.service";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
-  selector: 'app-customer-feedback',
-  templateUrl: './customer-feedback.component.html',
-  styleUrls: ['./customer-feedback.component.css']
+  selector: "app-customer-feedback",
+  templateUrl: "./customer-feedback.component.html",
+  styleUrls: ["./customer-feedback.component.css"],
 })
 export class CustomerFeedbackComponent implements OnInit {
-  @ViewChild('customerFeedbackForm', { static: true }) customerFeedbackForm: NgForm;
-  @ViewChild('feedbackSubmitValidmodal', { static: false }) feedbackSubmitValidmodal: ElementRef;
-  @ViewChild('feedbackSuccessmodal', { static: false }) feedbackSuccessmodal: ElementRef;
+  @ViewChild("customerFeedbackForm", { static: true })
+  customerFeedbackForm: NgForm;
+  @ViewChild("feedbackSubmitValidmodal", { static: false })
+  feedbackSubmitValidmodal: ElementRef;
+  @ViewChild("feedbackSuccessmodal", { static: false })
+  feedbackSuccessmodal: ElementRef;
   customerDetails: any;
   selectedVisitId: string;
   isRatingDisabled: boolean = false;
@@ -25,37 +35,37 @@ export class CustomerFeedbackComponent implements OnInit {
 
   feedbackModel = [];
   capability = {
-    questionNumber: '1',
+    questionNumber: "1",
     rating: null,
-    comments: ''
-  }
+    comments: "",
+  };
   currentneeds = {
-    questionNumber: '3',
+    questionNumber: "3",
     rating: null,
-    comments: ''
-  }
+    comments: "",
+  };
 
   experience = {
     agenda: {
-      questionNumber: '2a',
+      questionNumber: "2a",
       rating: null,
-      comments: null
+      comments: null,
     },
     arrangements: {
-      questionNumber: '2b',
+      questionNumber: "2b",
       rating: null,
-      comments: null
+      comments: null,
     },
     quality: {
-      questionNumber: '2c',
+      questionNumber: "2c",
       rating: null,
-      comments: null
+      comments: null,
     },
     expectation: {
-      questionNumber: '2d',
+      questionNumber: "2d",
       rating: null,
-      comments: null
-    }
+      comments: null,
+    },
   };
 
   constructor(
@@ -65,33 +75,34 @@ export class CustomerFeedbackComponent implements OnInit {
     private route: ActivatedRoute,
     private feedbackService: FeedbackService,
     private dataService: DataserviceService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
+    this.customerDetails = JSON.parse(localStorage.getItem("customerDetails"));
     console.log("customerDetails", this.customerDetails);
-    this.route.params.subscribe(params => {
-      console.log(params.id)
-      this.selectedVisitId = params.id
+    this.route.params.subscribe((params) => {
+      console.log(params.id);
+      this.selectedVisitId = params.id;
     });
     this.getCustomerFeedback();
   }
 
-
   getCustomerFeedback() {
-    this.feedbackService.getFeedback(this.selectedVisitId, this.customerDetails.nameid).subscribe((data) => {
-      console.log("get feedback", data);
-      if (data['feedBack'].length > 0) {
-        this.capability = data['feedBack'][0];
-        this.experience.agenda = data['feedBack'][1];
-        this.experience.arrangements = data['feedBack'][2];
-        this.experience.quality = data['feedBack'][3];
-        this.experience.expectation = data['feedBack'][4];
-        this.currentneeds = data['feedBack'][5];
-        this.isRatingDisabled = true;
-        this.customerFeedbackForm.form.disable();
-      }
-    });
+    this.feedbackService
+      .getFeedback(this.selectedVisitId, this.customerDetails.nameid)
+      .subscribe((data) => {
+        console.log("get feedback", data);
+        if (data["feedBack"].length > 0) {
+          this.capability = data["feedBack"][0];
+          this.experience.agenda = data["feedBack"][1];
+          this.experience.arrangements = data["feedBack"][2];
+          this.experience.quality = data["feedBack"][3];
+          this.experience.expectation = data["feedBack"][4];
+          this.currentneeds = data["feedBack"][5];
+          this.isRatingDisabled = true;
+          this.customerFeedbackForm.form.disable();
+        }
+      });
   }
 
   sendCustomerFeedback(feedBackPayLoad) {
@@ -99,6 +110,7 @@ export class CustomerFeedbackComponent implements OnInit {
       console.log("testing", data);
       this.isRatingDisabled = true;
       this.customerFeedbackForm.form.disable();
+      localStorage.setItem("OverallFeedbackSubmitted", "true");
     });
   }
 
@@ -112,19 +124,26 @@ export class CustomerFeedbackComponent implements OnInit {
       this.experience.quality = f.value.experience.quality;
       this.experience.expectation = f.value.experience.expectation;
       this.currentneeds = f.value.currentneeds;
-      this.feedbackModel.push(this.capability, this.experience.agenda, this.experience.arrangements, this.experience.expectation, this.experience.quality, this.currentneeds);
+      this.feedbackModel.push(
+        this.capability,
+        this.experience.agenda,
+        this.experience.arrangements,
+        this.experience.expectation,
+        this.experience.quality,
+        this.currentneeds
+      );
       console.log(this.feedbackModel);
       const modalRef1 = this.modalService.open(feedbackSubmitmodal);
       modalRef1.result.then((result) => {
-        if (result === 'No') {
+        if (result === "No") {
           modalRef1.close();
         }
-        if (result === 'Yes') {
+        if (result === "Yes") {
           let feedBackPayLoad = {
-            "visitId": this.selectedVisitId,
-            "customerId": this.customerDetails.nameid,
-            "feedBack": [...this.feedbackModel]
-          }
+            visitId: this.selectedVisitId,
+            customerId: this.customerDetails.nameid,
+            feedBack: [...this.feedbackModel],
+          };
           this.sendCustomerFeedback(feedBackPayLoad);
           this.modalService.open(this.feedbackSuccessmodal);
         }
@@ -132,16 +151,13 @@ export class CustomerFeedbackComponent implements OnInit {
     } else {
       this.modalService.open(this.feedbackSubmitValidmodal);
     }
-
   }
-
-
 
   /**
    * Takes back to Agenda Screen
    */
   backtosession() {
     this.dataService.setVisitId(this.selectedVisitId);
-    this.router.navigate(['/customerSession']);
+    this.router.navigate(["/customerSession"]);
   }
 }
