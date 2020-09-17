@@ -39,11 +39,11 @@
     <!-- </perfect-scrollbar> -->
   </div>
 
-  <div class="session-footer">
+  <div class="session-footer" [attr.stageid]="stage">
     <a type="generate pdf" (click)="downloadAgenda()" class="session-footer-cta">DOWNLOAD AGENDA
 
-    </a>
-    <button class="btn overallfeedback" (click)= "onclickfeedback(visitId)" [disabled]="stage ==='In Flight'|| stage ==='Finalized'" >OVERALL FEEDBACK
+    </a>    
+    <button class="btn overallfeedback" (click)= "onclickfeedback(visitId)" [disabled]="stage ==='In Flight'|| stage ==='Finalized' || stage === 'Planning'" >OVERALL FEEDBACK
     </button>
   </div>
 

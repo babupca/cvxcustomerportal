@@ -6,7 +6,7 @@
     <perfect-scrollbar>
 
     <div class="visit-dates"  *ngFor="let item of visitIdAnddatesArray; let i = index">
-      <div><button  (click)="sendVisitId(item.visitId,item.currentStage)">{{item.startDate |date:"dd-MMM-yyyy"}} to {{item.endDate |date:"dd-MMM-yyyy"}}</button></div>
+      <div><button (click)="sendVisitId(item.visitId,item.currentStage)">{{item.startDate |date:"dd-MMM-yyyy"}} to {{item.endDate |date:"dd-MMM-yyyy"}}</button></div>
 
     </div>
 
