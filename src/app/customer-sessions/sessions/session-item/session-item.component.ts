@@ -80,13 +80,12 @@ export class SessionItemComponent implements OnInit {
     this.getStarCount();
     this.getActionPoint();
     this.isAttachmentSharable();
-  }
-  ngOnChanges() {
     if (localStorage.getItem("OverallFeedbackSubmitted")) {
       (<HTMLInputElement>document.getElementById("actionItem")).disabled = true;
       // this.actionItem.nativeElement.disabled = true;
     }
   }
+  ngOnChanges() {}
   newrepString: string = "";
   getString() {
     var repString = "";
