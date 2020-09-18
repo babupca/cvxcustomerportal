@@ -1,4 +1,5 @@
 <section class="session-item-container" [attr.data-sessionid]="session.id">
+  <!-- {{ session | json }} -->
   <!-- Session header -->
   <div class="session-item-header">
     <h6 class="time-duration">
@@ -83,7 +84,7 @@
           #actionItem
           class="btn actionitems-icon"
           (click)="ShowActionItems(session?.ratingAndFeedBack?.actionPoint)"
-          [disabled]=""
+          [disabled]="disableActionPoints"
         ></button>
         <div
           *ngIf="ShowActionItem"
