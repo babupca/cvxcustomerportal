@@ -55,7 +55,6 @@ export class SessionsComponent implements OnInit {
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     // this.getVisitCitiesAndDates();
-    debugger;
     console.log(this.visitId);
     this.getRemainingDays();
    // this.getSessionState();
