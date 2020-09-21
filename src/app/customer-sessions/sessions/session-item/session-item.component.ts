@@ -40,14 +40,14 @@ export class SessionItemComponent implements OnInit {
       maxHeight: '200',
       width: '100',
       minWidth: '0',
-      fonts:[
-        {
-          name:'dxc-Regular',
-          class:'dxc-Regular'
-        }
-      ],
-      defaultFontName:'dxc-Regular',
-      defaultFontSize:'14',
+      // fonts:[
+      //   {
+      //     name:'dxc-Regular',
+      //     class:'dxc-Regular'
+      //   }
+      // ],
+      // defaultFontName:'dxc-Regular',
+      // defaultFontSize:'14',
       enableToolbar: true,
       showToolbar: true,
 
