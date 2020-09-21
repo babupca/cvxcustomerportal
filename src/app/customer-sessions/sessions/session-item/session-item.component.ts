@@ -13,7 +13,6 @@ import { CustomerSessionsService } from "src/app/services/customer-sessions.serv
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { DataserviceService } from "src/app/services/dataservice.service";
-import { DocumentInterruptSource } from "@ng-idle/core";
 import { FeedbackService } from "../../../services/feedback.service";
 import { ActivatedRoute } from '@angular/router';
 
