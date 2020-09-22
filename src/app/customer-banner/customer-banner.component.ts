@@ -9,17 +9,26 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 })
 export class CustomerBannerComponent implements OnInit {
   bannerContent: string;
-  constructor( private bannerCustomer : BannercustomerService) { }
+  bannerImageData: any;
+  customerDetails: any;
+  constructor(private bannerCustomer: BannercustomerService) { }
 
   ngOnInit() {
+    this.customerDetails = JSON.parse(localStorage.getItem("customerDetails"));
     this.banercontent();
+    this.getAccountLogoForAccountId();
   }
 
-  banercontent(){
-   this.bannerCustomer.getBannerData().subscribe(data=>{
-     this.bannerContent = data[0].bannerContent;
-     console.log(data);
-   })
+  banercontent() {
+    this.bannerCustomer.getBannerData().subscribe(data => {
+      this.bannerContent = data[0].bannerContent;
+      console.log(data);
+    })
+  }
+  getAccountLogoForAccountId() {
+    this.bannerCustomer.getAccountLogoForAccountId(this.customerDetails.OngoingAccountId).subscribe(data => {
+      this.bannerImageData = data;
+    })
   }
 
 }
