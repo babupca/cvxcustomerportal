@@ -13,7 +13,8 @@ import { CustomerSessionsService } from "src/app/services/customer-sessions.serv
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { DataserviceService } from "src/app/services/dataservice.service";
-import { DocumentInterruptSource } from "@ng-idle/core";
+import { FeedbackService } from "../../../services/feedback.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-session-item",
@@ -51,23 +52,27 @@ export class SessionItemComponent implements OnInit {
     maxHeight: "200",
     width: "100",
     minWidth: "0",
-    fonts: [
-      {
-        name: "dxc-Regular",
-        class: "dxc-Regular",
-      },
-    ],
-    defaultFontName: "dxc-Regular",
-    defaultFontSize: "14",
+    // fonts: [
+    //   {
+    //     name: "dxc-Regular",
+    //     class: "dxc-Regular",
+    //   },
+    // ],
+    // defaultFontName: "dxc-Regular",
+    // defaultFontSize: "14",
     enableToolbar: true,
     showToolbar: true,
 
     defaultParagraphSeparator: "",
   };
 
+  disableActionPoints: boolean = false;
+
   constructor(
     private sessionService: CustomerSessionsService,
     private modalService: NgbModal,
+    private feedbackService: FeedbackService,
+    private route: ActivatedRoute,
     public dataService: DataserviceService
   ) {}
 
@@ -80,13 +85,25 @@ export class SessionItemComponent implements OnInit {
     this.getStarCount();
     this.getActionPoint();
     this.isAttachmentSharable();
+    this.getCustomerFeedback();
+    
   }
-  ngOnChanges() {
-    if (localStorage.getItem("OverallFeedbackSubmitted")) {
-      (<HTMLInputElement>document.getElementById("actionItem")).disabled = true;
-      // this.actionItem.nativeElement.disabled = true;
-    }
+
+
+  getCustomerFeedback() {
+    var customerDetails = JSON.parse(localStorage.getItem("customerDetails"))
+
+    this.feedbackService
+      .getFeedback(this.visitId, customerDetails.nameid)
+      .subscribe((data) => {
+        if (data["feedBack"].length > 0) {
+          this.disableActionPoints = true;
+        }
+      });
   }
+
+  
+  ngOnChanges() {}
   newrepString: string = "";
   getString() {
     var repString = "";
