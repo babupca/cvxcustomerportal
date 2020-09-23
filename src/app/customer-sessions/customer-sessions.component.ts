@@ -4,6 +4,7 @@ import { MyvisitService } from 'src/app/services/myvisit.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DataserviceService } from '../services/dataservice.service';
 import { Subscription } from 'rxjs';
+import { BannercustomerService } from '../services/bannercustomer.service';
 @Component({
   selector: 'app-customer-sessions',
   templateUrl: './customer-sessions.component.html',
@@ -17,16 +18,20 @@ export class CustomerSessionsComponent implements OnInit {
   visitInfo: any;
   stage: string;
   status: string;
+  currentAccountimage: any;
   visitIdAnddatesArray: any;
   getVisitId: string;
   getCurrentStage: string;
+  bannerImageData: any;
   constructor(
     private myVisitsvc: MyvisitService,
     private spinner: NgxSpinnerService,
-    public dataService: DataserviceService) { }
+    public dataService: DataserviceService,
+    private bannerCustomer: BannercustomerService) { }
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
     this.loadFirstVisit();
+    this.getAccountLogoForAccountId();
   }
 
 
@@ -54,9 +59,17 @@ export class CustomerSessionsComponent implements OnInit {
     console.log(currentStage);
     this.stage = currentStage;
   }
+  reloadAccountImage(currectAccountImage) {
+    this.currentAccountimage = currectAccountImage;
+  }
   reloadCurrentStatus(currentStatus) {
     console.log(currentStatus);
     this.status = currentStatus;
+  }
+  getAccountLogoForAccountId() {
+    this.bannerCustomer.getAccountLogoForAccountId(this.customerDetails.OngoingAccountId).subscribe(data => {
+      this.bannerImageData = data;
+    })
   }
 
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BannercustomerService } from 'src/app/services/bannercustomer.service'
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 
@@ -9,14 +9,19 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 })
 export class CustomerBannerComponent implements OnInit {
   bannerContent: string;
-  bannerImageData: any;
+  @Input() currentAccountimage: any;
+  @Input() bannerImageData: any;
+
   customerDetails: any;
   constructor(private bannerCustomer: BannercustomerService) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem("customerDetails"));
     this.banercontent();
-    this.getAccountLogoForAccountId();
+  }
+
+  ngOnChanges() {
+    this.getAccountImageAsPerVisitID();
   }
 
   banercontent() {
@@ -25,9 +30,12 @@ export class CustomerBannerComponent implements OnInit {
       console.log(data);
     })
   }
-  getAccountLogoForAccountId() {
-    this.bannerCustomer.getAccountLogoForAccountId(this.customerDetails.OngoingAccountId).subscribe(data => {
+
+
+  getAccountImageAsPerVisitID() {
+    this.bannerCustomer.getAccountLogoForAccountId(this.currentAccountimage).subscribe(data => {
       this.bannerImageData = data;
+
     })
   }
 

@@ -20,6 +20,11 @@ export class MyvisitService {
   }
   getVisitIdAndDates(CustomerId) {
     return this.httpClient.get(this.customerApi + '/api/customer/' + CustomerId + '/MyVisitsListForaCustomer', this.httpOptions).pipe(map(result => result), finalize(() => {
-  }));
+    }));
+  }
+
+  getVisitInformationBasedOnvisitID(CustomerId, visitId) {
+    return this.httpClient.get(this.customerApi + '/api/customer/' + CustomerId + '/GetVisitInformationBasedOnVisitID?visitID=' + visitId, this.httpOptions).pipe(map(result => result), finalize(() => {
+    }));
   }
 }
