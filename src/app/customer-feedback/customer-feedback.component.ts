@@ -135,7 +135,7 @@ export class CustomerFeedbackComponent implements OnInit {
       );
       console.log(this.feedbackModel);
       var feedBackValid = this.feedbackModel.find(element => {
-        if (element.rating !== null || element.comments !== "") {
+        if (element.rating !== null || element.comments !== "" || element.comments !== null) {
           return element;
         }
       })
@@ -144,7 +144,7 @@ export class CustomerFeedbackComponent implements OnInit {
 
       }
       else {
-        if (feedBackValid.comments === null || feedBackValid.comments !== null || feedBackValid.comments === "" || feedBackValid.rating === null || feedBackValid.rating !== null) {
+        // if (feedBackValid.comments === null || feedBackValid.comments !== null || feedBackValid.comments === "" || feedBackValid.rating === null || feedBackValid.rating !== null) {
           const modalRef1 = this.modalService.open(feedbackSubmitmodal);
           modalRef1.result.then((result) => {
             if (result === "No") {
@@ -160,7 +160,7 @@ export class CustomerFeedbackComponent implements OnInit {
               this.modalService.open(this.feedbackSuccessmodal);
             }
           });
-        }
+        // }
       }
     }
   }
