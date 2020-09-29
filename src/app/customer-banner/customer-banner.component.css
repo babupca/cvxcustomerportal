@@ -11,6 +11,18 @@
     background-color: black;
     color: white;
     padding: 30px 50px 0px 20px;
+    width:88%
+}
+
+.welcomeinfo-right-container {
+    width: 18%;
+    padding: 1.5rem;
+}
+
+.account-img {
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .welcomeinfo-left-container .welcome-title {

@@ -10,10 +10,12 @@ export class MyVisitsComponent implements OnInit {
   visitId: any;
   visitIdAnddatesArray: any;
   customerDetails: any;
+  visitInfo: any;
   @Output() parentcustomer = new EventEmitter<object>();
   @Output() customerStage = new EventEmitter<object>();
+  @Output() accountImage = new EventEmitter<object>();
   constructor(private myVisitsvc: MyvisitService,
-    private spinner:NgxSpinnerService) { }
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem('customerDetails'));
@@ -21,12 +23,13 @@ export class MyVisitsComponent implements OnInit {
     console.log(this.visitIdAnddatesArray);
 
   }
-  ngOnChanges(){
+  ngOnChanges() {
     this.getVisitDates();
+
   }
   getVisitDates() {
     // this.spinner.show();
-        this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
+    this.myVisitsvc.getVisitIdAndDates(this.customerDetails.nameid).subscribe((data) => {
       this.visitIdAnddatesArray = data;
 
     });
@@ -35,10 +38,20 @@ export class MyVisitsComponent implements OnInit {
 
 
   }
-  sendVisitId(visitId,currentStage) {
+  sendVisitId(visitId, currentStage) {
+    this.visitId = visitId;
+
     this.parentcustomer.emit(visitId);
     this.customerStage.emit(currentStage);
+    this.getVisitInformationBasedOnVisitID();
     console.log(currentStage);
+  }
+
+  getVisitInformationBasedOnVisitID() {
+    this.myVisitsvc.getVisitInformationBasedOnvisitID(this.customerDetails.nameid, this.visitId).subscribe(data => {
+      this.visitInfo = data;
+      this.accountImage.emit(this.visitInfo.accountID);
+    })
   }
 
 

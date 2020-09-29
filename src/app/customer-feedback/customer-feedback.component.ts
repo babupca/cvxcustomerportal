@@ -15,6 +15,7 @@ import { BsModalRef } from "ngx-bootstrap/modal";
 import { ɵELEMENT_PROBE_PROVIDERS } from "@angular/platform-browser";
 import { DataserviceService } from "../services/dataservice.service";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+import { element } from 'protractor';
 
 @Component({
   selector: "app-customer-feedback",
@@ -32,17 +33,17 @@ export class CustomerFeedbackComponent implements OnInit {
   selectedVisitId: string;
   isRatingDisabled: boolean = false;
   submitted: boolean = false;
-
+  feedBackValid: any = [];
   feedbackModel = [];
   capability = {
     questionNumber: "1",
     rating: null,
-    comments: "",
+    comments: null,
   };
   currentneeds = {
     questionNumber: "3",
     rating: null,
-    comments: "",
+    comments: null,
   };
 
   experience = {
@@ -75,7 +76,7 @@ export class CustomerFeedbackComponent implements OnInit {
     private route: ActivatedRoute,
     private feedbackService: FeedbackService,
     private dataService: DataserviceService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.customerDetails = JSON.parse(localStorage.getItem("customerDetails"));
@@ -133,23 +134,34 @@ export class CustomerFeedbackComponent implements OnInit {
         this.currentneeds
       );
       console.log(this.feedbackModel);
-      const modalRef1 = this.modalService.open(feedbackSubmitmodal);
-      modalRef1.result.then((result) => {
-        if (result === "No") {
-          modalRef1.close();
+
+      this.feedbackModel.forEach(element => {
+        if (element.rating !== null || element.comments !== null) {
+          this.feedBackValid.push(element)
         }
-        if (result === "Yes") {
-          let feedBackPayLoad = {
-            visitId: this.selectedVisitId,
-            customerId: this.customerDetails.nameid,
-            feedBack: [...this.feedbackModel],
-          };
-          this.sendCustomerFeedback(feedBackPayLoad);
-          this.modalService.open(this.feedbackSuccessmodal);
-        }
-      });
-    } else {
-      this.modalService.open(this.feedbackSubmitValidmodal);
+      })
+
+      if (this.feedBackValid.length == 0) {
+        this.modalService.open(this.feedbackSubmitValidmodal);
+
+      }
+      else {
+        const modalRef1 = this.modalService.open(feedbackSubmitmodal);
+        modalRef1.result.then((result) => {
+          if (result === "No") {
+            modalRef1.close();
+          }
+          if (result === "Yes") {
+            let feedBackPayLoad = {
+              visitId: this.selectedVisitId,
+              customerId: this.customerDetails.nameid,
+              feedBack: [...this.feedbackModel],
+            };
+            this.sendCustomerFeedback(feedBackPayLoad);
+            this.modalService.open(this.feedbackSuccessmodal);
+          }
+        });
+      }
     }
   }
 

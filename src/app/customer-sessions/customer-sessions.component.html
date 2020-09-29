@@ -3,7 +3,9 @@
 </ngx-spinner>
 <div class="customer-sessions">
   <!-- INSERT BANNER HERE :: Start -->
-  <app-customer-banner></app-customer-banner>
+
+  <app-customer-banner [bannerImageData]="bannerImageData" [currentAccountimage]="currentAccountimage">
+  </app-customer-banner>
   <!-- INSERT BANNER HERE :: Ends -->
 
   <!-- Session Body Container Starts Here -->
@@ -11,9 +13,10 @@
     <div class="bdr-right col-lg-2 col-sm-2 col-md-12 pr-0 pl-0 ">
 
       <div class="right-margin">
-        <app-days-count [visitId]= "visitId"></app-days-count>
-        <app-factsheets [visitId]= "visitId"></app-factsheets>
-        <app-my-visits  (parentcustomer)="reloadVisitDetails($event)" (customerStage)="reloadCurrentStage($event)"></app-my-visits>
+        <app-days-count [visitId]="visitId"></app-days-count>
+        <app-factsheets [visitId]="visitId"></app-factsheets>
+        <app-my-visits (parentcustomer)="reloadVisitDetails($event)" (customerStage)="reloadCurrentStage($event)"
+          (accountImage)="reloadAccountImage($event)"></app-my-visits>
       </div>
     </div>
     <div class="mobile-sessions col-lg-7 col-sm-12 col-md-8">
@@ -22,8 +25,8 @@
           <app-days-count [visitId]="visitId"></app-days-count>
         </div>
         <div class="session-comp">
-        <app-sessions #sessionCmpt [visitId]= "visitId" [stage] ="stage" [status]="status" ></app-sessions>
-      </div>
+          <app-sessions #sessionCmpt [visitId]="visitId" [stage]="stage" [status]="status"></app-sessions>
+        </div>
       </div>
     </div>
 
@@ -38,7 +41,8 @@
         <app-key-leaders [visitId]="visitId"></app-key-leaders>
         <div class="tablet-right-mobile">
           <app-factsheets [visitId]="visitId"></app-factsheets>
-          <app-my-visits (parentcustomer)="reloadVisitDetails($event)" (customerStage)="reloadCurrentStage($event)"></app-my-visits>
+          <app-my-visits (parentcustomer)="reloadVisitDetails($event)" (customerStage)="reloadCurrentStage($event)">
+          </app-my-visits>
         </div>
       </div>
     </div>
