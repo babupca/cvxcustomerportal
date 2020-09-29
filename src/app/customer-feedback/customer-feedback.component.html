@@ -99,7 +99,7 @@
             <div class="agenda">Please mention the session(s) (if any) which were not planned as per your expectation.
             </div>
             <input type="hidden" name="questionNumber" [ngModel]="experience.expectation.questionNumber" value="2d" />
-            <!-- <input type="hidden" name="rating" [ngModel]="experience.expectation.rating" /> -->
+            <input type="hidden" name="rating" [ngModel]="experience.expectation.rating" value="null" />
             <!-- <dxc-rating name="rating" [(ngModel)]="experience.expectation.rating"></dxc-rating> -->
             <div class="">
               <textarea rows="6" maxlength="500" name="comments" [ngModel]="experience.expectation.comments"
