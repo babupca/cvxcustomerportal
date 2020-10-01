@@ -33,10 +33,11 @@ export class CustomerBannerComponent implements OnInit {
 
 
   getAccountImageAsPerVisitID() {
-    this.bannerCustomer.getAccountLogoForAccountId(this.currentAccountimage).subscribe(data => {
-      this.bannerImageData = data;
-
-    })
+    if (this.currentAccountimage !== undefined) {
+      this.bannerCustomer.getAccountLogoForAccountId(this.currentAccountimage).subscribe(data => {
+        this.bannerImageData = data;
+      })
+    }
   }
 
 }
